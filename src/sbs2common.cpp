@@ -1411,4 +1411,3 @@ QString Sbs2Common::setDefaultCatalogPath()
     return Sbs2Common::getCatalogPath();
 }
 
-
