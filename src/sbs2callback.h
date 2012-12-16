@@ -42,6 +42,8 @@ public:
     static int getCurrentPacket();
     QString getRawFilename();
 
+protected:
+    void setPacket(Sbs2Packet* packet);
 
 protected:
     Sbs2DataHandler* sbs2DataHandler;

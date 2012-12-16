@@ -217,3 +217,12 @@ void Sbs2Callback::deviceFound(QMap<QString, QVariant> params_)
     devicePresent = 1;
     emit deviceFoundSignal(params);
 }
+
+void Sbs2Callback::setPacket(Sbs2Packet* packet)
+{
+    thisPacket = packet;
+    currentPacketCounter = packet->counter;
+    ++currentPacket;
+    if (sbs2DataHandler != 0)
+	sbs2DataHandler->setThisPacket(thisPacket);
+}
