@@ -17,8 +17,8 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef SBS2SOURCERECONSTRUCTION_H
-#define SBS2SOURCERECONSTRUCTION_H
+#ifndef SBS2SOURCERECONSTRUCTIONLORETA_H
+#define SBS2SOURCERECONSTRUCTIONLORETA_H
 
 #include <QObject>
 #include <dtu_array_2d.h>
@@ -33,20 +33,11 @@
 
 #define PI 3.14159265
 
-
-/**
-  @todo Sbs2SourceReconstruction needs to be a container encapsulating particular methods of the reconstruction. We need to agree what are the methods and parameters commonly used by the reconstruction models.
-  */
-
-
-class Sbs2SourceReconstrucion : public QObject
+class Sbs2SourceReconstrucionLoreta : public QObject
 {
     Q_OBJECT
 public:
-    explicit Sbs2SourceReconstrucion(int channels_, int samples_, int samplesDelta_, int vertices_, QString hardware_, QObject *parent = 0, int modelUpdateLength_ = 8, int modelUpdateDelta_ = 24);
-    void doRec(DTU::DtuArray2D<double>* input_, DTU::DtuArray2D<double>* output_, int* sourceReconstructionReady);
-    void doRecPow(DTU::DtuArray2D<double>* input_, DTU::DtuArray2D<double>* output_, int* sourceReconstrutionReady);
-
+    explicit Sbs2SourceReconstrucionLoreta(int channels_, int samples_, int samplesDelta_, int vertices_, QString hardware_, QObject* parent_, int modelUpdateLength_ = 8, int modelUpdateDelta_ = 24);
 
 public:
     enum SumType{MEAN, POWER};
@@ -149,7 +140,9 @@ public slots:
     void setMeanExtraction(int enabled);
     void setAScaling(int scaling);
     void setVerticesToExtract(QVector<int>* verticesToExtract_);
+    void doRec(DTU::DtuArray2D<double>* input_, DTU::DtuArray2D<double>* output_, int* sourceReconstructionReady);
+    void doRecPow(DTU::DtuArray2D<double>* input_, DTU::DtuArray2D<double>* output_, int* sourceReconstrutionReady);
     
 };
 
-#endif // SBS2SOURCERECONSTRUCTION_H
+#endif // SBS2SOURCERECONSTRUCTIONLORETA_H

@@ -41,7 +41,11 @@ SOURCES += $$PWD/FFTReal.cpp \
     $$PWD/hardware/emotiv/sbs2emotivmounter.cpp \
     $$PWD/hardware/emotiv/sbs2emotivdatareader.cpp \
     $$PWD/hardware/emotiv/sbs2emotivpacket.cpp \
-    $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp
+    $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp \
+    $$PWD/source_reconstruction/sparse/math_utilities.cpp \
+    $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.cpp \
+    $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.cpp
+    $$PWD/source_reconstruction/sbs2sourcereconstruction.cpp
 
 HEADERS += \
     $$PWD/FFTReal.h \
@@ -96,4 +100,8 @@ HEADERS += \
     $$PWD/hardware/emotiv/sbs2emotivmounter.h \
     $$PWD/hardware/emotiv/sbs2emotivdatareader.h \
     $$PWD/hardware/emotiv/sbs2emotivpacket.h \
-    $$PWD/hardware/emotiv/sbs2emotivdecryptor.h
+    $$PWD/hardware/emotiv/sbs2emotivdecryptor.h \
+    $$PWD/source_reconstruction/sparse/math_utilities.h \
+    $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.h \
+    $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.h \
+    $$PWD/source_reconstruction/sbs2sourcereconstruction.h

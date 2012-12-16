@@ -1,9 +1,9 @@
-#include "sbs2sourcereconstruction.h"
+#include "sbs2sourcereconstruction_loreta.h"
 
 //TODO: change readPriorSpatialCoherence(); and inverse to binary files
 
 
-Sbs2SourceReconstrucion::Sbs2SourceReconstrucion(int channels_, int samples_, int samplesDelta_, int vertices_, QString hardware_, QObject *parent, int modelUpdateLength_, int modelUpdateDelta_):
+Sbs2SourceReconstrucionLoreta::Sbs2SourceReconstrucionLoreta(int channels_, int samples_, int samplesDelta_, int vertices_, QString hardware_, QObject *parent, int modelUpdateLength_, int modelUpdateDelta_):
     QObject(parent), channels(channels_), samples(samples_), samplesDelta(samplesDelta_), vertices(vertices_), modelUpdateLength(modelUpdateLength_), modelUpdateDelta(modelUpdateDelta_), hardware(hardware_)
 {
 
@@ -28,12 +28,12 @@ Sbs2SourceReconstrucion::Sbs2SourceReconstrucion(int channels_, int samples_, in
 
 }
 
-void Sbs2SourceReconstrucion::setupFixedModel()
+void Sbs2SourceReconstrucionLoreta::setupFixedModel()
 {
     readMNEFixedWeights();
 }
 
-void Sbs2SourceReconstrucion::setupModel()
+void Sbs2SourceReconstrucionLoreta::setupModel()
 {
     toModelUpdateValuesIndex = 0;
     modelUpdateSamplesSeen = 0;
@@ -123,9 +123,10 @@ void Sbs2SourceReconstrucion::setupModel()
 
 }
 
-void Sbs2SourceReconstrucion::doRec(DTU::DtuArray2D<double> *input_, DTU::DtuArray2D<double> *output_, int* sourceReconstrutionReady)
+void Sbs2SourceReconstrucionLoreta::doRec(DTU::DtuArray2D<double> *input_, DTU::DtuArray2D<double> *output_, int* sourceReconstrutionReady)
 {
 
+    qDebug() << Q_FUNC_INFO;
 
     (*sourceReconstrutionReady) = 0;
 
@@ -164,6 +165,8 @@ void Sbs2SourceReconstrucion::doRec(DTU::DtuArray2D<double> *input_, DTU::DtuArr
     reconstruct();
     //Sbs2Timer::toc();
 
+    output->print();
+
     (*sourceReconstrutionReady) = 1;
 
 
@@ -171,7 +174,7 @@ void Sbs2SourceReconstrucion::doRec(DTU::DtuArray2D<double> *input_, DTU::DtuArr
 
 
 
-void Sbs2SourceReconstrucion::doRecPow(DTU::DtuArray2D<double> *input_, DTU::DtuArray2D<double> *output_, int* sourceReconstrutionReady)
+void Sbs2SourceReconstrucionLoreta::doRecPow(DTU::DtuArray2D<double> *input_, DTU::DtuArray2D<double> *output_, int* sourceReconstrutionReady)
 {
     (*sourceReconstrutionReady) = 0;
 
@@ -184,9 +187,6 @@ void Sbs2SourceReconstrucion::doRecPow(DTU::DtuArray2D<double> *input_, DTU::Dtu
 	return;
     if (!(output->dim2() == vertices))
 	return;
-
-
-
 
     for (int row=0; row<input_->dim1(); ++row)
     {
@@ -205,48 +205,34 @@ void Sbs2SourceReconstrucion::doRecPow(DTU::DtuArray2D<double> *input_, DTU::Dtu
     collectDataForModelUpdate();
     doModelUpdate();
     (*sourceReconstrutionReady) = 1;
-
 }
 
 
-void Sbs2SourceReconstrucion::sourceSpectrogram()
+void Sbs2SourceReconstrucionLoreta::sourceSpectrogram()
 {
-
-
     for (int vertex = 0; vertex < weightedInput->dim1(); ++vertex)
     {
-
 	if (verticesToExtract != 0 && !verticesToExtract->contains(vertex))
 	    continue;
 
 	for (int sample = 0; sample < weightedInput->dim2(); ++sample)
 	{
 	    (*tempInput)[0][sample] = (*weightedInput)[vertex][sample];
-
 	}
-
-
 	sbs2Spectrogram->doSpectrogram(tempInput,tempOutput);
-
 	for (int v = 0; v < tempOutput->dim2()/2; ++v) //re & img
 	{
-
-
 	    if (v == 0)
 		(*output)[v][vertex] = std::pow((*tempOutput)[0][v],2.0);
 	    else
 		(*output)[v][vertex] = std::pow((*tempOutput)[0][v],2.0) + std::pow((*tempOutput)[0][v+tempOutput->dim2()/2],2.0);
-
 	}
-
-
     }
-
 }
 
 
 
-void Sbs2SourceReconstrucion::collectDataForModelUpdate()
+void Sbs2SourceReconstrucionLoreta::collectDataForModelUpdate()
 {
 
     //we only collect samples before we are going to do update
@@ -273,7 +259,7 @@ void Sbs2SourceReconstrucion::collectDataForModelUpdate()
 
 
 
-void Sbs2SourceReconstrucion::doModelUpdate()
+void Sbs2SourceReconstrucionLoreta::doModelUpdate()
 {
 
     //FIXME
@@ -294,7 +280,7 @@ void Sbs2SourceReconstrucion::doModelUpdate()
 	toModelUpdateValues = currentModelUpdateValues;
 	currentModelUpdateValues = tempModelUpdateValues;
 
-	QtConcurrent::run(this,&Sbs2SourceReconstrucion::updateModel);
+	QtConcurrent::run(this,&Sbs2SourceReconstrucionLoreta::updateModel);
     }
 }
 
@@ -302,7 +288,7 @@ void Sbs2SourceReconstrucion::doModelUpdate()
   Extract mean on the per sample basis from all the channels
   */
 
-void Sbs2SourceReconstrucion::preprocessData()
+void Sbs2SourceReconstrucionLoreta::preprocessData()
 {
     if (!paramMeanExtractionOn)
 	return;
@@ -325,7 +311,7 @@ void Sbs2SourceReconstrucion::preprocessData()
     }
 }
 
-void Sbs2SourceReconstrucion::readMNEFixedWeights()
+void Sbs2SourceReconstrucionLoreta::readMNEFixedWeights()
 {
     QFile file(QString(Sbs2Common::getRootAppPath())+QString("mobi_weights_spheres_reduced.txt"));
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -349,12 +335,12 @@ void Sbs2SourceReconstrucion::readMNEFixedWeights()
 
 }
 
-void Sbs2SourceReconstrucion::weight()
+void Sbs2SourceReconstrucionLoreta::weight()
 {
     w->multiply(input,weightedInput);
 }
 
-void Sbs2SourceReconstrucion::reconstruct()
+void Sbs2SourceReconstrucionLoreta::reconstruct()
 {
 
     if (sumType == MEAN)
@@ -363,7 +349,7 @@ void Sbs2SourceReconstrucion::reconstruct()
 	calculatePower();
 }
 
-void Sbs2SourceReconstrucion::calculateMean()
+void Sbs2SourceReconstrucionLoreta::calculateMean()
 {
     for (int row = 0; row < weightedInput->dim1(); ++row)
     {
@@ -381,7 +367,7 @@ void Sbs2SourceReconstrucion::calculateMean()
     }
 }
 
-void Sbs2SourceReconstrucion::calculatePower()
+void Sbs2SourceReconstrucionLoreta::calculatePower()
 {
     for (int row = 0; row < weightedInput->dim1(); ++row)
     {
@@ -400,7 +386,7 @@ void Sbs2SourceReconstrucion::calculatePower()
 
 }
 
-void Sbs2SourceReconstrucion::updateModel()
+void Sbs2SourceReconstrucionLoreta::updateModel()
 {
     if(!modelUpdateReady)
 	return;
@@ -432,7 +418,7 @@ void Sbs2SourceReconstrucion::updateModel()
 
 }
 
-void Sbs2SourceReconstrucion::updateAlpha()
+void Sbs2SourceReconstrucionLoreta::updateAlpha()
 {
 
     double tempInvAlpha = 0.0;
@@ -467,7 +453,7 @@ void Sbs2SourceReconstrucion::updateAlpha()
     //    std::cout << invAlpha <<" ";
 }
 
-void Sbs2SourceReconstrucion::updateBeta()
+void Sbs2SourceReconstrucionLoreta::updateBeta()
 {
 
     double tempInvBeta = 0.0;
@@ -517,7 +503,7 @@ void Sbs2SourceReconstrucion::updateBeta()
 
 }
 
-void Sbs2SourceReconstrucion::updateW()
+void Sbs2SourceReconstrucionLoreta::updateW()
 {
 
     calculateInputMatrix();
@@ -531,7 +517,7 @@ void Sbs2SourceReconstrucion::updateW()
 }
 
 
-void Sbs2SourceReconstrucion::calculateInputMatrix()
+void Sbs2SourceReconstrucionLoreta::calculateInputMatrix()
 {
     for (int row=0; row<channels; ++row)
     {
@@ -546,7 +532,7 @@ void Sbs2SourceReconstrucion::calculateInputMatrix()
 
 }
 
-void Sbs2SourceReconstrucion::calculateSigma()
+void Sbs2SourceReconstrucionLoreta::calculateSigma()
 {
     double* Bcolj = new double[channels];
 
@@ -571,7 +557,7 @@ void Sbs2SourceReconstrucion::calculateSigma()
     delete[] Bcolj;
 }
 
-void Sbs2SourceReconstrucion::setSumType(SumType sumType_)
+void Sbs2SourceReconstrucionLoreta::setSumType(SumType sumType_)
 {
     sumType = sumType_;
 }
@@ -580,7 +566,7 @@ void Sbs2SourceReconstrucion::setSumType(SumType sumType_)
   Reading a.
   */
 
-void Sbs2SourceReconstrucion::readForwardModel()
+void Sbs2SourceReconstrucionLoreta::readForwardModel()
 {
     QFile file(QString(Sbs2Common::getRootAppPath()) + QString("hardware/") + hardware + QString("/") + QString("forwardmodel_spheres_reduced.txt"));
 
@@ -608,7 +594,7 @@ void Sbs2SourceReconstrucion::readForwardModel()
   Reading k.
   */
 
-void Sbs2SourceReconstrucion::readPriorSpatialCoherence()
+void Sbs2SourceReconstrucionLoreta::readPriorSpatialCoherence()
 {
     QFile file(QString(Sbs2Common::getRootAppPath())+ QString("hardware/")+hardware+QString("/")+QString("spatialCoherenceSmooth0-2_reduced.txt"));
 
@@ -635,7 +621,7 @@ void Sbs2SourceReconstrucion::readPriorSpatialCoherence()
   Reading invK.
   */
 
-void Sbs2SourceReconstrucion::readPriorSpatialCoherenceInverse()
+void Sbs2SourceReconstrucionLoreta::readPriorSpatialCoherenceInverse()
 {
     QFile file(QString(Sbs2Common::getRootAppPath())+QString("hardware/")+hardware+QString("/")+QString("spatialCoherenceSmooth0-2_reduced_inverse.txt"));
 
@@ -658,12 +644,12 @@ void Sbs2SourceReconstrucion::readPriorSpatialCoherenceInverse()
     }
 }
 
-void Sbs2SourceReconstrucion::setMeanExtraction(int enabled)
+void Sbs2SourceReconstrucionLoreta::setMeanExtraction(int enabled)
 {
     paramMeanExtractionOn = (enabled >= 1);
 }
 
-void Sbs2SourceReconstrucion::setAScaling(int scaling)
+void Sbs2SourceReconstrucionLoreta::setAScaling(int scaling)
 {
     paramAScaling = scaling;
 }
@@ -672,13 +658,13 @@ void Sbs2SourceReconstrucion::setAScaling(int scaling)
 /**
   Hann window.
   */
-double Sbs2SourceReconstrucion::window(int n)
+double Sbs2SourceReconstrucionLoreta::window(int n)
 {
     int length = 128;
     return 0.5*(1-std::cos(2*PI*n/(length)));
 }
 
-void Sbs2SourceReconstrucion::setVerticesToExtract(QVector<int> *verticesToExtract_)
+void Sbs2SourceReconstrucionLoreta::setVerticesToExtract(QVector<int> *verticesToExtract_)
 {
     verticesToExtract = verticesToExtract_;
 }

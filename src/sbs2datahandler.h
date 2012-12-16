@@ -27,14 +27,10 @@
 #include <sbs2common.h>
 #include <sbs2filehandler.h>
 #include <sbs2spectrogram.h>
-#include <sbs2sourcereconstruction.h>
+#include <source_reconstruction/sbs2sourcereconstruction.h>
 #include <QtCore>
 
-
 class Sbs2NetworkHandler;
-
-
-
 
 class Sbs2DataHandler : public QObject
 {
@@ -53,16 +49,13 @@ public:
     //spectrogram
     virtual void spectrogramChannel();
 
-    //source reconstruction
-    virtual void sourceReconstruction();
-    virtual void sourceReconstructionPower();
-
     //network
     virtual void sendRawData();
 
     //access
     DTU::DtuArray2D<double>* getPowerValues();
     DTU::DtuArray2D<double>* getSourceReconstructionPowerValues();
+    DTU::DtuArray2D<double>* getSourceReconstructionMeanValues();
 
     int getPacketZero();
 
@@ -103,14 +96,15 @@ protected:
 
 
     //source reconstruction
+    QString sourceReconstructionMethod;
     int sourceReconstructionOn;
-    int sourceReconstructionPowerOn;
     int isSourceReconstructionReady;
     int sourceReconstructionSamples;
     int sourceReconstructionDelta;
     int sourceReconstructionDeltaCollected;
     int sourceReconstructionModelUpdateLength;
     int sourceReconstructionModelUpdateDelta;
+    int readyToReconstruct;
 
     QString hardware;
 
@@ -119,7 +113,7 @@ protected:
 	//data matrices
     DTU::DtuArray2D<double>* toSourceReconstructionValues;
     DTU::DtuArray2D<double>* sourceReconstructionValues;
-    DTU::DtuArray2D<double>* sourceReconstructionPowerValues;
+    DTU::DtuArray2D<double>* sourceReconstructionSpectrogramValues;
 
 
 
@@ -156,11 +150,13 @@ public slots:
     void setWindowType(Sbs2Spectrogram::WindowType windowType);
 
     //source reconstruction
-    void turnSourceReconstructionOn(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_);
-    void turnSourceReconstructionOff();
+    void setSourceReconstructionVerticesToExtract(QVector<int>* verticesToExtract);
 
-    void turnSourceReconstructionPowerOn(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_);
-    void turnSourceReconstructionPowerOff();
+    void turnOnSourceReconstructionLoreta(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_);
+    void turnOnSourceReconstructionSparse(int sourceReconstructionSamples_, QVector<double> lambdas, QString hardware_);
+    void doSourceReconstruction();
+    void doSourceReconstructionSpectrogram();
+    void turnOffSourceReconstruction();
     void setVerticesToExtract(QVector<int>* verticesToExtract);
 
     //network

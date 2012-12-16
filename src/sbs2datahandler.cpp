@@ -28,7 +28,7 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     sbs2Spectrogram = 0;
 
     //source reconstruction
-
+    soruceReconstructionMethod = "";
     isSourceReconstructionReady = 0;
     sourceReconstructionDelta = 0;
     sourceReconstructionDeltaCollected = 0;
@@ -41,6 +41,7 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     toSourceReconstructionValues = 0;
     sourceReconstructionValues = 0;
     sourceReconstructionPowerValues = 0;
+    sbs2SourceReconstruction = new Sbs2SourceReconstruction(this);
 
     //network
     sbs2NetworkHandler = new Sbs2NetworkHandler();
@@ -126,67 +127,6 @@ void Sbs2DataHandler::spectrogramChannel()
 
 }
 
-void Sbs2DataHandler::sourceReconstruction()
-{
-    if (!sourceReconstructionOn)
-	return;
-
-    if (isSourceReconstructionReady)
-    {
-	isSourceReconstructionReady = 0;
-	emit sourceReconstructionReady();
-    }
-
-
-
-    for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
-    {
-	for (int column = (toSourceReconstructionValues->dim2()-1); column > 0; --column)
-	    (*toSourceReconstructionValues)[row][column] = (*toSourceReconstructionValues)[row][column-1];
-	(*toSourceReconstructionValues)[row][0] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)];
-
-    }
-
-    ++sourceReconstructionDeltaCollected;
-    if (sourceReconstructionDeltaCollected < sourceReconstructionDelta)
-	return;
-
-    sourceReconstructionDeltaCollected = 0;
-
-    QtConcurrent::run(sbs2SourceReconstruction,&Sbs2SourceReconstrucion::doRec,toSourceReconstructionValues,sourceReconstructionValues,&isSourceReconstructionReady);
-
-}
-
-void Sbs2DataHandler::sourceReconstructionPower()
-{
-    if (!sourceReconstructionPowerOn)
-	return;
-
-    if (isSourceReconstructionReady)
-    {
-	isSourceReconstructionReady = 0;
-	emit sourceReconstructionPowerReady();
-    }
-
-
-
-    for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
-    {
-	for (int column = (toSourceReconstructionValues->dim2()-1); column > 0; --column)
-	    (*toSourceReconstructionValues)[row][column] = (*toSourceReconstructionValues)[row][column-1];
-	(*toSourceReconstructionValues)[row][0] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)];
-
-    }
-
-    ++sourceReconstructionDeltaCollected;
-    if (sourceReconstructionDeltaCollected < sourceReconstructionDelta)
-	return;
-
-    sourceReconstructionDeltaCollected = 0;
-
-    QtConcurrent::run(sbs2SourceReconstruction,&Sbs2SourceReconstrucion::doRecPow,toSourceReconstructionValues,sourceReconstructionPowerValues,&isSourceReconstructionReady);
-
-}
 
 
 
@@ -335,143 +275,7 @@ void Sbs2DataHandler::setWindowType(Sbs2Spectrogram::WindowType windowType)
     emit setWindowTypeSignal(windowType);
 }
 
-void Sbs2DataHandler::turnSourceReconstructionOn(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_)
-{
 
-    hardware = hardware_;
-    turnSourceReconstructionPowerOff();
-
-    sourceReconstructionDelta = sourceReconstructionDelta_;
-    sourceReconstructionDeltaCollected = 0;
-    sourceReconstructionSamples = sourceReconstructionSamples_;
-    sourceReconstructionModelUpdateLength = sourceReconstructionModelUpdateLength_; //128 / sourceReconstructionSamples * 20; //20 seconds
-    sourceReconstructionModelUpdateDelta = sourceReconstructionModelUpdateDelta_; //128 / sourceReconstructionSamples * 10; //every 10 seconds
-
-
-
-    if (!(toSourceReconstructionValues == 0))
-    {
-	delete toSourceReconstructionValues;
-	toSourceReconstructionValues = 0;
-    }
-
-    if (!(sourceReconstructionValues == 0))
-    {
-	delete sourceReconstructionValues;
-	sourceReconstructionValues = 0;
-    }
-    if (!(sbs2SourceReconstruction == 0))
-    {
-	delete sbs2SourceReconstruction;
-	sbs2SourceReconstruction = 0;
-    }
-
-    sbs2SourceReconstruction = new Sbs2SourceReconstrucion(Sbs2Common::channelsNo(),sourceReconstructionSamples,sourceReconstructionDelta, Sbs2Common::verticesNo(),hardware, this,sourceReconstructionModelUpdateLength,sourceReconstructionModelUpdateDelta);
-    toSourceReconstructionValues = new DTU::DtuArray2D<double>(Sbs2Common::channelsNo(),sourceReconstructionSamples);
-    sourceReconstructionValues = new DTU::DtuArray2D<double>(1,Sbs2Common::verticesNo());
-
-    (*toSourceReconstructionValues) = 0;
-    (*sourceReconstructionValues) = 0;
-
-
-    sbs2SourceReconstruction->setMeanExtraction(1);
-
-    sourceReconstructionOn = 1;
-}
-
-void Sbs2DataHandler::turnSourceReconstructionOff()
-{
-    sourceReconstructionOn = 0;
-    sourceReconstructionDelta = 0;
-    sourceReconstructionDeltaCollected = 0;
-    sourceReconstructionSamples = 0;
-    sourceReconstructionModelUpdateLength = 0;
-    sourceReconstructionModelUpdateDelta = 0;
-
-    if (!(toSourceReconstructionValues == 0))
-    {
-	delete toSourceReconstructionValues;
-	toSourceReconstructionValues = 0;
-    }
-
-    if (!(sourceReconstructionValues == 0))
-    {
-	delete sourceReconstructionValues;
-	sourceReconstructionValues = 0;
-    }
-    if (!(sbs2SourceReconstruction == 0))
-    {
-	delete sbs2SourceReconstruction;
-	sbs2SourceReconstruction = 0;
-    }
-}
-
-void Sbs2DataHandler::turnSourceReconstructionPowerOn(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_)
-{
-
-    hardware = hardware_;
-    turnSourceReconstructionOff();
-
-    sourceReconstructionDelta = sourceReconstructionDelta_;
-    sourceReconstructionDeltaCollected = 0;
-    sourceReconstructionSamples = sourceReconstructionSamples_;
-    sourceReconstructionModelUpdateLength = sourceReconstructionModelUpdateLength_; //128 / sourceReconstructionSamples * 20; //20 seconds
-    sourceReconstructionModelUpdateDelta = sourceReconstructionModelUpdateDelta_; //128 / sourceReconstructionSamples * 10; //every 10 seconds
-
-    if (!(toSourceReconstructionValues == 0))
-    {
-	delete toSourceReconstructionValues;
-	toSourceReconstructionValues = 0;
-    }
-
-    if (!(sourceReconstructionPowerValues == 0))
-    {
-	delete sourceReconstructionPowerValues;
-	sourceReconstructionPowerValues = 0;
-    }
-    if (!(sbs2SourceReconstruction == 0))
-    {
-	delete sbs2SourceReconstruction;
-	sbs2SourceReconstruction = 0;
-    }
-
-
-    sbs2SourceReconstruction = new Sbs2SourceReconstrucion(Sbs2Common::channelsNo(),sourceReconstructionSamples,sourceReconstructionDelta, Sbs2Common::verticesNo(),hardware, this,sourceReconstructionModelUpdateLength,sourceReconstructionModelUpdateDelta);
-    toSourceReconstructionValues = new DTU::DtuArray2D<double>(Sbs2Common::channelsNo(),sourceReconstructionSamples);
-    sourceReconstructionPowerValues = new DTU::DtuArray2D<double>(Sbs2Common::samplingRate()/2,Sbs2Common::verticesNo());
-
-    (*toSourceReconstructionValues) = 0;
-    (*sourceReconstructionPowerValues) = 0;
-    sbs2SourceReconstruction->setMeanExtraction(1);
-    sourceReconstructionPowerOn = 1;
-}
-
-void Sbs2DataHandler::turnSourceReconstructionPowerOff()
-{
-    sourceReconstructionPowerOn = 0;
-    sourceReconstructionDelta = 0;
-    sourceReconstructionDeltaCollected = 0;
-    sourceReconstructionSamples = 0;
-    sourceReconstructionModelUpdateLength = 0;
-    sourceReconstructionModelUpdateDelta = 0;
-
-    if (!(toSourceReconstructionValues == 0))
-    {
-	delete toSourceReconstructionValues;
-	toSourceReconstructionValues = 0;
-    }
-
-    if (!(sourceReconstructionPowerValues == 0))
-    {
-	delete sourceReconstructionPowerValues;
-	sourceReconstructionPowerValues = 0;
-    }
-    if (!(sbs2SourceReconstruction == 0))
-    {
-	delete sbs2SourceReconstruction;
-	sbs2SourceReconstruction = 0;
-    }
-}
 
 void Sbs2DataHandler::turnSendRawDataOn(QString rawDataServerAddress_, int rawDataPort_, int rawDataSize_, int rawDataQueueLength_)
 {
@@ -622,6 +426,175 @@ DTU::DtuArray2D<double>* Sbs2DataHandler::getSourceReconstructionPowerValues()
 {
     return sourceReconstructionPowerValues;
 }
+
+DTU::DtuArray2D<double>* Sbs2DataHandler::getSourceReconstructionMeanValues()
+{
+    return sourceReconstructionValues;
+}
+
+void Sbs2DataHandler::turnOnSourceReconstructionLoreta(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_)
+{
+    turnOffSourceReconstruction();
+    sourceReconstructionMethod = "loreta";
+    hardware = hardware_;
+
+    sourceReconstructionDelta = sourceReconstructionDelta_;
+    sourceReconstructionDeltaCollected = 0;
+    sourceReconstructionSamples = sourceReconstructionSamples_;
+    sourceReconstructionModelUpdateLength = sourceReconstructionModelUpdateLength_;
+    sourceReconstructionModelUpdateDelta = sourceReconstructionModelUpdateDelta_;
+
+    if (!(toSourceReconstructionValues == 0))
+    {
+        delete toSourceReconstructionValues;
+        toSourceReconstructionValues = 0;
+    }
+
+    if (!(sourceReconstructionValues == 0))
+    {
+        delete sourceReconstructionValues;
+        sourceReconstructionValues = 0;
+    }
+    if (!(sourceReconstructionSpectrogramValues == 0))
+    {
+        delete sourceReconstructionSpectrogramValues;
+        sourceReconstructionSpectrogramValues = 0;
+    }
+
+    sbs2SourceReconstruction->turnOnLoreta(sourceReconstructionSamples, sourceReconstructionDelta, sourceReconstructionModelUpdateLength, sourceReconstructionModelUpdateDelta, hardware, sourceReconstructionMethod);
+
+    toSourceReconstructionValues = new DTU::DtuArray2D<double>(Sbs2Common::channelsNo(),sourceReconstructionSamples);
+    sourceReconstructionValues = new DTU::DtuArray2D<double>(1,Sbs2Common::verticesNo());
+    sourceReconstructionSpectrogramValues = new DTU::DtuArray2D<double>(Sbs2Common::samplingRate()/2,Sbs2Common::verticesNo());
+
+    (*toSourceReconstructionValues) = 0;
+    (*sourceReconstructionValues) = 0;
+    (*sourceReconstructionSpectrogramValues) = 0;
+    sourceReconstructionOn = 1;
+
+}
+
+void Sbs2DataHandler::turnOnSourceReconstructionSparse(int sourceReconstructionSamples_, QVector<double> lambdas, QString hardware_)
+{
+    turnOffSourceReconstruction();
+    sourceReconstructionMethod = "sparse";
+    hardware = hardware_;
+
+    sourceReconstructionDelta = sourceReconstructionSamples_; //Is this right?
+    sourceReconstructionDeltaCollected = 0;
+    sourceReconstructionSamples = sourceReconstructionSamples_;
+    sourceReconstructionModelUpdateLength = 0;
+    sourceReconstructionModelUpdateDelta = 0;
+
+
+    if (!(toSourceReconstructionValues == 0))
+    {
+        delete toSourceReconstructionValues;
+        toSourceReconstructionValues = 0;
+    }
+
+    if (!(sourceReconstructionValues == 0))
+    {
+        delete sourceReconstructionValues;
+        sourceReconstructionValues = 0;
+    }
+    if (!(sourceReconstructionSpectrogramValues == 0))
+    {
+        delete sourceReconstructionSpectrogramValues;
+        sourceReconstructionSpectrogramValues = 0;
+    }
+
+    sbs2SourceReconstruction->turnOnSparse(sourceReconstructionSamples, hardware, lambdas, sourceReconstructionMethod);
+
+    toSourceReconstructionValues = new DTU::DtuArray2D<double>(Sbs2Common::channelsNo(),sourceReconstructionSamples);
+    sourceReconstructionValues = new DTU::DtuArray2D<double>(1,Sbs2Common::verticesNo());
+    sourceReconstructionSpectrogramValues = new DTU::DtuArray2D<double>(Sbs2Common::samplingRate()/2,Sbs2Common::verticesNo());
+
+    (*toSourceReconstructionValues) = 0;
+    (*sourceReconstructionValues) = 0;
+    (*sourceReconstructionSpectrogramValues) = 0;
+
+    sourceReconstructionOn = 1;
+}
+
+
+void Sbs2DataHandler::doSourceReconstruction()
+{
+    if (!sourceReconstructionOn)
+        return;
+
+    if (isSourceReconstructionReady)
+    {
+        readyToReconstruct = 1;
+        isSourceReconstructionReady = 0;
+        emit sourceReconstructionReady();
+    }
+
+
+    if (readyToReconstruct == -1) readyToReconstruct = 1;
+
+    for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
+    {
+        for (int column = (toSourceReconstructionValues->dim2()-1); column > 0; --column)
+            (*toSourceReconstructionValues)[row][column] = (*toSourceReconstructionValues)[row][column-1];
+        (*toSourceReconstructionValues)[row][0] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)];
+
+    }
+
+    ++sourceReconstructionDeltaCollected;
+    if (sourceReconstructionDeltaCollected < sourceReconstructionDelta)
+        return;
+
+
+
+    if (readyToReconstruct)
+    {
+        readyToReconstruct = 0;
+        sourceReconstructionDeltaCollected = 0; QtConcurrent::run(sbs2SourceReconstruction,&Sbs2SourceReconstruction::doReconstruction,toSourceReconstructionValues,sourceReconstructionValues,&isSourceReconstructionReady);
+    }
+
+}
+
+void Sbs2DataHandler::doSourceReconstructionSpectrogram()
+{
+    if (!sourceReconstructionOn)
+        return;
+
+    if (isSourceReconstructionReady)
+    {
+        isSourceReconstructionReady = 0;
+        emit sourceReconstructionSpectrogramReady();
+    }
+
+    for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
+    {
+        for (int column = (toSourceReconstructionValues->dim2()-1); column > 0; --column)
+            (*toSourceReconstructionValues)[row][column] = (*toSourceReconstructionValues)[row][column-1];
+        (*toSourceReconstructionValues)[row][0] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)];
+
+    }
+
+    ++sourceReconstructionDeltaCollected;
+    if (sourceReconstructionDeltaCollected < sourceReconstructionDelta)
+        return;
+
+    sourceReconstructionDeltaCollected = 0;
+
+    QtConcurrent::run(sbs2SourceReconstruction,&Sbs2SourceReconstruction::doReconstructionSpectrogram,toSourceReconstructionValues,sourceReconstructionSpectrogramValues,&isSourceReconstructionReady);
+
+}
+
+void Sbs2DataHandler::turnOffSourceReconstruction()
+{
+    sourceReconstructionOn = 0;
+    sourceReconstructionMethod = "";
+}
+
+void Sbs2DataHandler::setSourceReconstructionVerticesToExtract(QVector<int> *verticesToExtract)
+{
+    //sbs2SourceReconstruction->setVerticesToExtract(verticesToExtract);
+}
+
 
 Sbs2DataHandler::~Sbs2DataHandler()
 {
