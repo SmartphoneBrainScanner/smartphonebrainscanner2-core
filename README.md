@@ -1,9 +1,12 @@
+## [[Images/logo.png]] smartphonebrainscanner2
+
+
 SmartphoneBrainScanner2 is a framework for building cross-platform real-time EEG applications. Originally developed at Technical University of Denmark for collecting and analyzing signals from Emotiv EPOC headset, its extensible architecture allows working with various EEG systems and multiple platforms.
 
-# [Get Started →](http://code.google.com/p/smartphonebrainscanner2/wiki/GettingStarted)
+# [Get Started →](https://github.com/h0pbeat/smartphonebrainscanner2-core/wiki/Getting-Started)
 
 
-![](http://web.smartphonebrainscanner2.googlecode.com/git/brain_background.jpg)
+![[Images/brain_background.jpg]]
 
 # Cross Platform
 SmartphoneBrainScanner2 is written in [Qt](http://qt.digia.com/), a C++ framework offering the power of the native development and unified support for multiple platforms. Plus the UI can be created in QML, high-level declarative UI framework. 
@@ -19,7 +22,7 @@ Besides, source reconstruction methods, additional machine learning methods such
 Real-time EEG doesn't have to happen in the lab! Consumer-grade and inexpensive research neuroheadsets allow for portability, delivering high-quality EEG signal. SmartphoneBrainScanner2 apps can be developed just like any other apps, featuring reach interface, connectivity, etc. Go, create!
 
 # How to cite SBS2
-Please acknowledge the work of the SmartphoneBrainScanner2? by citing (Stopczynski et al, 2011). Additional project related references can be found [here](http://code.google.com/p/smartphonebrainscanner2/wiki/References).
+Please acknowledge the work of the SmartphoneBrainScanner2? by citing (Stopczynski et al, 2011). Additional project related references can be found [here](https://github.com/h0pbeat/smartphonebrainscanner2-core/wiki/References).
 
 A. Stopczynski, J. E. Larsen, C. Stahlhut, M. K. Petersen, & L. K. Hansen (2011), _A smartphone interface for a wireless EEG headset with real-time 3D reconstruction_, Affective Computing and Intelligent Interaction (ACII 2011), Lecture Notes in Computer Science (LNCS) 6357, Springer-Verlag Berlin Heidelberg, pp.317-318.
 
@@ -47,6 +50,6 @@ This work is supported in part by
 * H C Ørsted Foundation
 * [Nokia](http://www.nokia.com) (we thank Nokia for partly sponsoring hardware for the project) 
 
-![ack](http://web.smartphonebrainscanner2.googlecode.com/git/acknowledgement.png)
+[[Images/acknowledgement.png]]
 
-# [Contact →](http://code.google.com/p/smartphonebrainscanner2/wiki/Contact)
+# [Contact →](https://github.com/h0pbeat/smartphonebrainscanner2-core/wiki/Contact)
