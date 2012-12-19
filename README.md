@@ -1,5 +1,4 @@
-## [[Images/logo.png]] smartphonebrainscanner2
-
+## ![logo](https://raw.github.com/wiki/h0pbeat/smartphonebrainscanner2-core/Images/logo.png)
 
 SmartphoneBrainScanner2 is a framework for building cross-platform real-time EEG applications. Originally developed at Technical University of Denmark for collecting and analyzing signals from Emotiv EPOC headset, its extensible architecture allows working with various EEG systems and multiple platforms.
 
