@@ -1,11 +1,10 @@
-## ![logo](https://raw.github.com/wiki/h0pbeat/smartphonebrainscanner2-core/Images/logo.png)
+## ![logo.png](https://raw.github.com/wiki/h0pbeat/smartphonebrainscanner2-core/Images/logo.png) smartphonebrainscanner2
 
 SmartphoneBrainScanner2 is a framework for building cross-platform real-time EEG applications. Originally developed at Technical University of Denmark for collecting and analyzing signals from Emotiv EPOC headset, its extensible architecture allows working with various EEG systems and multiple platforms.
 
 # [Get Started →](https://github.com/h0pbeat/smartphonebrainscanner2-core/wiki/Getting-Started)
 
-
-![[Images/brain_background.jpg]]
+![brain_background.jpg](https://raw.github.com/wiki/h0pbeat/smartphonebrainscanner2-core/Images/brain_background.jpg)
 
 # Cross Platform
 SmartphoneBrainScanner2 is written in [Qt](http://qt.digia.com/), a C++ framework offering the power of the native development and unified support for multiple platforms. Plus the UI can be created in QML, high-level declarative UI framework. 
@@ -49,6 +48,7 @@ This work is supported in part by
 * H C Ørsted Foundation
 * [Nokia](http://www.nokia.com) (we thank Nokia for partly sponsoring hardware for the project) 
 
-[[Images/acknowledgement.png]]
+![acknowledgement.png](https://raw.github.com/wiki/h0pbeat/smartphonebrainscanner2-core/Images/acknowledgement.png)
+
 
 # [Contact →](https://github.com/h0pbeat/smartphonebrainscanner2-core/wiki/Contact)
