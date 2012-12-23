@@ -40,6 +40,8 @@ A. Stopczynski, J. E. Larsen, C. Stahlhut, M. K. Petersen, & L. K. Hansen (2011)
 * Jakob Eg Larsen, DTU Informatics
 * Lars Kai Hansen, DTU Informatics
 
+# [Contact →](https://github.com/h0pbeat/smartphonebrainscanner2-core/wiki/Contact)
+
 
 # Acknowledgement
 This work is supported in part by
@@ -49,6 +51,3 @@ This work is supported in part by
 * [Nokia](http://www.nokia.com) (we thank Nokia for partly sponsoring hardware for the project) 
 
 ![acknowledgement.png](https://raw.github.com/wiki/h0pbeat/smartphonebrainscanner2-core/Images/acknowledgement.png)
-
-
-# [Contact →](https://github.com/h0pbeat/smartphonebrainscanner2-core/wiki/Contact)
