@@ -56,7 +56,7 @@ Sbs2SourceReconstructionSparse::Sbs2SourceReconstructionSparse(int channels_inpu
     A_normalized_test_2 = new DTU::DtuArray2D<double>(numDatosTest, sources);
     A_normalized_test_3 = new DTU::DtuArray2D<double>(numDatosTest, sources);
 */
-    QString pathTrainTestData("/Users/arks/Desktop/SparseReconstruction_SmartPhoneBrainScannerFiles/EmotivIntegration/");
+    QString pathTrainTestData("/Users/arks/Desktop/SparseReconstruction_SmartPhoneBrainScannerFiles/EmotivIntegration/"); //TODO: fixme
     loadData(pathTrainTestData+"newforwardmodel_spheres_reduced_1028.txt",A_normalized);
     loadData(pathTrainTestData+"L_forwardmodel_sphere_reduced_1028.txt",&L);
 
