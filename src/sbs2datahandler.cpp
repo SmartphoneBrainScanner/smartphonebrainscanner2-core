@@ -28,19 +28,17 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     sbs2Spectrogram = 0;
 
     //source reconstruction
-    soruceReconstructionMethod = "";
+    sourceReconstructionMethod = "";
     isSourceReconstructionReady = 0;
     sourceReconstructionDelta = 0;
     sourceReconstructionDeltaCollected = 0;
     sourceReconstructionSamples = 0;
     sourceReconstructionOn = 0;
-    sourceReconstructionPowerOn = 0;
     sourceReconstructionModelUpdateLength = 0;
     sourceReconstructionModelUpdateDelta = 0;
     sbs2SourceReconstruction = 0;
     toSourceReconstructionValues = 0;
     sourceReconstructionValues = 0;
-    sourceReconstructionPowerValues = 0;
     sbs2SourceReconstruction = new Sbs2SourceReconstruction(this);
 
     //network
@@ -422,9 +420,9 @@ DTU::DtuArray2D<double>* Sbs2DataHandler::getPowerValues()
     return powerValues;
 }
 
-DTU::DtuArray2D<double>* Sbs2DataHandler::getSourceReconstructionPowerValues()
+DTU::DtuArray2D<double>* Sbs2DataHandler::getSourceReconstructionSpectrogramValues()
 {
-    return sourceReconstructionPowerValues;
+    return sourceReconstructionSpectrogramValues;
 }
 
 DTU::DtuArray2D<double>* Sbs2DataHandler::getSourceReconstructionMeanValues()
@@ -563,7 +561,7 @@ void Sbs2DataHandler::doSourceReconstructionSpectrogram()
     if (isSourceReconstructionReady)
     {
         isSourceReconstructionReady = 0;
-        emit sourceReconstructionSpectrogramReady();
+	emit sourceReconstructionSpectrogramReady();
     }
 
     for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
@@ -603,7 +601,8 @@ Sbs2DataHandler::~Sbs2DataHandler()
 
 void Sbs2DataHandler::setVerticesToExtract(QVector<int> *verticesToExtract)
 {
-    sbs2SourceReconstruction->setVerticesToExtract(verticesToExtract);
+    //TODO
+    //sbs2SourceReconstruction->setVerticesToExtract(verticesToExtract);
 }
 
 QString Sbs2DataHandler::getRawFilename()

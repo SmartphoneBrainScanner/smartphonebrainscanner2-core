@@ -54,7 +54,7 @@ public:
 
     //access
     DTU::DtuArray2D<double>* getPowerValues();
-    DTU::DtuArray2D<double>* getSourceReconstructionPowerValues();
+    DTU::DtuArray2D<double>* getSourceReconstructionSpectrogramValues();
     DTU::DtuArray2D<double>* getSourceReconstructionMeanValues();
 
     int getPacketZero();
@@ -109,7 +109,7 @@ protected:
     QString hardware;
 
 	//objects
-    Sbs2SourceReconstrucion* sbs2SourceReconstruction;
+    Sbs2SourceReconstruction* sbs2SourceReconstruction;
 	//data matrices
     DTU::DtuArray2D<double>* toSourceReconstructionValues;
     DTU::DtuArray2D<double>* sourceReconstructionValues;
@@ -128,7 +128,7 @@ protected:
 signals:
     void spectrogramUpdated();
     void sourceReconstructionReady();
-    void sourceReconstructionPowerReady();
+    void sourceReconstructionSpectrogramReady();
     void setWindowTypeSignal(Sbs2Spectrogram::WindowType windowType);
     void udpMessageReceived(QString data, QString sender, int port);
 
