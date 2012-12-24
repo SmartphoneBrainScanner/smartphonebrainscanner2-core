@@ -19,8 +19,7 @@ Sbs2Spectrogram::~Sbs2Spectrogram()
 
 void Sbs2Spectrogram::doSpectrogram(DTU::DtuArray2D<double> *input, DTU::DtuArray2D<double> *output)
 {
-
-    if (input->dim1() != input->dim1())
+    if (input->dim1() != output->dim1())
         return;
     if (output->dim2() != length)
         return;
@@ -36,15 +35,10 @@ void Sbs2Spectrogram::doSpectrogram(DTU::DtuArray2D<double> *input, DTU::DtuArra
                 x[column] = 0;
         }
 
-
         fft->do_fft(f,x);
         for (int column = 0; column < length; ++column)
             (*output)[row][column] = f[column];
-
-
-
     }
-
 }
 
 
