@@ -128,6 +128,8 @@ protected:
 	//objects
     Sbs2NetworkHandler* sbs2NetworkHandler;
 
+    int packetsSeen;
+
 protected:
     virtual void reset();
 

@@ -4,6 +4,7 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     QObject(parent)
 {
     samplesCollected = 0;
+    packetsSeen = 0;
 
     //filtering
     filterOn = 0;
@@ -47,8 +48,10 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     networkSendRawDataOn = 0;
 
 
+
     QThreadPool::globalInstance()->setMaxThreadCount(6); //3 is minimal right now, annyoing that it needs to be set manually
     qDebug() <<  QThreadPool::globalInstance()->activeThreadCount() << QThreadPool::globalInstance()->maxThreadCount() << QThread::idealThreadCount();
+
 
 
 }
@@ -56,6 +59,7 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
 void Sbs2DataHandler::setThisPacket(Sbs2Packet *thisPacket_)
 {
     thisPacket = thisPacket_;
+    ++packetsSeen;
 }
 
 void Sbs2DataHandler::sendRawData()
@@ -642,5 +646,7 @@ QString Sbs2DataHandler::getRawFilename()
 
 int Sbs2DataHandler::getPacketZero()
 {
+    if (sbs2FileHandler == 0)
+	return packetsSeen;
     return sbs2FileHandler->getPacketZero();
 }
