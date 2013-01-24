@@ -25,7 +25,6 @@ import sys
 import os
 import logging
 logger = logging.getLogger("emotiv")
-import SocketServer
 import struct
 from threading import Thread
 
