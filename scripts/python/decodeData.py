@@ -29,6 +29,7 @@ import struct
 from threading import Thread
 
 
+DEBUG = 0
 
 sensorBits = {
 	'F3': [10, 11, 12, 13, 14, 15, 0, 1, 2, 3, 4, 5, 6, 7], 
@@ -50,10 +51,10 @@ sensorBits = {
 cqBits = [104,105,106,107,108,109,110,111,96,97,98,99,100,101]
 cqMapping = ["F3","FC5","AF3","F7","T7","P7","O1","O2","P8","T8","F8","AF4","FC6","F4"]
 
-
-
-
-
+def debugPrint(message):
+	global DEBUG
+	if DEBUG:
+		print message
 
 class EmotivPacket(object):
 	def __init__(self, data):
@@ -129,114 +130,141 @@ class Emotiv(object):
 			yield self.packets.pop(0)
 
 
-if (len(sys.argv)>1):
-	fileRaw = str(sys.argv[1]).split(".")[0]
-else:
-	print "ERROR: specify RAW file to decode"
-	exit()
 
-print "working on file "+str(fileRaw)
+def decodeFile(fileRaw):
 
-if (os.path.isfile(fileRaw+".raw") ==0 ):
-	print "ERROR: RAW file does not exist"
-	exit()
+	print "*****************************"
+	print "working on file "+str(fileRaw)
 
-rawFileSize = os.path.getsize(fileRaw+".raw")
-print "file size is "+str(rawFileSize)
+	try:
+		if fileRaw.split('.')[1] == 'raw': 
+			fileRaw = fileRaw.split('.')[0]
+	except IndexError: pass
 
-if (rawFileSize%32 != 0):
-	print "ERROR: the file size is not divisable by 32"
-	exit()
+	if not os.path.isfile(fileRaw+".raw"):
+		print "ERROR: RAW file does not exist"
+		return
 
-rawNumberOfSamples = int(rawFileSize)/32
+	rawFileSize = os.path.getsize(fileRaw+".raw")
+	debugPrint("file size is "+str(rawFileSize))
 
+	if rawFileSize%32 != 0:
+		print "ERROR: the file size is not divisable by 32"
+		return
 
-print "samples in the file "+str(rawNumberOfSamples)
+	rawNumberOfSamples = int(rawFileSize)/32
 
-fileMeta = str(fileRaw)+".meta"
-print "META file is "+fileMeta
+	debugPrint("samples in the file "+str(rawNumberOfSamples))
 
-if (os.path.isfile(fileMeta) ==0 ):
-	print "ERROR: META file does not exist"
-	exit()
+	fileMeta = str(fileRaw)+".meta"
+	print "META file is "+fileMeta
 
-
-fMetaFile = open(fileMeta)
-
-i=0
-metaLines = []
-for line in fMetaFile:
-	metaLines.append(line)
-	i=i+1
+	if (os.path.isfile(fileMeta) ==0 ):
+		print "ERROR: META file does not exist"
+		return
 
 
-startTime = float(metaLines[1].split(":")[1])
+	fMetaFile = open(fileMeta)
+
+	i=0
+	metaLines = []
+	for line in fMetaFile:
+		metaLines.append(line)
+		i=i+1
 
 
-try:
-	reserved = int(metaLines[0].split(":")[3])
-except ValueError:
-	reserved = 1
+	startTime = float(metaLines[1].split(":")[1])
+
+
+	try:
+		reserved = int(metaLines[0].split(":")[3])
+	except ValueError:
+		reserved = 1
 
 
 
-if (isinstance(startTime, (float,int)) == False):
-	print "ERROR: start time doesn't seem to be a number"
-	exit()
+	if isinstance(startTime, (float,int)) == False:
+		print "ERROR: start time doesn't seem to be a number"
+		exit()
 
 
-divider = 1
-if (startTime > 1000000000000):
-	print "time in msec"
-	divider = 1000
+	divider = 1
+	if startTime > 1000000000000:
+		debugPrint("time in msec")
+		divider = 1000
 
-startTime = startTime/divider 
+	startTime = startTime/divider 
 
-print "start time %.3f"%startTime
+	debugPrint("start time %.3f"%startTime)
 
-frequency = 128.0
-print "frequency " + str(frequency)
+	frequency = 128.0
+	debugPrint("frequency " + str(frequency))
 
-timeTick = 1/float(frequency)
-print "time tick " + str(timeTick)
+	timeTick = 1/float(frequency)
+	debugPrint("time tick " + str(timeTick))
 
 
-readingNo = 1
+	readingNo = 1
 
-outputFile = fileRaw + ".txt"
-print "output file "+outputFile
+	outputFile = fileRaw + ".txt"
+	debugPrint("output file "+outputFile)
 
-headset = Emotiv(fileRaw+".raw")
-f = open(outputFile,'w')
-perc = 0
-f.write("no timestamp gyroX gyroY P7 FC6 T7 P8 O2 O1 FC5 F3 F4 T8 F7 F8 AF4 AF3 counter cq\n")
-loss = 0
+	headset = Emotiv(fileRaw+".raw")
+	f = open(outputFile,'w')
+	perc = 0
+	f.write("no timestamp gyroX gyroY P7 FC6 T7 P8 O2 O1 FC5 F3 F4 T8 F7 F8 AF4 AF3 counter cq\n")
+	loss = 0
 
-while True:
-	for packet in headset.dequeue():
-		timing = startTime + (readingNo-1)* timeTick 
+	while True:
+		for packet in headset.dequeue():
+			timing = startTime + (readingNo-1)* timeTick 
 
-		f.write(str(readingNo) + " " + "%.0f"%(timing*1000) + " " + str(packet.gyroX) + " " + str(packet.gyroY) + " "+str(getattr(packet, "P7")[0]) + " " + str(getattr(packet, "FC6")[0]) + " " + str(getattr(packet, "T7")[0]) + " " + str(getattr(packet, "P8")[0]) + " " + str(getattr(packet, "O2")[0]) + " " + str(getattr(packet, "O1")[0]) + " " + str(getattr(packet, "FC5")[0]) + " " + str(getattr(packet, "F3")[0]) + " " + str(getattr(packet, "F4")[0]) + " " + str(getattr(packet, "T8")[0]) + " " + str(getattr(packet, "F7")[0]) + " " + str(getattr(packet, "F8")[0]) + " " + str(getattr(packet, "AF4")[0]) + " " + str(getattr(packet, "AF3")[0])+ " " + str(packet.counter) + " ")
-		if packet.cq != -1:
-			f.write(str(packet.cqName)+":"+str(packet.cq))
+			f.write(str(readingNo) + " " + "%.0f"%(timing*1000) + " " + str(packet.gyroX) + " " + str(packet.gyroY) + " "+str(getattr(packet, "P7")[0]) + " " + str(getattr(packet, "FC6")[0]) + " " + str(getattr(packet, "T7")[0]) + " " + str(getattr(packet, "P8")[0]) + " " + str(getattr(packet, "O2")[0]) + " " + str(getattr(packet, "O1")[0]) + " " + str(getattr(packet, "FC5")[0]) + " " + str(getattr(packet, "F3")[0]) + " " + str(getattr(packet, "F4")[0]) + " " + str(getattr(packet, "T8")[0]) + " " + str(getattr(packet, "F7")[0]) + " " + str(getattr(packet, "F8")[0]) + " " + str(getattr(packet, "AF4")[0]) + " " + str(getattr(packet, "AF3")[0])+ " " + str(packet.counter) + " ")
+			if packet.cq != -1:
+				f.write(str(packet.cqName)+":"+str(packet.cq))
 
-		f.write("\n")
+			f.write("\n")
 
-		if readingNo > 1:
-			currentLoss = (packet.counter - lastPacketNumber)%129-1
-			loss += currentLoss
+			if readingNo > 1:
+				currentLoss = (packet.counter - lastPacketNumber)%129-1
+				loss += currentLoss
 
-		lastPacketNumber = packet.counter			
+			lastPacketNumber = packet.counter			
 	
-	
-	
-		if readingNo == rawNumberOfSamples:
-			print "finished, loss: %s (%s%%)"%(loss,loss/float(rawNumberOfSamples))
-			exit()
-		
+			if readingNo == rawNumberOfSamples:
+				print "finished, loss: %s (%s%%)"%(loss,loss/float(rawNumberOfSamples))
+				return
+			if readingNo % 100 == 0:
+				perc = (readingNo/float(rawNumberOfSamples)*100.0)
+			sys.stdout.write("%d%%\r" % (perc) )
+			readingNo = readingNo + 1
 
-		if readingNo % 100 == 0:
-			perc = (readingNo/float(rawNumberOfSamples)*100.0)
-		sys.stdout.write("%d%%\r" % (perc) )
-		readingNo = readingNo + 1
+def isFileToDecode(filename):
+	if filename[0] == '.': return False
+	if filename.split('.')[-1] == 'raw' or len(filename.split('.')) == 1: 
+		metaFilename = filename.split('.')[0]+".meta"
+		if os.path.isfile(metaFilename):
+			return True
+	return False
+
+if __name__ == "__main__":
 	
+	if (len(sys.argv)>1):
+		fileRaw = str(sys.argv[1]).split(".")[0]
+	else:
+		print "ERROR: specify RAW file or folder to decode"
+		exit()
+
+	files_to_decode = []
+
+	if os.path.isdir(fileRaw):
+		if not fileRaw[-1] == "/": fileRaw += "/"
+		for filename in os.listdir(fileRaw):
+			if isFileToDecode(fileRaw+filename):
+				files_to_decode.append(fileRaw+filename)
+	else:
+		files_to_decode.append(fileRaw)
+
+	for file in files_to_decode:
+		decodeFile(file)	
+
