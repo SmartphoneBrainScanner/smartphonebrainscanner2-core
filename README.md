@@ -24,14 +24,15 @@ Please acknowledge the work of the SmartphoneBrainScanner2? by citing (Stopczyns
 
 A. Stopczynski, J. E. Larsen, C. Stahlhut, M. K. Petersen, & L. K. Hansen (2011), _A smartphone interface for a wireless EEG headset with real-time 3D reconstruction_, Affective Computing and Intelligent Interaction (ACII 2011), Lecture Notes in Computer Science (LNCS) 6357, Springer-Verlag Berlin Heidelberg, pp.317-318.
 
-`@article{stopczynski2011smartphone, 
-  title={A smartphone interface for a wireless EEG headset with real-time 3D reconstruction},
-  author={Stopczynski, A. and Larsen, J.E. and Stahlhut, C. and Petersen, M.K. and Hansen, L.K.},
-  journal={Affective Computing and Intelligent Interaction},
-  pages={317--318},
-  year={2011},
-  publisher={Springer}
-}`
+
+    @article{stopczynski2011smartphone,
+      title={A smartphone interface for a wireless EEG headset with real-time 3D reconstruction},
+      author={Stopczynski, A. and Larsen, J.E. and Stahlhut, C. and Petersen, M.K. and Hansen, L.K.},
+      journal={Affective Computing and Intelligent Interaction},
+      pages={317--318},
+      year={2011},
+      publisher={Springer}
+    }
 
 # Developer team
 * Arkadiusz Stopczynski, DTU Compute
