@@ -26,7 +26,7 @@ A. Stopczynski, J. E. Larsen, C. Stahlhut, M. K. Petersen, & L. K. Hansen (2011)
 
 @article{stopczynski2011smartphone,
   title={A smartphone interface for a wireless EEG headset with real-time 3D reconstruction},
-  author={Stopczynski, A. and Larsen, J. and Stahlhut, C. and Petersen, M. and Hansen, L.},
+  author={Stopczynski, A. and Larsen, J.E. and Stahlhut, C. and Petersen, M.K. and Hansen, L.K.},
   journal={Affective Computing and Intelligent Interaction},
   pages={317--318},
   year={2011},
@@ -34,11 +34,11 @@ A. Stopczynski, J. E. Larsen, C. Stahlhut, M. K. Petersen, & L. K. Hansen (2011)
 }
 
 # Developer team
-* Arkadiusz Stopczynski, DTU Informatics
-* Carsten Stahlhut, DTU Informatics
-* Michael Kai Petersen, DTU Informatics
-* Jakob Eg Larsen, DTU Informatics
-* Lars Kai Hansen, DTU Informatics
+* Arkadiusz Stopczynski, DTU Compute
+* Carsten Stahlhut, DTU Compute
+* Michael Kai Petersen, DTU Compute
+* Jakob Eg Larsen, DTU Compute
+* Lars Kai Hansen, DTU Compute
 
 # [Contact →](https://github.com/SmartphoneBrainScanner/smartphonebrainscanner2-core/wiki/Contact)
 
@@ -47,7 +47,7 @@ A. Stopczynski, J. E. Larsen, C. Stahlhut, M. K. Petersen, & L. K. Hansen (2011)
 This work is supported in part by
 * [Danish Lundbeck Foundation](http://www.lundbeckfonden.dk/Frontpage.20.aspx) through Center for Integrated Molecular Brain Imaging ([CIMBI](http://www.cimbi.dk/))
 * [Danish Lundbeck Foundation](http://www.lundbeckfonden.dk/Frontpage.20.aspx) through the project Real-time brain imaging by EEG
-* H C Ørsted Foundation
+* H.C. Ørsteds Foundation
 * [Nokia](http://www.nokia.com) (we thank Nokia for partly sponsoring hardware for the project) 
 
 ![acknowledgement.png](https://raw.github.com/wiki/SmartphoneBrainScanner/smartphonebrainscanner2-core/Images/acknowledgement.png)
