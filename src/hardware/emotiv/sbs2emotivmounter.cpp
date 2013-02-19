@@ -1,4 +1,5 @@
 #include <hardware/emotiv/sbs2emotivmounter.h>
+#include "QFile"
 
 Sbs2EmotivMounter* Sbs2EmotivMounter::m_pInstance = 0;
 
@@ -207,7 +208,12 @@ void Sbs2EmotivMounter::readHardwareParameters()
     serialNumber = readSerialNumber();
 #if defined(Q_OS_ANDROID)
     path = QString("/dev/hidraw1");
-    qDebug() << "[ANDROID] hidraw device found:  " << path << serialNumber;
+    QFile file(path);
+    if(file.exists()){
+        qDebug() << "[ANDROID] hidraw device found :  " << path << " with serial number : " << serialNumber;
+    }else{
+        qDebug() << "[ANDROID] hidraw device not found at expected place : " << path;
+    }
 #elif defined (Q_OS_LINUX)
     struct hid_device_info *devs, *cur_dev;
 
