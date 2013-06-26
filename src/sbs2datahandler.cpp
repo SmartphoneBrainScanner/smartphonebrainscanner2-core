@@ -48,13 +48,8 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     sbs2NetworkHandler = new Sbs2NetworkHandler();
     networkSendRawDataOn = 0;
 
-
-
     QThreadPool::globalInstance()->setMaxThreadCount(6); //3 is minimal right now, annyoing that it needs to be set manually
     qDebug() <<  QThreadPool::globalInstance()->activeThreadCount() << QThreadPool::globalInstance()->maxThreadCount() << QThread::idealThreadCount();
-
-
-
 }
 
 void Sbs2DataHandler::setThisPacket(Sbs2Packet *thisPacket_)
@@ -66,48 +61,47 @@ void Sbs2DataHandler::setThisPacket(Sbs2Packet *thisPacket_)
 void Sbs2DataHandler::sendRawData()
 {
     if (!networkSendRawDataOn)
-	return;
+        return;
     sbs2NetworkHandler->sendRawData(thisPacket->rawData);
 }
 
 void Sbs2DataHandler::filter()
 {
-
     if (!filterOn)
-	return;
+        return;
 
     for (int row=0; row<Sbs2Common::channelsNo(); ++row)
     {
-	for (int column = filterOrder; column > 0; --column)
-	    (*toFilterValues)[row][column] = (*toFilterValues)[row][column-1];
+        for (int column = filterOrder; column > 0; --column)
+            (*toFilterValues)[row][column] = (*toFilterValues)[row][column-1];
 
-	(*toFilterValues)[row][0] = thisPacket->values[Sbs2Common::getChannelNames()->at(row)];
+        (*toFilterValues)[row][0] = thisPacket->values[Sbs2Common::getChannelNames()->at(row)];
     }
 
     sbs2Filter->doFilter(toFilterValues,filterResultValues);
 
     for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
-	thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)] = (*filterResultValues)[row][0];
+        thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)] = (*filterResultValues)[row][0];
 
 }
 
 void Sbs2DataHandler::spectrogramChannel()
 {
     if (!spectrogramChannelOn)
-	return;
+        return;
 
 
     for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
     {
-	for (int column = (toSpectrogramValues->dim2() - 1); column > 0; --column)
-	    (*toSpectrogramValues)[row][column] = (*toSpectrogramValues)[row][column-1];
+        for (int column = (toSpectrogramValues->dim2() - 1); column > 0; --column)
+            (*toSpectrogramValues)[row][column] = (*toSpectrogramValues)[row][column-1];
 
-	(*toSpectrogramValues)[row][0] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)];
+        (*toSpectrogramValues)[row][0] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)];
     }
     ++spectrogramChannelDeltaCollected;
 
     if (spectrogramChannelDeltaCollected < spectrogramChannelDelta)
-	return;
+        return;
 
     spectrogramChannelDeltaCollected = 0;
 
@@ -116,41 +110,35 @@ void Sbs2DataHandler::spectrogramChannel()
 
     for (int row = 0; row < Sbs2Common::channelsNo(); ++row)
     {
-	for (int column = 0; column < Sbs2Common::samplingRate()/2; ++column)
-	{
-
-	    if (column == 0)
-		(*powerValues)[row][column] = sqrt(pow((*spectrogramValues)[row][column],2.0));
-	    else
-		(*powerValues)[row][column] = sqrt(pow((*spectrogramValues)[row][column],2.0) + pow((*spectrogramValues)[row][column+Sbs2Common::samplingRate()/2],2.0));
-	}
+        for (int column = 0; column < Sbs2Common::samplingRate()/2; ++column)
+        {
+            if (column == 0)
+                (*powerValues)[row][column] = sqrt(pow((*spectrogramValues)[row][column],2.0));
+            else
+                (*powerValues)[row][column] = sqrt(pow((*spectrogramValues)[row][column],2.0) + pow((*spectrogramValues)[row][column+Sbs2Common::samplingRate()/2],2.0));
+        }
     }
 
-
     emit spectrogramUpdated();
-
 }
-
-
-
 
 void Sbs2DataHandler::turnFilterOff()
 {
     filterOn = 0;
     if (!(toFilterValues == 0))
     {
-	delete toFilterValues;
-	toFilterValues = 0;
+        delete toFilterValues;
+        toFilterValues = 0;
     }
     if (!(filterResultValues == 0))
     {
-	delete filterResultValues;
-	filterResultValues = 0;
+        delete filterResultValues;
+        filterResultValues = 0;
     }
     if (!(sbs2Filter == 0))
     {
-	delete sbs2Filter;
-	sbs2Filter = 0;
+        delete sbs2Filter;
+        sbs2Filter = 0;
     }
 
 }
@@ -163,17 +151,16 @@ void Sbs2DataHandler::turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrde
 
     if (!(toFilterValues == 0))
     {
-	delete toFilterValues;
-	toFilterValues = 0;
+        delete toFilterValues;
+        toFilterValues = 0;
     }
     if (!(filterResultValues == 0))
     {
-	delete filterResultValues;
-	filterResultValues = 0;
+        delete filterResultValues;
+        filterResultValues = 0;
     }
 
     sbs2Filter = Sbs2Filter::New(fbandLow,fbandHigh,filterOrder,this);
-
 
     toFilterValues = new DTU::DtuArray2D<double> (Sbs2Common::channelsNo(),filterOrder+1);
     filterResultValues = new DTU::DtuArray2D<double> (Sbs2Common::channelsNo(),1);
@@ -186,7 +173,7 @@ void Sbs2DataHandler::turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrde
 void Sbs2DataHandler::record()
 {
     if (recording)
-	sbs2FileHandler->dumpRawData(thisPacket->rawData);
+        sbs2FileHandler->dumpRawData(thisPacket->rawData);
 }
 
 void Sbs2DataHandler::startRecording(QString user, QString description)
@@ -210,23 +197,23 @@ void Sbs2DataHandler::turnChannelSpectrogramOff()
     spectrogramChannelOn = 0;
     if (!(toSpectrogramValues == 0))
     {
-	delete toSpectrogramValues;
-	toSpectrogramValues = 0;
+        delete toSpectrogramValues;
+        toSpectrogramValues = 0;
     }
     if (!(spectrogramValues == 0))
     {
-	delete spectrogramValues;
-	spectrogramValues = 0;
+        delete spectrogramValues;
+        spectrogramValues = 0;
     }
     if (!(powerValues == 0))
     {
-	delete powerValues;
-	powerValues = 0;
+        delete powerValues;
+        powerValues = 0;
     }
     if (!(sbs2Spectrogram == 0))
     {
-	delete sbs2Spectrogram;
-	sbs2Spectrogram = 0;
+        delete sbs2Spectrogram;
+        sbs2Spectrogram = 0;
     }
 
 }
@@ -240,23 +227,23 @@ void Sbs2DataHandler::turnChannelSpectrogramOn(int spectrogramChannelSamples_, i
 
     if (!(toSpectrogramValues == 0))
     {
-	delete toSpectrogramValues;
-	toSpectrogramValues = 0;
+        delete toSpectrogramValues;
+        toSpectrogramValues = 0;
     }
     if (!(spectrogramValues == 0))
     {
-	delete spectrogramValues;
-	spectrogramValues = 0;
+        delete spectrogramValues;
+        spectrogramValues = 0;
     }
     if (!(powerValues == 0))
     {
-	delete powerValues;
-	powerValues = 0;
+        delete powerValues;
+        powerValues = 0;
     }
     if (!(sbs2Spectrogram == 0))
     {
-	delete sbs2Spectrogram;
-	sbs2Spectrogram = 0;
+        delete sbs2Spectrogram;
+        sbs2Spectrogram = 0;
     }
 
     toSpectrogramValues = new DTU::DtuArray2D<double>(Sbs2Common::channelsNo(),spectrogramChannelSamples);
@@ -264,8 +251,8 @@ void Sbs2DataHandler::turnChannelSpectrogramOn(int spectrogramChannelSamples_, i
     powerValues = new DTU::DtuArray2D<double>(Sbs2Common::channelsNo(),spectrogramChannelLength/2);
     sbs2Spectrogram = new Sbs2Spectrogram(spectrogramChannelLength,this);
 
-
-    connect(this,SIGNAL(setWindowTypeSignal(Sbs2Spectrogram::WindowType)),sbs2Spectrogram,SLOT(setWindowType(Sbs2Spectrogram::WindowType)));
+    connect(this, SIGNAL(setWindowTypeSignal(Sbs2Spectrogram::WindowType)),
+            sbs2Spectrogram, SLOT(setWindowType(Sbs2Spectrogram::WindowType)));
 
     (*toSpectrogramValues) = 0;
     (*spectrogramValues) = 0;
@@ -279,8 +266,6 @@ void Sbs2DataHandler::setWindowType(Sbs2Spectrogram::WindowType windowType)
     emit setWindowTypeSignal(windowType);
 }
 
-
-
 void Sbs2DataHandler::turnSendRawDataOn(QString rawDataServerAddress_, int rawDataPort_, int rawDataSize_, int rawDataQueueLength_)
 {
     networkSendRawDataOn = 0;
@@ -293,7 +278,7 @@ void Sbs2DataHandler::turnSendRawDataOff()
     networkSendRawDataOn = 0;
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->turnSendRawDataOff();
+        sbs2NetworkHandler->turnSendRawDataOff();
     }
 }
 
@@ -301,7 +286,7 @@ void Sbs2DataHandler::addRawDataHost(QString address, int port)
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->addRawDataHost(address,port);
+        sbs2NetworkHandler->addRawDataHost(address,port);
     }
 }
 
@@ -309,7 +294,7 @@ void Sbs2DataHandler::removeRawDataHost(QString address, int port)
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->removeRawDataHost(address,port);
+        sbs2NetworkHandler->removeRawDataHost(address,port);
     }
 }
 
@@ -317,7 +302,7 @@ void Sbs2DataHandler::sendMessage(QString message)
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->sendMessage(message);
+        sbs2NetworkHandler->sendMessage(message);
     }
 }
 
@@ -325,7 +310,7 @@ void Sbs2DataHandler::sendMessage(QString message, QString address, int port)
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->sendMessage(message,address,port);
+        sbs2NetworkHandler->sendMessage(message,address,port);
     }
 }
 
@@ -333,7 +318,7 @@ void Sbs2DataHandler::addMessageUdpOutputHost(QString address, int port)
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->addMessageUdpOutputHost(address,port);
+        sbs2NetworkHandler->addMessageUdpOutputHost(address,port);
     }
 
 }
@@ -342,7 +327,7 @@ void Sbs2DataHandler::removeMessageUdpOutputHost(QString address)
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->removeMessageUdpOutputHost(address);
+        sbs2NetworkHandler->removeMessageUdpOutputHost(address);
     }
 }
 
@@ -350,7 +335,7 @@ void Sbs2DataHandler::clearMessageUdpOutputHosts()
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->clearMessageUdpOutputHosts();
+        sbs2NetworkHandler->clearMessageUdpOutputHosts();
     }
 }
 
@@ -358,8 +343,9 @@ void Sbs2DataHandler::turnReceiveMessageOn(QString address, int port)
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->turnReceiveMessageOn(address,port);
-	QObject::connect(sbs2NetworkHandler,SIGNAL(messageReceived(QString,QString,int)),this,SLOT(readMessage(QString,QString,int)));
+        sbs2NetworkHandler->turnReceiveMessageOn(address,port);
+        QObject::connect(sbs2NetworkHandler, SIGNAL(messageReceived(QString,QString,int)),
+                         this, SLOT(readMessage(QString,QString,int)));
     }
 
 }
@@ -368,8 +354,9 @@ void Sbs2DataHandler::turnReceiveMessageOff()
 {
     if (sbs2NetworkHandler != 0)
     {
-	sbs2NetworkHandler->turnReceiveMessageOff();
-	QObject::disconnect(sbs2NetworkHandler,SIGNAL(messageReceived(QString,QString,int)),this,SLOT(readMessage(QString,QString,int)));
+        sbs2NetworkHandler->turnReceiveMessageOff();
+        QObject::disconnect(sbs2NetworkHandler, SIGNAL(messageReceived(QString,QString,int)),
+                            this, SLOT(readMessage(QString,QString,int)));
     }
 }
 
@@ -383,32 +370,32 @@ void Sbs2DataHandler::reset()
 {
     if (!(toFilterValues == 0))
     {
-	(*toFilterValues) = 0;
+        (*toFilterValues) = 0;
     }
     if (!(filterResultValues ==0))
     {
-	(*filterResultValues) = 0;
+        (*filterResultValues) = 0;
     }
     if (!(toSpectrogramValues ==0))
     {
-	(*toSpectrogramValues) = 0;
+        (*toSpectrogramValues) = 0;
     }
     if (!(spectrogramValues ==0))
     {
-	(*spectrogramValues) = 0;
+        (*spectrogramValues) = 0;
     }
     if (!(powerValues ==0))
     {
-	(*powerValues) = 0;
+        (*powerValues) = 0;
     }
     if (!(toSourceReconstructionValues == 0))
     {
-	(*toSourceReconstructionValues) = 0;
+        (*toSourceReconstructionValues) = 0;
     }
 
     if (!(sourceReconstructionValues == 0))
     {
-	(*sourceReconstructionValues) = 0;
+        (*sourceReconstructionValues) = 0;
     }
     sourceReconstructionDeltaCollected = 0;
     spectrogramChannelDeltaCollected = 0;
@@ -417,7 +404,7 @@ void Sbs2DataHandler::reset()
 void Sbs2DataHandler::insertIntoMetaFile(QString event)
 {
     if (sbs2FileHandler == 0)
-	return;
+        return;
     sbs2FileHandler->insertIntoMetaFile(event);
 }
 
@@ -619,7 +606,6 @@ void Sbs2DataHandler::setSourceReconstructionVerticesToExtract(QVector<int> *ver
 
 Sbs2DataHandler::~Sbs2DataHandler()
 {
-
 }
 
 void Sbs2DataHandler::setVerticesToExtract(QVector<int> *verticesToExtract)
@@ -631,13 +617,13 @@ void Sbs2DataHandler::setVerticesToExtract(QVector<int> *verticesToExtract)
 QString Sbs2DataHandler::getRawFilename()
 {
     if (sbs2FileHandler == 0)
-	return "";
+        return "";
     return sbs2FileHandler->getRawFilename();
 }
 
 int Sbs2DataHandler::getPacketZero()
 {
     if (sbs2FileHandler == 0)
-	return packetsSeen;
+        return packetsSeen;
     return sbs2FileHandler->getPacketZero();
 }
