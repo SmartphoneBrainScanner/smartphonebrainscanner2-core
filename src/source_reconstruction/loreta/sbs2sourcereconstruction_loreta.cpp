@@ -7,7 +7,6 @@
 Sbs2SourceReconstrucionLoreta::Sbs2SourceReconstrucionLoreta(int channels_, int samples_, int samplesDelta_, int vertices_, QString hardware_, QObject *parent, int modelUpdateLength_, int modelUpdateDelta_):
     QObject(parent), channels(channels_), samples(samples_), samplesDelta(samplesDelta_), vertices(vertices_), modelUpdateLength(modelUpdateLength_), modelUpdateDelta(modelUpdateDelta_), hardware(hardware_)
 {
-
     modelUpdateSamplesLength = modelUpdateLength*samplesDelta;
 
     sumType = MEAN;
@@ -26,7 +25,6 @@ Sbs2SourceReconstrucionLoreta::Sbs2SourceReconstrucionLoreta(int channels_, int 
     setupModel();
 
     sbs2Spectrogram = new Sbs2Spectrogram(samples,this);
-
 }
 
 void Sbs2SourceReconstrucionLoreta::setupFixedModel()
@@ -93,7 +91,6 @@ void Sbs2SourceReconstrucionLoreta::setupModel()
     invSigmaE->toIdentityMatrix();
     identity->toIdentityMatrix();
 
-
     a->transpose(at);
     k->multiply(at,kat);
     a->multiply(kat,akat);
@@ -109,7 +106,6 @@ void Sbs2SourceReconstrucionLoreta::setupModel()
     invSigmaE->multiply(a,invSigmaEA);
     at->multiply(invSigmaEA,atInvSigmaEA);
 
-
     kat->multiply(inputMatrix,katInput);
 
     modelUpdateReady = 1;
@@ -118,48 +114,39 @@ void Sbs2SourceReconstrucionLoreta::setupModel()
 
     tempModelUpdatedReady = 1;
 
-
     tempInput = new DTU::DtuArray2D<double>(1,samples);
     tempOutput = new DTU::DtuArray2D<double>(1,samples);
-
 }
 
 void Sbs2SourceReconstrucionLoreta::doRec(DTU::DtuArray2D<double> *input_, DTU::DtuArray2D<double> *output_, int* sourceReconstrutionReady)
 {
-
     qDebug() << Q_FUNC_INFO;
 
     (*sourceReconstrutionReady) = 0;
 
     output = output_;
     if (!(input_->dim1() == channels))
-	return;
+        return;
     if (!(input->dim2() == samples))
-	return;
+        return;
     if (!(output->dim1()) == 1)
-	return;
+        return;
     if (!(output->dim2()) == vertices)
-	return;
+        return;
 
     for (int row=0; row<input_->dim1(); ++row)
     {
-	for (int column=0; column<input_->dim2(); ++column)
-	{
-	    (*input)[row][column] = (*input_)[row][column];
-	}
+        for (int column=0; column<input_->dim2(); ++column)
+        {
+            (*input)[row][column] = (*input_)[row][column];
+        }
     }
 
     (*output) = 0;
 
-
-
-
     preprocessData();
-
     weight();
-
     collectDataForModelUpdate();
-
     doModelUpdate();
 
     //Sbs2Timer::tic("reconstruct()");
@@ -169,8 +156,6 @@ void Sbs2SourceReconstrucionLoreta::doRec(DTU::DtuArray2D<double> *input_, DTU::
     output->print();
 
     (*sourceReconstrutionReady) = 1;
-
-
 }
 
 
@@ -181,20 +166,20 @@ void Sbs2SourceReconstrucionLoreta::doRecPow(DTU::DtuArray2D<double> *input_, DT
 
     output = output_;
     if (!(input_->dim1() == channels))
-	return;
+        return;
     if (!(input->dim2() == samples))
-	return;
+        return;
     if (!(output->dim1() == Sbs2Common::samplingRate()/2)) //freq bins
-	return;
+        return;
     if (!(output->dim2() == vertices))
-	return;
+        return;
 
     for (int row=0; row<input_->dim1(); ++row)
     {
-	for (int column=0; column<input_->dim2(); ++column)
-	{
-	    (*input)[row][column] = (*input_)[row][column];
-	}
+        for (int column=0; column<input_->dim2(); ++column)
+        {
+            (*input)[row][column] = (*input_)[row][column];
+        }
     }
 
     (*output) = 0;
@@ -213,21 +198,25 @@ void Sbs2SourceReconstrucionLoreta::sourceSpectrogram()
 {
     for (int vertex = 0; vertex < weightedInput->dim1(); ++vertex)
     {
-	if (verticesToExtract != 0 && !verticesToExtract->contains(vertex))
-	    continue;
+        if (verticesToExtract != 0 && !verticesToExtract->contains(vertex))
+            continue;
 
-	for (int sample = 0; sample < weightedInput->dim2(); ++sample)
-	{
-	    (*tempInput)[0][sample] = (*weightedInput)[vertex][sample];
-	}
-	sbs2Spectrogram->doSpectrogram(tempInput,tempOutput);
-	for (int v = 0; v < tempOutput->dim2()/2; ++v) //re & img
-	{
-	    if (v == 0)
-		(*output)[v][vertex] = std::pow((*tempOutput)[0][v],2.0);
-	    else
-		(*output)[v][vertex] = std::pow((*tempOutput)[0][v],2.0) + std::pow((*tempOutput)[0][v+tempOutput->dim2()/2],2.0);
-	}
+        for (int sample = 0; sample < weightedInput->dim2(); ++sample)
+        {
+            (*tempInput)[0][sample] = (*weightedInput)[vertex][sample];
+
+        }
+
+        sbs2Spectrogram->doSpectrogram(tempInput,tempOutput);
+
+        for (int v = 0; v < tempOutput->dim2()/2; ++v) //re & img
+        {
+            if (v == 0)
+                (*output)[v][vertex] = std::pow((*tempOutput)[0][v],2.0);
+            else
+                (*output)[v][vertex] = std::pow((*tempOutput)[0][v],2.0) + std::pow((*tempOutput)[0][v+tempOutput->dim2()/2],2.0);
+        }
+
     }
 }
 
@@ -240,17 +229,17 @@ void Sbs2SourceReconstrucionLoreta::collectDataForModelUpdate()
     modelUpdateSamplesSeen = (modelUpdateSamplesSeen +1)%modelUpdateDelta;
     if (modelUpdateSamplesSeen < (modelUpdateDelta-modelUpdateLength))
     {
-	return;
+        return;
     }
 
     //TODO: handle disjoint delta
     //collect new information from the input data, the new informatio has length samplesDelta
     for (int row = 0; row < channels; ++row)
     {
-	for (int column = 0; column < samplesDelta; ++column)
-	{
-	    (*toModelUpdateValues)[row][(toModelUpdateValues->dim2() - toModelUpdateValuesIndex)-(samplesDelta-column)] = (*input)[row][column];
-	}
+        for (int column = 0; column < samplesDelta; ++column)
+        {
+            (*toModelUpdateValues)[row][(toModelUpdateValues->dim2() - toModelUpdateValuesIndex)-(samplesDelta-column)] = (*input)[row][column];
+        }
     }
 
     toModelUpdateValuesIndex = (toModelUpdateValuesIndex + samplesDelta)%currentModelUpdateValues->dim2();
@@ -265,23 +254,23 @@ void Sbs2SourceReconstrucionLoreta::doModelUpdate()
 
     //FIXME
     if (modelUpdateReady) //DELETME
-	++modelUpdateDeltaCollected;
+        ++modelUpdateDeltaCollected;
 
     if (modelUpdateReady)
     {
 
-	if (modelUpdateDeltaCollected < modelUpdateDelta)
-	    return;
+        if (modelUpdateDeltaCollected < modelUpdateDelta)
+            return;
 
-	tempModelUpdatedReady = 0;
+        tempModelUpdatedReady = 0;
 
-	modelUpdateDeltaCollected = 0;
+        modelUpdateDeltaCollected = 0;
 
-	tempModelUpdateValues = toModelUpdateValues;
-	toModelUpdateValues = currentModelUpdateValues;
-	currentModelUpdateValues = tempModelUpdateValues;
+        tempModelUpdateValues = toModelUpdateValues;
+        toModelUpdateValues = currentModelUpdateValues;
+        currentModelUpdateValues = tempModelUpdateValues;
 
-	QtConcurrent::run(this,&Sbs2SourceReconstrucionLoreta::updateModel);
+        QtConcurrent::run(this,&Sbs2SourceReconstrucionLoreta::updateModel);
     }
 }
 
@@ -292,23 +281,23 @@ void Sbs2SourceReconstrucionLoreta::doModelUpdate()
 void Sbs2SourceReconstrucionLoreta::preprocessData()
 {
     if (!paramMeanExtractionOn)
-	return;
+        return;
 
     double ymean[samples];
     for (int column=0; column<samples; ++column)
     {
-	ymean[column] = 0;
-	for (int row=0; row<channels; ++row)
-	{
-	    ymean[column] += (*input)[row][column];
-	}
+        ymean[column] = 0;
+        for (int row=0; row<channels; ++row)
+        {
+            ymean[column] += (*input)[row][column];
+        }
 
-	ymean[column] = ymean[column] / (double)channels;
+        ymean[column] = ymean[column] / (double)channels;
 
-	for (int row=0; row<channels; ++row)
-	{
-	    (*input)[row][column] = (*input)[row][column] - ymean[column];
-	}
+        for (int row=0; row<channels; ++row)
+        {
+            (*input)[row][column] = (*input)[row][column] - ymean[column];
+        }
     }
 }
 
@@ -317,20 +306,20 @@ void Sbs2SourceReconstrucionLoreta::readMNEFixedWeights()
     QFile file(QString(Sbs2Common::getRootAppPath())+QString("mobi_weights_spheres_reduced.txt"));
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-	qDebug() << "readMNEFixedWeights() file problem";
-	return;
+        qDebug() << "readMNEFixedWeights() file problem";
+        return;
     }
 
     int i=0;
     while(!file.atEnd())
     {
-	QStringList list = QString(file.readLine().data()).split("\t");
-	for (int j=0; j<list.size(); ++j)
-	{
-	    (*w)[i][j] = list.at(j).toDouble();
+        QStringList list = QString(file.readLine().data()).split("\t");
+        for (int j=0; j<list.size(); ++j)
+        {
+            (*w)[i][j] = list.at(j).toDouble();
 
-	}
-	++i;
+        }
+        ++i;
     }
 
 
@@ -345,26 +334,26 @@ void Sbs2SourceReconstrucionLoreta::reconstruct()
 {
 
     if (sumType == MEAN)
-	calculateMean();
+        calculateMean();
     if (sumType == POWER)
-	calculatePower();
+        calculatePower();
 }
 
 void Sbs2SourceReconstrucionLoreta::calculateMean()
 {
     for (int row = 0; row < weightedInput->dim1(); ++row)
     {
-	if (verticesToExtract != 0 && !verticesToExtract->contains(row))
-	    continue;
+        if (verticesToExtract != 0 && !verticesToExtract->contains(row))
+            continue;
 
-	double vertexMean = 0;
-	double sum = 0;
-	for (int column = 0; column < weightedInput->dim2(); ++column)
-	{
-	    sum += (*weightedInput)[row][column];
-	}
-	vertexMean = sum/(double)weightedInput->dim2();
-	(*output)[0][row] = vertexMean;
+        double vertexMean = 0;
+        double sum = 0;
+        for (int column = 0; column < weightedInput->dim2(); ++column)
+        {
+            sum += (*weightedInput)[row][column];
+        }
+        vertexMean = sum/(double)weightedInput->dim2();
+        (*output)[0][row] = vertexMean;
     }
 }
 
@@ -372,17 +361,17 @@ void Sbs2SourceReconstrucionLoreta::calculatePower()
 {
     for (int row = 0; row < weightedInput->dim1(); ++row)
     {
-	if (verticesToExtract != 0 && !verticesToExtract->contains(row))
-	    continue;
+        if (verticesToExtract != 0 && !verticesToExtract->contains(row))
+            continue;
 
-	double vertexMean = 0;
-	double sum = 0;
-	for (int column = 0; column < weightedInput->dim2(); ++column)
-	{
-	    sum += std::pow((*weightedInput)[row][column],2);
-	}
-	vertexMean = sum/(double)weightedInput->dim2();
-	(*output)[0][row] = vertexMean;
+        double vertexMean = 0;
+        double sum = 0;
+        for (int column = 0; column < weightedInput->dim2(); ++column)
+        {
+            sum += std::pow((*weightedInput)[row][column],2);
+        }
+        vertexMean = sum/(double)weightedInput->dim2();
+        (*output)[0][row] = vertexMean;
     }
 
 }
@@ -390,7 +379,7 @@ void Sbs2SourceReconstrucionLoreta::calculatePower()
 void Sbs2SourceReconstrucionLoreta::updateModel()
 {
     if(!modelUpdateReady)
-	return;
+        return;
     modelUpdateReady = 0;
 
 
@@ -430,16 +419,16 @@ void Sbs2SourceReconstrucionLoreta::updateAlpha()
 
     for (int j=0; j<vertices; ++j)
     {
-	for (int i=0; i<vertices; ++i)
-	{
+        for (int i=0; i<vertices; ++i)
+        {
 
 
-	    tempInvAlpha += (*kInv)[i][j]*(*sigmaS)[j][i];
-	    for (int t=0; t<modelUpdateSamplesLength; ++t)
-	    {
-		tempEsMean += (*currentModelUpdateValuesVertices)[i][t]*(*kInv)[i][j]*(*currentModelUpdateValuesVertices)[j][t];
-	    }
-	}
+            tempInvAlpha += (*kInv)[i][j]*(*sigmaS)[j][i];
+            for (int t=0; t<modelUpdateSamplesLength; ++t)
+            {
+                tempEsMean += (*currentModelUpdateValuesVertices)[i][t]*(*kInv)[i][j]*(*currentModelUpdateValuesVertices)[j][t];
+            }
+        }
     }
 
 
@@ -465,29 +454,29 @@ void Sbs2SourceReconstrucionLoreta::updateBeta()
 
     for (int j=0; j<vertices; ++j)
     {
-	for (int i=0; i<vertices; ++i)
-	{
+        for (int i=0; i<vertices; ++i)
+        {
 
-	    tempInvBeta += (*atInvSigmaEA)[i][j] * (*sigmaS)[j][i];
+            tempInvBeta += (*atInvSigmaEA)[i][j] * (*sigmaS)[j][i];
 
-	    for (int t=0; t<modelUpdateSamplesLength; ++t)
-	    {
-		tempEsMean += (*currentModelUpdateValuesVertices)[i][t]*(*atInvSigmaEA)[i][j]*(*currentModelUpdateValuesVertices)[j][t];
-	    }
-	}
+            for (int t=0; t<modelUpdateSamplesLength; ++t)
+            {
+                tempEsMean += (*currentModelUpdateValuesVertices)[i][t]*(*atInvSigmaEA)[i][j]*(*currentModelUpdateValuesVertices)[j][t];
+            }
+        }
     }
 
 
     for (int t=0; t<modelUpdateSamplesLength; ++t)
     {
-	for (int j=0; j<channels; ++j)
-	{
-	    for (int i=0; i<channels; ++i)
-	    {
-		Ey += (*currentModelUpdateValues)[i][t] * (*invSigmaE)[i][j] * (*currentModelUpdateValues)[j][t];
-	    }
-	    Ey -= 2*(*currentModelUpdateValues)[j][t]*(*invSigmaEAS)[j][t];
-	}
+        for (int j=0; j<channels; ++j)
+        {
+            for (int i=0; i<channels; ++i)
+            {
+                Ey += (*currentModelUpdateValues)[i][t] * (*invSigmaE)[i][j] * (*currentModelUpdateValues)[j][t];
+            }
+            Ey -= 2*(*currentModelUpdateValues)[j][t]*(*invSigmaEAS)[j][t];
+        }
     }
 
 
@@ -522,13 +511,13 @@ void Sbs2SourceReconstrucionLoreta::calculateInputMatrix()
 {
     for (int row=0; row<channels; ++row)
     {
-	for (int column=0; column<channels; ++column)
-	{
-	    if (row==column)
-		(*inputMatrix)[row][column] = (*akat)[row][column] * invAlpha + invBeta;
-	    else
-		(*inputMatrix)[row][column] = (*akat)[row][column] * invAlpha;
-	}
+        for (int column=0; column<channels; ++column)
+        {
+            if (row==column)
+                (*inputMatrix)[row][column] = (*akat)[row][column] * invAlpha + invBeta;
+            else
+                (*inputMatrix)[row][column] = (*akat)[row][column] * invAlpha;
+        }
     }
 
 }
@@ -539,20 +528,20 @@ void Sbs2SourceReconstrucionLoreta::calculateSigma()
 
     for (int j=0; j<vertices; ++j)
     {
-	for (int k=0; k<channels; ++k)
-	{
-	    Bcolj[k] = (*ak)[k][j];
-	}
+        for (int k=0; k<channels; ++k)
+        {
+            Bcolj[k] = (*ak)[k][j];
+        }
 
-	for (int i=0; i<vertices; ++i)
-	{
-	    double s = 0;
-	    for (int k=0; k<channels; ++k)
-	    {
-		s += (*w)[i][k] * Bcolj[k];
-	    }
-	    (*sigmaS)[i][j] = ((*k)[i][j]-s)*invAlpha;
-	}
+        for (int i=0; i<vertices; ++i)
+        {
+            double s = 0;
+            for (int k=0; k<channels; ++k)
+            {
+                s += (*w)[i][k] * Bcolj[k];
+            }
+            (*sigmaS)[i][j] = ((*k)[i][j]-s)*invAlpha;
+        }
 
     }
     delete[] Bcolj;
@@ -586,20 +575,20 @@ void Sbs2SourceReconstrucionLoreta::readForwardModel()
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-	qDebug() << "readForwardModel() file problem";
-	return;
+        qDebug() << "readForwardModel() file problem";
+        return;
     }
 
     int i=0;
     while(!file.atEnd())
     {
-	QStringList list = QString(file.readLine().data()).split("\t");
-	for (int j=0; j<list.size(); ++j)
-	{
-	    (*a)[i][j] = list.at(j).toDouble() * paramAScaling;
+        QStringList list = QString(file.readLine().data()).split("\t");
+        for (int j=0; j<list.size(); ++j)
+        {
+            (*a)[i][j] = list.at(j).toDouble() * paramAScaling;
 
-	}
-	++i;
+        }
+        ++i;
     }
 
 }
@@ -614,20 +603,20 @@ void Sbs2SourceReconstrucionLoreta::readPriorSpatialCoherence()
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-	qDebug() << "readPriorSpatialCoherence() file problem";
-	return;
+        qDebug() << "readPriorSpatialCoherence() file problem";
+        return;
     }
 
     int i=0;
     while(!file.atEnd())
     {
-	QStringList list = QString(file.readLine().data()).split("\t");
-	for (int j=0; j<list.size(); ++j)
-	{
-	    (*k)[i][j] = list.at(j).toDouble();
+        QStringList list = QString(file.readLine().data()).split("\t");
+        for (int j=0; j<list.size(); ++j)
+        {
+            (*k)[i][j] = list.at(j).toDouble();
 
-	}
-	++i;
+        }
+        ++i;
     }
 }
 
@@ -641,20 +630,20 @@ void Sbs2SourceReconstrucionLoreta::readPriorSpatialCoherenceInverse()
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-	qDebug() << "readPriorSpatialCoherenceInverse() file problem";
-	return;
+        qDebug() << "readPriorSpatialCoherenceInverse() file problem";
+        return;
     }
 
     int i=0;
     while(!file.atEnd())
     {
-	QStringList list = QString(file.readLine().data()).split("\t");
-	for (int j=0; j<list.size(); ++j)
-	{
-	    (*kInv)[i][j] = list.at(j).toDouble();
+        QStringList list = QString(file.readLine().data()).split("\t");
+        for (int j=0; j<list.size(); ++j)
+        {
+            (*kInv)[i][j] = list.at(j).toDouble();
 
-	}
-	++i;
+        }
+        ++i;
     }
 }
 
