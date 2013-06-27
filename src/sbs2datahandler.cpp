@@ -90,7 +90,6 @@ void Sbs2DataHandler::spectrogramChannel()
     if (!spectrogramChannelOn)
         return;
 
-
     for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
     {
         for (int column = (toSpectrogramValues->dim2() - 1); column > 0; --column)
