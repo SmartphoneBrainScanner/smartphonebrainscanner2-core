@@ -158,8 +158,6 @@ void Sbs2SourceReconstrucionLoreta::doRec(DTU::DtuArray2D<double> *input_, DTU::
     (*sourceReconstrutionReady) = 1;
 }
 
-
-
 void Sbs2SourceReconstrucionLoreta::doRecPow(DTU::DtuArray2D<double> *input_, DTU::DtuArray2D<double> *output_, int* sourceReconstrutionReady)
 {
     (*sourceReconstrutionReady) = 0;
@@ -192,7 +190,6 @@ void Sbs2SourceReconstrucionLoreta::doRecPow(DTU::DtuArray2D<double> *input_, DT
     doModelUpdate();
     (*sourceReconstrutionReady) = 1;
 }
-
 
 void Sbs2SourceReconstrucionLoreta::sourceSpectrogram()
 {
@@ -251,7 +248,6 @@ void Sbs2SourceReconstrucionLoreta::doModelUpdate()
 
     if (modelUpdateReady)
     {
-
         if (modelUpdateDeltaCollected < modelUpdateDelta)
             return;
 
@@ -395,7 +391,6 @@ void Sbs2SourceReconstrucionLoreta::updateModel()
 
 void Sbs2SourceReconstrucionLoreta::updateAlpha()
 {
-
     double tempInvAlpha = 0.0;
     double tempEsMean = 0.0;
 
@@ -426,7 +421,6 @@ void Sbs2SourceReconstrucionLoreta::updateAlpha()
 
 void Sbs2SourceReconstrucionLoreta::updateBeta()
 {
-
     double tempInvBeta = 0.0;
     double tempEsMean = 0.0;
     double Ey = 0.0;
@@ -495,7 +489,6 @@ void Sbs2SourceReconstrucionLoreta::calculateInputMatrix()
                 (*inputMatrix)[row][column] = (*akat)[row][column] * invAlpha;
         }
     }
-
 }
 
 void Sbs2SourceReconstrucionLoreta::calculateSigma()
@@ -522,7 +515,6 @@ void Sbs2SourceReconstrucionLoreta::calculateSigma()
     delete[] Bcolj;
 }
 
-
 /**
 * @brief Sbs2SourceReconstrucion::setSumType
 * @param sumType_ should be either 'MEAN' or 'SUM'
@@ -534,9 +526,6 @@ void Sbs2SourceReconstrucionLoreta::setSumType(SumType sumType_)
     sumType = sumType_;
 }
 
-/**
-  Reading a.
-  */
 
 /**
 * @brief Sbs2SourceReconstrucion::readForwardModel
@@ -561,17 +550,17 @@ void Sbs2SourceReconstrucionLoreta::readForwardModel()
         for (int j=0; j<list.size(); ++j)
         {
             (*a)[i][j] = list.at(j).toDouble() * paramAScaling;
-
         }
         ++i;
     }
-
 }
 
 /**
-  Reading k.
-  */
-
+ * @brief Sbs2SourceReconstrucion::readPriorSpatialCoherence
+ *
+ * Read the prior for spatial coherence from the "hardware/<hardware>/spatialCoherenceSmooth0-2_reduced.txt".
+ * The (private) 'k' array is setup.
+ */
 void Sbs2SourceReconstrucionLoreta::readPriorSpatialCoherence()
 {
     QFile file(QString(Sbs2Common::getRootAppPath())+ QString("hardware/")+hardware+QString("/")+QString("spatialCoherenceSmooth0-2_reduced.txt"));
