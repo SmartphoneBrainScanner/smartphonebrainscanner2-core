@@ -28,9 +28,7 @@
 #include <sbs2spectrogram.h>
 #include <sbs2region.h>
 
-
 class Sbs2DataHandler;
-
 
 class Sbs2Callback : public QObject
 {
@@ -92,12 +90,8 @@ public slots:
     void setWindowType(Sbs2Spectrogram::WindowType windowType);
     void setWindowType(int windowType);
 
-    void turnSourceReconstructionOn(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware = "emotiv");
-    void turnSourceReconstructionOff();
-
-    void turnSourceReconstructionPowerOn(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware = "emotiv");
-    void turnSourceReconstructionPowerOff();
-
+    void turnOnSourceReconstructionLoreta(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_ = "emotiv");
+    void turnOnSourceReconstructioSparse(int sourceReconstructionSamples, QVector<double> lambdas, QString hardware = "emotiv");
     void spectrogramUpdatedSlot();
 
     void setHardware(QString hardware);

@@ -65,29 +65,16 @@ void Sbs2Callback::setWindowType(int windowType)
     sbs2DataHandler->setWindowType((Sbs2Spectrogram::WindowType)windowType);
 }
 
-void Sbs2Callback::turnSourceReconstructionOff()
+void Sbs2Callback::turnOnSourceReconstructionLoreta(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_)
 {
-    sbs2DataHandler->turnSourceReconstructionOff();
+    qDebug() << Q_FUNC_INFO;
+    sbs2DataHandler->turnOnSourceReconstructionLoreta(sourceReconstructionSamples_,sourceReconstructionModelUpdateDelta_, sourceReconstructionModelUpdateLength_, sourceReconstructionModelUpdateDelta_, hardware_);
 }
 
-void Sbs2Callback::turnSourceReconstructionPowerOff()
+void Sbs2Callback::turnOnSourceReconstructioSparse(int sourceReconstructionSamples, QVector<double> lambdas, QString hardware)
 {
-    sbs2DataHandler->turnSourceReconstructionPowerOff();
-}
-
-void Sbs2Callback::turnSourceReconstructionOn(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware)
-{
-
-    sbs2DataHandler->turnSourceReconstructionOn(sourceReconstructionSamples_,sourceReconstructionDelta_,sourceReconstructionModelUpdateLength_,sourceReconstructionModelUpdateDelta_, hardware);
-    if (!(sbs2Region == 0))
-	sbs2DataHandler->setVerticesToExtract(sbs2Region->getVerticesToExtract());
-}
-
-void Sbs2Callback::turnSourceReconstructionPowerOn(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware)
-{
-    sbs2DataHandler->turnSourceReconstructionPowerOn(sourceReconstructionSamples_,sourceReconstructionDelta_,sourceReconstructionModelUpdateLength_,sourceReconstructionModelUpdateDelta_, hardware);
-    if (!(sbs2Region == 0))
-	sbs2DataHandler->setVerticesToExtract(sbs2Region->getVerticesToExtract());
+    qDebug() << Q_FUNC_INFO;
+   sbs2DataHandler->turnOnSourceReconstructionSparse(sourceReconstructionSamples, lambdas, hardware);
 }
 
 void Sbs2Callback::turnSendRawDataOn(QString rawDataServerAddress_, int rawDataPort_, int rawDataSize_, int rawDataQueueLength_)
