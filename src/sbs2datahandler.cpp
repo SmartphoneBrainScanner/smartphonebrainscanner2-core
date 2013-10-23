@@ -436,6 +436,8 @@ DTU::DtuArray2D<double>* Sbs2DataHandler::getSourceReconstructionMeanValues()
 
 void Sbs2DataHandler::turnOnSourceReconstructionLoreta(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_)
 {
+    qDebug() << "Sbs2DataHandler::turnOnSourceReconstructionLoreta";
+
     turnOffSourceReconstruction();
     sourceReconstructionMethod = "loreta";
     hardware = hardware_;
@@ -478,6 +480,8 @@ void Sbs2DataHandler::turnOnSourceReconstructionLoreta(int sourceReconstructionS
 
 void Sbs2DataHandler::turnOnSourceReconstructionSparse(int sourceReconstructionSamples_, QVector<double> lambdas, QString hardware_)
 {
+    qDebug() << "Sbs2DataHandler::turnOnSourceReconstructionSparse";
+
     turnOffSourceReconstruction();
     sourceReconstructionMethod = "sparse";
     hardware = hardware_;
@@ -519,16 +523,28 @@ void Sbs2DataHandler::turnOnSourceReconstructionSparse(int sourceReconstructionS
     sourceReconstructionOn = 1;
 }
 
-
+/**
+* @brief Sbs2DataHandler::sourceReconstruction
+*
+* Runs the source reconstruction with Sbs2SourceReconstrucion::doRec.
+* This only happes is 'sourceReconstructionOn' is turned on. This variable is controlled by
+* Sbs2DataHandler::turnSourceReconstructionOn
+*/
 void Sbs2DataHandler::doSourceReconstruction()
 {
+    qDebug() << "Sbs2DataHandler::doSourceReconstruction()";
+
     if (!sourceReconstructionOn)
+    {
+        qDebug() << "sourceReconstructionOn not on returning from Sbs2DataHandler::doSourceReconstruction()";
         return;
+    }
 
     if (isSourceReconstructionReady)
     {
         readyToReconstruct = 1;
         isSourceReconstructionReady = 0;
+        qDebug() << "emitting sourceReconstructionReady() from Sbs2DataHandler::doSourceReconstruction()";
         emit sourceReconstructionReady();
     }
 

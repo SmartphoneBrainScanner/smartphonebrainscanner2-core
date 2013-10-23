@@ -557,6 +557,13 @@ void Sbs2SourceReconstrucionLoreta::calculateSigma()
     delete[] Bcolj;
 }
 
+
+/**
+* @brief Sbs2SourceReconstrucion::setSumType
+* @param sumType_ should be either 'MEAN' or 'SUM'
+*
+* Set the 'sumType' variable
+*/
 void Sbs2SourceReconstrucionLoreta::setSumType(SumType sumType_)
 {
     sumType = sumType_;
@@ -566,6 +573,12 @@ void Sbs2SourceReconstrucionLoreta::setSumType(SumType sumType_)
   Reading a.
   */
 
+/**
+* @brief Sbs2SourceReconstrucion::readForwardModel
+*
+* Read the forward model from the "hardware/<hardware>/forwardmodel_spheres_reduced.txt" file.
+* It sets up the (private) 'a' array
+*/
 void Sbs2SourceReconstrucionLoreta::readForwardModel()
 {
     QFile file(QString(Sbs2Common::getRootAppPath()) + QString("hardware/") + hardware + QString("/") + QString("forwardmodel_spheres_reduced.txt"));
