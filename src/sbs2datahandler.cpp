@@ -41,6 +41,7 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     toSourceReconstructionValues = 0;
     sourceReconstructionValues = 0;
     sbs2SourceReconstruction = new Sbs2SourceReconstruction(this);
+    sourceReconstructionSpectrogramValues = 0;
 
     //network
     sbs2NetworkHandler = new Sbs2NetworkHandler();
@@ -476,6 +477,7 @@ void Sbs2DataHandler::turnOnSourceReconstructionLoreta(int sourceReconstructionS
     (*sourceReconstructionSpectrogramValues) = 0;
     sourceReconstructionOn = 1;
 
+    qDebug() << "Sbs2DataHandler::turnOnSourceReconstructionLoreta returning, all is well...";
 }
 
 void Sbs2DataHandler::turnOnSourceReconstructionSparse(int sourceReconstructionSamples_, QVector<double> lambdas, QString hardware_)

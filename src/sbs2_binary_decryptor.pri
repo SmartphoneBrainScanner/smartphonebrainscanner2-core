@@ -64,7 +64,6 @@ HEADERS += \
     $$PWD/sbs2callback.h \
     $$PWD/sbs2datahandler.h \
     $$PWD/hardware/sbs2datareader.h \
-    $$PWD/sbs2sourcereconstruction.h \
     $$PWD/jama125/jama_cholesky.h \
     $$PWD/jama125/jama_eig.h \
     $$PWD/jama125/jama_lu.h \
