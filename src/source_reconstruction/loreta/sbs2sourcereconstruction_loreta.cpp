@@ -1,4 +1,5 @@
 #include "sbs2sourcereconstruction_loreta.h"
+#include <QtConcurrent/QtConCurrent>
 
 //TODO: change readPriorSpatialCoherence(); and inverse to binary files
 

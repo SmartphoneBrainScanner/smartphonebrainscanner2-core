@@ -1,4 +1,5 @@
 QT += network
+QT += concurrent
 
 macx {
     LIBS += -framework IOKit -framework CoreFoundation

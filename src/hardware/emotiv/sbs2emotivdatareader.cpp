@@ -1,4 +1,5 @@
 #include <hardware/emotiv/sbs2emotivdatareader.h>
+#include <QtConcurrent/QtConCurrent>
 
 Sbs2EmotivDataReader* Sbs2EmotivDataReader::m_pInstance = 0;
 

@@ -1,4 +1,5 @@
 #include "sbs2datahandler.h"
+#include <QtConcurrent/QtConCurrent>
 
 Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     QObject(parent)

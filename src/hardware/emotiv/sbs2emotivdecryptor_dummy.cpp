@@ -23,7 +23,7 @@ void Sbs2EmotivDecryptor::setSerialNumber(QString serialNumber_)
 {
     for (int i=0; i<16; ++i)
     {
-        serialNumber[i] = serialNumber_.at(i).toAscii();
+        serialNumber[i] = serialNumber_.at(i).toLatin1();
     }
     initialize();
 }
