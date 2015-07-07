@@ -1,5 +1,5 @@
 #include <hardware/emocap/sbs2emocapdatareader.h>
-#include <QtConcurrent/QtConCurrent>
+#include <QtConcurrent/QtConcurrent>
 
 Sbs2EmocapDataReader* Sbs2EmocapDataReader::m_pInstance = 0;
 

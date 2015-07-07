@@ -1,5 +1,5 @@
 #include <hardware/emocap28/sbs2emocap28datareader.h>
-#include <QtConcurrent/QtConCurrent>
+#include <QtConcurrent/QtConcurrent>
 
 int mod(int x, int m)
 {
