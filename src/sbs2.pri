@@ -1,7 +1,5 @@
 QT += network
 
-message("Linking fake non-decryptor library")
-
 macx {
     message("OSX")
 
@@ -16,6 +14,23 @@ unix:!macx:!android-g++ {
     LIBS += `pkg-config libudev --libs` -lrt
     SOURCES += $$PWD/platform/linux/hid.c
     HEADERS +=  $$PWD/platform/linux/hidapi.h
+}
+
+macx:exists($$PWD/../../sbs-EmotivDecryptor/build/libsbs-EmotivDecryptor-macx.a) {
+    message("Binary decryptor for Mac found!")
+    LIBS += -L$$PWD/../../sbs-EmotivDecryptor/build/ -lsbs-EmotivDecryptor-macx
+
+} else:unix:!android:exists($$PWD/../../sbs-EmotivDecryptor/build/libsbs-EmotivDecryptor-unix.a) {
+    message("Binary decryptor for Linux found!")
+    LIBS += -L$$PWD/../../sbs-EmotivDecryptor/build/ -lsbs-EmotivDecryptor-unix
+
+} else:android:exists($$PWD/../../sbs-EmotivDecryptor/build/libsbs-EmotivDecryptor-android.a) {
+    message("Binary decryptor for Android found!")
+    LIBS += -L$$PWD/../../sbs-EmotivDecryptor/build/ -lsbs-EmotivDecryptor-android
+
+} else {
+    message("No suitable binary decryptor was found, using dummy decryptor instead. Expect random noise")
+    SOURCES += $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp
 }
 
 INCLUDEPATH += $$PWD
@@ -44,7 +59,6 @@ SOURCES += $$PWD/FFTReal.cpp \
     $$PWD/hardware/emotiv/sbs2emotivmounter.cpp \
     $$PWD/hardware/emotiv/sbs2emotivdatareader.cpp \
     $$PWD/hardware/emotiv/sbs2emotivpacket.cpp \
-    $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp \
     $$PWD/source_reconstruction/sparse/math_utilities.cpp \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.cpp \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.cpp \
