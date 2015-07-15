@@ -1,5 +1,5 @@
 #include "sbs2fakedatareader.h"
-#include <QtCore>
+#include <QtConcurrent/QtConcurrent>
 
 Sbs2FakeDataReader* Sbs2FakeDataReader::m_pInstance = 0;
 
