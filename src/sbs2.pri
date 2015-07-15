@@ -1,17 +1,21 @@
 QT += network
 
+message("Linking fake non-decryptor library")
+
 macx {
+    message("OSX")
+
     LIBS += -framework IOKit -framework CoreFoundation
     SOURCES += $$PWD/platform/osx/hid.c
     HEADERS +=  $$PWD/platform/osx/hidapi.h
-    message("OSX")
 }
 
 unix:!macx:!android-g++ {
+    message("LINUX")
+
     LIBS += `pkg-config libudev --libs` -lrt
     SOURCES += $$PWD/platform/linux/hid.c
     HEADERS +=  $$PWD/platform/linux/hidapi.h
-    message("LINUX")
 }
 
 INCLUDEPATH += $$PWD
