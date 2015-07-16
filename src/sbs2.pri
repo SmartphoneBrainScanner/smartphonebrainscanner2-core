@@ -16,25 +16,21 @@ unix:!macx:!android-g++ {
     HEADERS +=  $$PWD/platform/linux/hidapi.h
 }
 
-macx:exists($$PWD/../../sbs-EmotivDecryptor/build/libsbs-EmotivDecryptor-macx.a) {
+macx:exists($$PWD/../../sbs2emotivdecryptor/build/libsbs2emotivdecryptor-macx.a) {
     message("Binary decryptor for Mac found!")
-    LIBS += -L$$PWD/../../sbs-EmotivDecryptor/build/ -lsbs-EmotivDecryptor-macx
-
-} else:unix:!android:exists($$PWD/../../sbs-EmotivDecryptor/build/libsbs-EmotivDecryptor-unix.a) {
-    message("Binary decryptor for Linux found!")
-    LIBS += -L$$PWD/../../sbs-EmotivDecryptor/build/ -lsbs-EmotivDecryptor-unix
-
-} else:android:exists($$PWD/../../sbs-EmotivDecryptor/build/libsbs-EmotivDecryptor-android.a) {
+    LIBS += -L$$PWD/../../sbs2emotivdecryptor/build/ -lsbs2emotivdecryptor-macx
+} else:android:exists($$PWD/../../sbs2emotivdecryptor/build/libsbs2emotivdecryptor-android.a) {
     message("Binary decryptor for Android found!")
-    LIBS += -L$$PWD/../../sbs-EmotivDecryptor/build/ -lsbs-EmotivDecryptor-android
-
+    LIBS += -L$$PWD/../../sbs2emotivdecryptor/build/ -lsbs2emotivdecryptor-android
+} else:unix:!android:!macx:exists($$PWD/../../sbs2emotivdecryptor/build/libsbs2emotivdecryptor-unix.a) {
+    message("Binary decryptor for Linux found!")
+    LIBS += -L$$PWD/../../sbs2emotivdecryptor/build/ -lsbs2emotivdecryptor-unix
 } else {
     message("No suitable binary decryptor was found, using dummy decryptor instead. Expect random noise")
     SOURCES += $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp
 }
 
 INCLUDEPATH += $$PWD
-
 
 SOURCES += $$PWD/FFTReal.cpp \
     $$PWD/utils/Rijndael.cpp \
