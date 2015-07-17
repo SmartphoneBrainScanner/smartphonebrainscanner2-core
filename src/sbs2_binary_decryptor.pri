@@ -1,18 +1,28 @@
+# This build file requires the binary decryptor
+
+message("Linking decryptor library")
+
 QT += network
 QT += concurrent
 
 macx {
-    LIBS += -framework IOKit -framework CoreFoundation
+    message("OSX")
+
+    LIBS += -framework IOKit -framework CoreFoundation \
+        -L $$PWD/../../decryptor_libraries/ -lsbs2emotivdecryptor
+
     SOURCES += $$PWD/platform/osx/hid.c
     HEADERS +=  $$PWD/platform/osx/hidapi.h
-    message("OSX")
 }
 
 unix:!macx:!android-g++ {
-    LIBS += `pkg-config libudev --libs` -lrt
+    message("LINUX")
+
+    LIBS += `pkg-config libudev --libs` -lrt \
+        -L $$PWD/../../decryptor_libraries/ -lsbs2emotivdecryptor_linux-g++-64
+
     SOURCES += $$PWD/platform/linux/hid.c
     HEADERS +=  $$PWD/platform/linux/hidapi.h
-    message("LINUX")
 }
 
 
