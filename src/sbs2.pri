@@ -16,15 +16,15 @@ unix:!macx:!android-g++ {
     HEADERS +=  $$PWD/platform/linux/hidapi.h
 }
 
-macx:exists($$PWD/../../sbs2emotivdecryptor/build/libsbs2emotivdecryptor-macx.a) {
+macx:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-macx.a) {
     message("Binary decryptor for Mac found!")
-    LIBS += -L$$PWD/../../sbs2emotivdecryptor/build/ -lsbs2emotivdecryptor-macx
-} else:android:exists($$PWD/../../sbs2emotivdecryptor/build/libsbs2emotivdecryptor-android.a) {
+    LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-macx
+} else:android:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-android.a) {
     message("Binary decryptor for Android found!")
-    LIBS += -L$$PWD/../../sbs2emotivdecryptor/build/ -lsbs2emotivdecryptor-android
-} else:unix:!android:!macx:exists($$PWD/../../sbs2emotivdecryptor/build/libsbs2emotivdecryptor-unix.a) {
+    LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-android
+} else:unix:!android:!macx:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-unix.a) {
     message("Binary decryptor for Linux found!")
-    LIBS += -L$$PWD/../../sbs2emotivdecryptor/build/ -lsbs2emotivdecryptor-unix
+    LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-unix
 } else {
     message("No suitable binary decryptor was found, using dummy decryptor instead. Expect random noise")
     SOURCES += $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp
