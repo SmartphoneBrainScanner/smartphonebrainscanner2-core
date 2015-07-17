@@ -1,0 +1,104 @@
+\hypertarget{structhid__device__}{\section{hid\-\_\-device\-\_\- Struct Reference}
+\label{structhid__device__}\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}}
+}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structhid__device___acbcc48ecdd887f36390da3bb05a6d5d5}{device\-\_\-handle}
+\item 
+int \hyperlink{structhid__device___ae4a8b40297f31863df3133637cfa2121}{blocking}
+\item 
+int \hyperlink{structhid__device___a58ed6252074ed422235fe9e0c48aeafe}{uses\-\_\-numbered\-\_\-reports}
+\item 
+I\-O\-H\-I\-D\-Device\-Ref \hyperlink{structhid__device___add41d44d3e24fe6ea144cd849c12fea7}{device\-\_\-handle}
+\item 
+int \hyperlink{structhid__device___ae0b8006ed064c994acaa648d0db9c66c}{disconnected}
+\item 
+C\-F\-String\-Ref \hyperlink{structhid__device___ae7e03e58cc35fc010258eae347f46cda}{run\-\_\-loop\-\_\-mode}
+\item 
+C\-F\-Run\-Loop\-Ref \hyperlink{structhid__device___a329285cce8a31c8531cdb120e8a39b89}{run\-\_\-loop}
+\item 
+C\-F\-Run\-Loop\-Source\-Ref \hyperlink{structhid__device___a3133e1c1a6481521f627e01e131614cb}{source}
+\item 
+uint8\-\_\-t $\ast$ \hyperlink{structhid__device___ad091d91b13392da40451462061a11a90}{input\-\_\-report\-\_\-buf}
+\item 
+C\-F\-Index \hyperlink{structhid__device___a6ec557e969d5d01de9c5ac03fe813793}{max\-\_\-input\-\_\-report\-\_\-len}
+\item 
+struct \hyperlink{structinput__report}{input\-\_\-report} $\ast$ \hyperlink{structhid__device___a8f381b0e4fcb4c6c34c4371e131ae718}{input\-\_\-reports}
+\item 
+pthread\-\_\-t \hyperlink{structhid__device___aeeb2baed80ebbceec2bdd31353917df2}{thread}
+\item 
+pthread\-\_\-mutex\-\_\-t \hyperlink{structhid__device___a9833b66e88e2e6d057cc3ba48b304e81}{mutex}
+\item 
+pthread\-\_\-cond\-\_\-t \hyperlink{structhid__device___ac1e660212fdb3880218c7976ac834ad7}{condition}
+\item 
+\hyperlink{osx_2hid_8c_a0af030d8520cb3271d895b21a5ecca34}{pthread\-\_\-barrier\-\_\-t} \hyperlink{structhid__device___a17ee95bea7f4171afed271574f0aed3a}{barrier}
+\item 
+\hyperlink{osx_2hid_8c_a0af030d8520cb3271d895b21a5ecca34}{pthread\-\_\-barrier\-\_\-t} \hyperlink{structhid__device___a6bf05b2c9efebc36a20e74991c19a1e5}{shutdown\-\_\-barrier}
+\item 
+int \hyperlink{structhid__device___a9123c3ac997c6d08270af5fca60f7903}{shutdown\-\_\-thread}
+\item 
+\hyperlink{linux_2hidapi_8h_aa6da74d5686d198dd3e5440e60088fcc}{hid\-\_\-device} $\ast$ \hyperlink{structhid__device___a2e68d82cc2b4fbe02586f9861da03015}{next}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structhid__device___a17ee95bea7f4171afed271574f0aed3a}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!barrier@{barrier}}
+\index{barrier@{barrier}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{barrier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pthread\-\_\-barrier\-\_\-t} hid\-\_\-device\-\_\-\-::barrier}}\label{structhid__device___a17ee95bea7f4171afed271574f0aed3a}
+\hypertarget{structhid__device___ae4a8b40297f31863df3133637cfa2121}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!blocking@{blocking}}
+\index{blocking@{blocking}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{blocking}]{\setlength{\rightskip}{0pt plus 5cm}int hid\-\_\-device\-\_\-\-::blocking}}\label{structhid__device___ae4a8b40297f31863df3133637cfa2121}
+\hypertarget{structhid__device___ac1e660212fdb3880218c7976ac834ad7}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!condition@{condition}}
+\index{condition@{condition}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}pthread\-\_\-cond\-\_\-t hid\-\_\-device\-\_\-\-::condition}}\label{structhid__device___ac1e660212fdb3880218c7976ac834ad7}
+\hypertarget{structhid__device___acbcc48ecdd887f36390da3bb05a6d5d5}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!device\-\_\-handle@{device\-\_\-handle}}
+\index{device\-\_\-handle@{device\-\_\-handle}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{device\-\_\-handle}]{\setlength{\rightskip}{0pt plus 5cm}int hid\-\_\-device\-\_\-\-::device\-\_\-handle}}\label{structhid__device___acbcc48ecdd887f36390da3bb05a6d5d5}
+\hypertarget{structhid__device___add41d44d3e24fe6ea144cd849c12fea7}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!device\-\_\-handle@{device\-\_\-handle}}
+\index{device\-\_\-handle@{device\-\_\-handle}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{device\-\_\-handle}]{\setlength{\rightskip}{0pt plus 5cm}I\-O\-H\-I\-D\-Device\-Ref hid\-\_\-device\-\_\-\-::device\-\_\-handle}}\label{structhid__device___add41d44d3e24fe6ea144cd849c12fea7}
+\hypertarget{structhid__device___ae0b8006ed064c994acaa648d0db9c66c}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!disconnected@{disconnected}}
+\index{disconnected@{disconnected}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{disconnected}]{\setlength{\rightskip}{0pt plus 5cm}int hid\-\_\-device\-\_\-\-::disconnected}}\label{structhid__device___ae0b8006ed064c994acaa648d0db9c66c}
+\hypertarget{structhid__device___ad091d91b13392da40451462061a11a90}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!input\-\_\-report\-\_\-buf@{input\-\_\-report\-\_\-buf}}
+\index{input\-\_\-report\-\_\-buf@{input\-\_\-report\-\_\-buf}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{input\-\_\-report\-\_\-buf}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t$\ast$ hid\-\_\-device\-\_\-\-::input\-\_\-report\-\_\-buf}}\label{structhid__device___ad091d91b13392da40451462061a11a90}
+\hypertarget{structhid__device___a8f381b0e4fcb4c6c34c4371e131ae718}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!input\-\_\-reports@{input\-\_\-reports}}
+\index{input\-\_\-reports@{input\-\_\-reports}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{input\-\_\-reports}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf input\-\_\-report}$\ast$ hid\-\_\-device\-\_\-\-::input\-\_\-reports}}\label{structhid__device___a8f381b0e4fcb4c6c34c4371e131ae718}
+\hypertarget{structhid__device___a6ec557e969d5d01de9c5ac03fe813793}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!max\-\_\-input\-\_\-report\-\_\-len@{max\-\_\-input\-\_\-report\-\_\-len}}
+\index{max\-\_\-input\-\_\-report\-\_\-len@{max\-\_\-input\-\_\-report\-\_\-len}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{max\-\_\-input\-\_\-report\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}C\-F\-Index hid\-\_\-device\-\_\-\-::max\-\_\-input\-\_\-report\-\_\-len}}\label{structhid__device___a6ec557e969d5d01de9c5ac03fe813793}
+\hypertarget{structhid__device___a9833b66e88e2e6d057cc3ba48b304e81}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!mutex@{mutex}}
+\index{mutex@{mutex}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{mutex}]{\setlength{\rightskip}{0pt plus 5cm}pthread\-\_\-mutex\-\_\-t hid\-\_\-device\-\_\-\-::mutex}}\label{structhid__device___a9833b66e88e2e6d057cc3ba48b304e81}
+\hypertarget{structhid__device___a2e68d82cc2b4fbe02586f9861da03015}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!next@{next}}
+\index{next@{next}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hid\-\_\-device}$\ast$ hid\-\_\-device\-\_\-\-::next}}\label{structhid__device___a2e68d82cc2b4fbe02586f9861da03015}
+\hypertarget{structhid__device___a329285cce8a31c8531cdb120e8a39b89}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!run\-\_\-loop@{run\-\_\-loop}}
+\index{run\-\_\-loop@{run\-\_\-loop}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{run\-\_\-loop}]{\setlength{\rightskip}{0pt plus 5cm}C\-F\-Run\-Loop\-Ref hid\-\_\-device\-\_\-\-::run\-\_\-loop}}\label{structhid__device___a329285cce8a31c8531cdb120e8a39b89}
+\hypertarget{structhid__device___ae7e03e58cc35fc010258eae347f46cda}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!run\-\_\-loop\-\_\-mode@{run\-\_\-loop\-\_\-mode}}
+\index{run\-\_\-loop\-\_\-mode@{run\-\_\-loop\-\_\-mode}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{run\-\_\-loop\-\_\-mode}]{\setlength{\rightskip}{0pt plus 5cm}C\-F\-String\-Ref hid\-\_\-device\-\_\-\-::run\-\_\-loop\-\_\-mode}}\label{structhid__device___ae7e03e58cc35fc010258eae347f46cda}
+\hypertarget{structhid__device___a6bf05b2c9efebc36a20e74991c19a1e5}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!shutdown\-\_\-barrier@{shutdown\-\_\-barrier}}
+\index{shutdown\-\_\-barrier@{shutdown\-\_\-barrier}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{shutdown\-\_\-barrier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pthread\-\_\-barrier\-\_\-t} hid\-\_\-device\-\_\-\-::shutdown\-\_\-barrier}}\label{structhid__device___a6bf05b2c9efebc36a20e74991c19a1e5}
+\hypertarget{structhid__device___a9123c3ac997c6d08270af5fca60f7903}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!shutdown\-\_\-thread@{shutdown\-\_\-thread}}
+\index{shutdown\-\_\-thread@{shutdown\-\_\-thread}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{shutdown\-\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}int hid\-\_\-device\-\_\-\-::shutdown\-\_\-thread}}\label{structhid__device___a9123c3ac997c6d08270af5fca60f7903}
+\hypertarget{structhid__device___a3133e1c1a6481521f627e01e131614cb}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!source@{source}}
+\index{source@{source}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{source}]{\setlength{\rightskip}{0pt plus 5cm}C\-F\-Run\-Loop\-Source\-Ref hid\-\_\-device\-\_\-\-::source}}\label{structhid__device___a3133e1c1a6481521f627e01e131614cb}
+\hypertarget{structhid__device___aeeb2baed80ebbceec2bdd31353917df2}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!thread@{thread}}
+\index{thread@{thread}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{thread}]{\setlength{\rightskip}{0pt plus 5cm}pthread\-\_\-t hid\-\_\-device\-\_\-\-::thread}}\label{structhid__device___aeeb2baed80ebbceec2bdd31353917df2}
+\hypertarget{structhid__device___a58ed6252074ed422235fe9e0c48aeafe}{\index{hid\-\_\-device\-\_\-@{hid\-\_\-device\-\_\-}!uses\-\_\-numbered\-\_\-reports@{uses\-\_\-numbered\-\_\-reports}}
+\index{uses\-\_\-numbered\-\_\-reports@{uses\-\_\-numbered\-\_\-reports}!hid_device_@{hid\-\_\-device\-\_\-}}
+\subsubsection[{uses\-\_\-numbered\-\_\-reports}]{\setlength{\rightskip}{0pt plus 5cm}int hid\-\_\-device\-\_\-\-::uses\-\_\-numbered\-\_\-reports}}\label{structhid__device___a58ed6252074ed422235fe9e0c48aeafe}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/platform/linux/\hyperlink{linux_2hid_8c}{hid.\-c}\end{DoxyCompactItemize}

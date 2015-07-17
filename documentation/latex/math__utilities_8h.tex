@@ -1,0 +1,159 @@
+\hypertarget{math__utilities_8h}{\section{/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/source\-\_\-reconstruction/sparse/math\-\_\-utilities.h File Reference}
+\label{math__utilities_8h}\index{/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/source\-\_\-reconstruction/sparse/math\-\_\-utilities.\-h@{/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/source\-\_\-reconstruction/sparse/math\-\_\-utilities.\-h}}
+}
+{\ttfamily \#include $<$dtu\-\_\-array\-\_\-2d.\-h$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$Q\-String$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{math__utilities_8h_a94ee25cd5a776b10f52edddfde4fbba4}{get\-Mean} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix\-Mean)
+\item 
+void \hyperlink{math__utilities_8h_a87b08d8734fe1de09884a6d48aa455fd}{load\-Data} (Q\-String path\-File, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix)
+\item 
+void \hyperlink{math__utilities_8h_a4e9512fbab6d89fad87f621985199657}{load\-Data} (Q\-String path\-File, double $\ast$scalar)
+\item 
+void \hyperlink{math__utilities_8h_aefd2c86af89d9c8adfa9ab1e6e259d23}{matrix\-L21\-Norm} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix, double $\ast$out)
+\item 
+void \hyperlink{math__utilities_8h_aa7501521f16e04b73470903ca3902dee}{matrix\-Frob\-Norm} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix, double $\ast$out)
+\item 
+void \hyperlink{math__utilities_8h_a959159d260e0b8530f670f214c772a3f}{matrix\-L21\-Norm\-Each\-Row} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix, vector$<$ double $>$ \&out\-\_\-vector)
+\item 
+void \hyperlink{math__utilities_8h_a409194e42881986441d872ec4f3d58d6}{print\-Vector} (vector$<$ double $>$ \&out\-\_\-vector)
+\item 
+void \hyperlink{math__utilities_8h_a05f8e915f694007a717a4924202fed4c}{print\-Matrix} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix)
+\item 
+void \hyperlink{math__utilities_8h_a8c189b3b9c089575e14c5b33d6287363}{scalar\-Dividedby\-Vector\-Component\-Wise\-\_\-insitu} (double $\ast$scalar, vector$<$ double $>$ \&x\-\_\-vector)
+\item 
+void \hyperlink{math__utilities_8h_ab40f97ac51faa426400b5e18ea2ec74e}{scalar\-Minus\-Vector\-\_\-insitu} (double $\ast$scalar, vector$<$ double $>$ \&x\-\_\-vector)
+\item 
+void \hyperlink{math__utilities_8h_afd91fad976d7faa5c0111c051d8a5bc8}{thresholding\-\_\-insitu} (vector$<$ double $>$ \&x\-\_\-vector)
+\item 
+void \hyperlink{math__utilities_8h_abac164ac4f534843f5db7630fa79d9f3}{vector\-Outer\-Product} (vector$<$ double $>$ \&vector1, vector$<$ double $>$ \&vector2, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$out)
+\item 
+void \hyperlink{math__utilities_8h_a7a298e6420eaee6bf462f3ae91b5e962}{matrix\-Multiplication\-Component\-Wise} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix\-\_\-\-A, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix\-\_\-\-B, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$out)
+\item 
+void \hyperlink{math__utilities_8h_a0858f912b8b3b324b398b2194d951733}{copy\-Matrix} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix\-\_\-source, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$matrix\-\_\-destiny)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{math__utilities_8h_a0858f912b8b3b324b398b2194d951733}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!copy\-Matrix@{copy\-Matrix}}
+\index{copy\-Matrix@{copy\-Matrix}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{copy\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void copy\-Matrix (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix\-\_\-source, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix\-\_\-destiny}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a0858f912b8b3b324b398b2194d951733}
+\hypertarget{math__utilities_8h_a94ee25cd5a776b10f52edddfde4fbba4}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!get\-Mean@{get\-Mean}}
+\index{get\-Mean@{get\-Mean}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{get\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}void get\-Mean (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix\-Mean}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a94ee25cd5a776b10f52edddfde4fbba4}
+Smartphone Brain Scanner 2 License Agreement (M\-I\-T License)
+
+Copyright (c) 2012 Arkadiusz Stopczynski, Jakob Eg Larsen, Carsten Stahlhut, Michael Kai Petersen, Lars Kai Hansen. Technical University of Denmark, \hyperlink{namespaceDTU}{D\-T\-U} Informatics, Cognitive Systems Section. \href{http://code.google.com/p/smartphonebrainscanner2}{\tt http\-://code.\-google.\-com/p/smartphonebrainscanner2}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\-Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\-:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+T\-H\-E S\-O\-F\-T\-W\-A\-R\-E I\-S P\-R\-O\-V\-I\-D\-E\-D \char`\"{}\-A\-S I\-S\char`\"{}, W\-I\-T\-H\-O\-U\-T W\-A\-R\-R\-A\-N\-T\-Y O\-F A\-N\-Y K\-I\-N\-D, E\-X\-P\-R\-E\-S\-S O\-R I\-M\-P\-L\-I\-E\-D, I\-N\-C\-L\-U\-D\-I\-N\-G B\-U\-T N\-O\-T L\-I\-M\-I\-T\-E\-D T\-O T\-H\-E W\-A\-R\-R\-A\-N\-T\-I\-E\-S O\-F M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y, F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E A\-N\-D N\-O\-N\-I\-N\-F\-R\-I\-N\-G\-E\-M\-E\-N\-T. I\-N N\-O E\-V\-E\-N\-T S\-H\-A\-L\-L T\-H\-E A\-U\-T\-H\-O\-R\-S O\-R C\-O\-P\-Y\-R\-I\-G\-H\-T H\-O\-L\-D\-E\-R\-S B\-E L\-I\-A\-B\-L\-E F\-O\-R A\-N\-Y C\-L\-A\-I\-M, D\-A\-M\-A\-G\-E\-S O\-R O\-T\-H\-E\-R L\-I\-A\-B\-I\-L\-I\-T\-Y, W\-H\-E\-T\-H\-E\-R I\-N A\-N A\-C\-T\-I\-O\-N O\-F C\-O\-N\-T\-R\-A\-C\-T, T\-O\-R\-T O\-R O\-T\-H\-E\-R\-W\-I\-S\-E, A\-R\-I\-S\-I\-N\-G F\-R\-O\-M, O\-U\-T O\-F O\-R I\-N C\-O\-N\-N\-E\-C\-T\-I\-O\-N W\-I\-T\-H T\-H\-E S\-O\-F\-T\-W\-A\-R\-E O\-R T\-H\-E U\-S\-E O\-R O\-T\-H\-E\-R D\-E\-A\-L\-I\-N\-G\-S I\-N T\-H\-E S\-O\-F\-T\-W\-A\-R\-E. \hypertarget{math__utilities_8h_a87b08d8734fe1de09884a6d48aa455fd}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!load\-Data@{load\-Data}}
+\index{load\-Data@{load\-Data}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{load\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void load\-Data (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{path\-File, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a87b08d8734fe1de09884a6d48aa455fd}
+\hypertarget{math__utilities_8h_a4e9512fbab6d89fad87f621985199657}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!load\-Data@{load\-Data}}
+\index{load\-Data@{load\-Data}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{load\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void load\-Data (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{path\-File, }
+\item[{double $\ast$}]{scalar}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a4e9512fbab6d89fad87f621985199657}
+\hypertarget{math__utilities_8h_aa7501521f16e04b73470903ca3902dee}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!matrix\-Frob\-Norm@{matrix\-Frob\-Norm}}
+\index{matrix\-Frob\-Norm@{matrix\-Frob\-Norm}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{matrix\-Frob\-Norm}]{\setlength{\rightskip}{0pt plus 5cm}void matrix\-Frob\-Norm (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix, }
+\item[{double $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_aa7501521f16e04b73470903ca3902dee}
+\hypertarget{math__utilities_8h_aefd2c86af89d9c8adfa9ab1e6e259d23}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!matrix\-L21\-Norm@{matrix\-L21\-Norm}}
+\index{matrix\-L21\-Norm@{matrix\-L21\-Norm}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{matrix\-L21\-Norm}]{\setlength{\rightskip}{0pt plus 5cm}void matrix\-L21\-Norm (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix, }
+\item[{double $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_aefd2c86af89d9c8adfa9ab1e6e259d23}
+\hypertarget{math__utilities_8h_a959159d260e0b8530f670f214c772a3f}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!matrix\-L21\-Norm\-Each\-Row@{matrix\-L21\-Norm\-Each\-Row}}
+\index{matrix\-L21\-Norm\-Each\-Row@{matrix\-L21\-Norm\-Each\-Row}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{matrix\-L21\-Norm\-Each\-Row}]{\setlength{\rightskip}{0pt plus 5cm}void matrix\-L21\-Norm\-Each\-Row (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix, }
+\item[{vector$<$ double $>$ \&}]{out\-\_\-vector}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a959159d260e0b8530f670f214c772a3f}
+\hypertarget{math__utilities_8h_a7a298e6420eaee6bf462f3ae91b5e962}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!matrix\-Multiplication\-Component\-Wise@{matrix\-Multiplication\-Component\-Wise}}
+\index{matrix\-Multiplication\-Component\-Wise@{matrix\-Multiplication\-Component\-Wise}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{matrix\-Multiplication\-Component\-Wise}]{\setlength{\rightskip}{0pt plus 5cm}void matrix\-Multiplication\-Component\-Wise (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix\-\_\-\-A, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix\-\_\-\-B, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a7a298e6420eaee6bf462f3ae91b5e962}
+\hypertarget{math__utilities_8h_a05f8e915f694007a717a4924202fed4c}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!print\-Matrix@{print\-Matrix}}
+\index{print\-Matrix@{print\-Matrix}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{print\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void print\-Matrix (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{matrix}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a05f8e915f694007a717a4924202fed4c}
+\hypertarget{math__utilities_8h_a409194e42881986441d872ec4f3d58d6}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!print\-Vector@{print\-Vector}}
+\index{print\-Vector@{print\-Vector}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{print\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}void print\-Vector (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$ \&}]{out\-\_\-vector}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a409194e42881986441d872ec4f3d58d6}
+\hypertarget{math__utilities_8h_a8c189b3b9c089575e14c5b33d6287363}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!scalar\-Dividedby\-Vector\-Component\-Wise\-\_\-insitu@{scalar\-Dividedby\-Vector\-Component\-Wise\-\_\-insitu}}
+\index{scalar\-Dividedby\-Vector\-Component\-Wise\-\_\-insitu@{scalar\-Dividedby\-Vector\-Component\-Wise\-\_\-insitu}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{scalar\-Dividedby\-Vector\-Component\-Wise\-\_\-insitu}]{\setlength{\rightskip}{0pt plus 5cm}void scalar\-Dividedby\-Vector\-Component\-Wise\-\_\-insitu (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{scalar, }
+\item[{vector$<$ double $>$ \&}]{x\-\_\-vector}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_a8c189b3b9c089575e14c5b33d6287363}
+\hypertarget{math__utilities_8h_ab40f97ac51faa426400b5e18ea2ec74e}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!scalar\-Minus\-Vector\-\_\-insitu@{scalar\-Minus\-Vector\-\_\-insitu}}
+\index{scalar\-Minus\-Vector\-\_\-insitu@{scalar\-Minus\-Vector\-\_\-insitu}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{scalar\-Minus\-Vector\-\_\-insitu}]{\setlength{\rightskip}{0pt plus 5cm}void scalar\-Minus\-Vector\-\_\-insitu (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{scalar, }
+\item[{vector$<$ double $>$ \&}]{x\-\_\-vector}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_ab40f97ac51faa426400b5e18ea2ec74e}
+\hypertarget{math__utilities_8h_afd91fad976d7faa5c0111c051d8a5bc8}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!thresholding\-\_\-insitu@{thresholding\-\_\-insitu}}
+\index{thresholding\-\_\-insitu@{thresholding\-\_\-insitu}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{thresholding\-\_\-insitu}]{\setlength{\rightskip}{0pt plus 5cm}void thresholding\-\_\-insitu (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$ \&}]{x\-\_\-vector}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_afd91fad976d7faa5c0111c051d8a5bc8}
+\hypertarget{math__utilities_8h_abac164ac4f534843f5db7630fa79d9f3}{\index{math\-\_\-utilities.\-h@{math\-\_\-utilities.\-h}!vector\-Outer\-Product@{vector\-Outer\-Product}}
+\index{vector\-Outer\-Product@{vector\-Outer\-Product}!math_utilities.h@{math\-\_\-utilities.\-h}}
+\subsubsection[{vector\-Outer\-Product}]{\setlength{\rightskip}{0pt plus 5cm}void vector\-Outer\-Product (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$ \&}]{vector1, }
+\item[{vector$<$ double $>$ \&}]{vector2, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{math__utilities_8h_abac164ac4f534843f5db7630fa79d9f3}

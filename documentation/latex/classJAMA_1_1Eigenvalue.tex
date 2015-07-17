@@ -1,0 +1,152 @@
+\hypertarget{classJAMA_1_1Eigenvalue}{\section{J\-A\-M\-A\-:\-:Eigenvalue$<$ Real $>$ Class Template Reference}
+\label{classJAMA_1_1Eigenvalue}\index{J\-A\-M\-A\-::\-Eigenvalue$<$ Real $>$@{J\-A\-M\-A\-::\-Eigenvalue$<$ Real $>$}}
+}
+
+
+{\ttfamily \#include $<$jama\-\_\-eig.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classJAMA_1_1Eigenvalue_a28bf3e2df18bcd3d3f3b0979630953b3}{Eigenvalue} (const \hyperlink{classTNT_1_1Array2D}{T\-N\-T\-::\-Array2\-D}$<$ Real $>$ \&A)
+\item 
+void \hyperlink{classJAMA_1_1Eigenvalue_ad01bfc213b887979f8f702acdd0a76c2}{get\-V} (\hyperlink{classTNT_1_1Array2D}{T\-N\-T\-::\-Array2\-D}$<$ Real $>$ \&V\-\_\-)
+\item 
+void \hyperlink{classJAMA_1_1Eigenvalue_aae525e0f58b9ea03f183a4a75b46af50}{get\-Real\-Eigenvalues} (\hyperlink{classTNT_1_1Array1D}{T\-N\-T\-::\-Array1\-D}$<$ Real $>$ \&d\-\_\-)
+\item 
+void \hyperlink{classJAMA_1_1Eigenvalue_ad72ed4bd3a07325097a1ef4e36a0480f}{get\-Imag\-Eigenvalues} (\hyperlink{classTNT_1_1Array1D}{T\-N\-T\-::\-Array1\-D}$<$ Real $>$ \&e\-\_\-)
+\item 
+void \hyperlink{classJAMA_1_1Eigenvalue_aee57a1213656385928a3fb2c6a21e4b2}{get\-D} (\hyperlink{classTNT_1_1Array2D}{T\-N\-T\-::\-Array2\-D}$<$ Real $>$ \&D)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Real$>$class J\-A\-M\-A\-::\-Eigenvalue$<$ Real $>$}
+
+Computes eigenvalues and eigenvectors of a real (non-\/complex) matrix. 
+
+If A is symmetric, then A = V$\ast$\-D$\ast$\-V' where the eigenvalue matrix D is diagonal and the eigenvector matrix V is orthogonal. That is, the diagonal values of D are the eigenvalues, and V$\ast$\-V' = I, where I is the identity matrix. The columns of V represent the eigenvectors in the sense that A$\ast$\-V = V$\ast$\-D.
+
+If A is not symmetric, then the eigenvalue matrix D is block diagonal with the real eigenvalues in 1-\/by-\/1 blocks and any complex eigenvalues, a + i$\ast$b, in 2-\/by-\/2 blocks, \mbox{[}a, b; -\/b, a\mbox{]}. That is, if the complex eigenvalues look like 
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}          u + iv     .        .          .      .    .
+            .      u - iv     .          .      .    .
+            .        .      a + ib       .      .    .
+            .        .        .        a - ib   .    .
+            .        .        .          .      x    .
+            .        .        .          .      .    y
+\end{DoxyPre}
+ then D looks like 
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}            u        v        .          .      .    .
+           -v        u        .          .      .    . 
+            .        .        a          b      .    .
+            .        .       -b          a      .    .
+            .        .        .          .      x    .
+            .        .        .          .      .    y
+\end{DoxyPre}
+ This keeps V a real matrix in both symmetric and non-\/symmetric cases, and A$\ast$\-V = V$\ast$\-D.
+
+\begin{DoxyVerb}<p>
+The matrix V may be badly
+conditioned, or even singular, so the validity of the equation
+A = V*D*inverse(V) depends upon the condition number of V.
+\end{DoxyVerb}
+
+
+(Adapted from \hyperlink{namespaceJAMA}{J\-A\-M\-A}, a Java Matrix Library, developed by jointly by the Mathworks and N\-I\-S\-T; see \href{http://math.nist.gov/javanumerics/jama}{\tt http\-://math.\-nist.\-gov/javanumerics/jama}). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classJAMA_1_1Eigenvalue_a28bf3e2df18bcd3d3f3b0979630953b3}{\index{J\-A\-M\-A\-::\-Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}!Eigenvalue@{Eigenvalue}}
+\index{Eigenvalue@{Eigenvalue}!JAMA::Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}}
+\subsubsection[{Eigenvalue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf J\-A\-M\-A\-::\-Eigenvalue}$<$ Real $>$\-::{\bf Eigenvalue} (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-N\-T\-::\-Array2\-D}$<$ Real $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1Eigenvalue_a28bf3e2df18bcd3d3f3b0979630953b3}
+Check for symmetry, then construct the eigenvalue decomposition 
+\begin{DoxyParams}{Parameters}
+{\em A} & Square real (non-\/complex) matrix \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classJAMA_1_1Eigenvalue_aee57a1213656385928a3fb2c6a21e4b2}{\index{J\-A\-M\-A\-::\-Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}!get\-D@{get\-D}}
+\index{get\-D@{get\-D}!JAMA::Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}}
+\subsubsection[{get\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ void {\bf J\-A\-M\-A\-::\-Eigenvalue}$<$ Real $>$\-::get\-D (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-N\-T\-::\-Array2\-D}$<$ Real $>$ \&}]{D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1Eigenvalue_aee57a1213656385928a3fb2c6a21e4b2}
+Computes the block diagonal eigenvalue matrix. If the original matrix A is not symmetric, then the eigenvalue matrix D is block diagonal with the real eigenvalues in 1-\/by-\/1 blocks and any complex eigenvalues, a + i$\ast$b, in 2-\/by-\/2 blocks, \mbox{[}a, b; -\/b, a\mbox{]}. That is, if the complex eigenvalues look like 
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}          u + iv     .        .          .      .    .
+            .      u - iv     .          .      .    .
+            .        .      a + ib       .      .    .
+            .        .        .        a - ib   .    .
+            .        .        .          .      x    .
+            .        .        .          .      .    y
+\end{DoxyPre}
+ then D looks like 
+\begin{DoxyPre}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}            u        v        .          .      .    .
+           -v        u        .          .      .    . 
+            .        .        a          b      .    .
+            .        .       -b          a      .    .
+            .        .        .          .      x    .
+            .        .        .          .      .    y
+\end{DoxyPre}
+ This keeps V a real matrix in both symmetric and non-\/symmetric cases, and A$\ast$\-V = V$\ast$\-D.
+
+
+\begin{DoxyParams}{Parameters}
+{\em D} & upon return, the matrix is filled with the block diagonal eigenvalue matrix. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classJAMA_1_1Eigenvalue_ad72ed4bd3a07325097a1ef4e36a0480f}{\index{J\-A\-M\-A\-::\-Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}!get\-Imag\-Eigenvalues@{get\-Imag\-Eigenvalues}}
+\index{get\-Imag\-Eigenvalues@{get\-Imag\-Eigenvalues}!JAMA::Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}}
+\subsubsection[{get\-Imag\-Eigenvalues}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ void {\bf J\-A\-M\-A\-::\-Eigenvalue}$<$ Real $>$\-::get\-Imag\-Eigenvalues (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-N\-T\-::\-Array1\-D}$<$ Real $>$ \&}]{e\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1Eigenvalue_ad72ed4bd3a07325097a1ef4e36a0480f}
+Return the imaginary parts of the eigenvalues in parameter e\-\_\-.
+
+e\-\_\-\-: new matrix with imaginary parts of the eigenvalues. \hypertarget{classJAMA_1_1Eigenvalue_aae525e0f58b9ea03f183a4a75b46af50}{\index{J\-A\-M\-A\-::\-Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}!get\-Real\-Eigenvalues@{get\-Real\-Eigenvalues}}
+\index{get\-Real\-Eigenvalues@{get\-Real\-Eigenvalues}!JAMA::Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}}
+\subsubsection[{get\-Real\-Eigenvalues}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ void {\bf J\-A\-M\-A\-::\-Eigenvalue}$<$ Real $>$\-::get\-Real\-Eigenvalues (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-N\-T\-::\-Array1\-D}$<$ Real $>$ \&}]{d\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1Eigenvalue_aae525e0f58b9ea03f183a4a75b46af50}
+Return the real parts of the eigenvalues \begin{DoxyReturn}{Returns}
+real(diag(\-D)) 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1Eigenvalue_ad01bfc213b887979f8f702acdd0a76c2}{\index{J\-A\-M\-A\-::\-Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}!get\-V@{get\-V}}
+\index{get\-V@{get\-V}!JAMA::Eigenvalue@{J\-A\-M\-A\-::\-Eigenvalue}}
+\subsubsection[{get\-V}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ void {\bf J\-A\-M\-A\-::\-Eigenvalue}$<$ Real $>$\-::get\-V (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-N\-T\-::\-Array2\-D}$<$ Real $>$ \&}]{V\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1Eigenvalue_ad01bfc213b887979f8f702acdd0a76c2}
+Return the eigenvector matrix \begin{DoxyReturn}{Returns}
+V 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/jama125/\hyperlink{jama__eig_8h}{jama\-\_\-eig.\-h}\end{DoxyCompactItemize}

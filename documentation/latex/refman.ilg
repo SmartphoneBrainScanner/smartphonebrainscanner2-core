@@ -1,0 +1,89 @@
+This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
+Scanning input file refman.idx....
+!! Input index error (file = refman.idx, line = 234):
+   -- Extra `@' at position 301 of first argument.
+!! Input index error (file = refman.idx, line = 235):
+   -- Extra `@' at position 53 of first argument.
+!! Input index error (file = refman.idx, line = 236):
+   -- Extra `@' at position 301 of first argument.
+!! Input index error (file = refman.idx, line = 237):
+   -- Extra `@' at position 53 of first argument.
+
+!! Input index error (file = refman.idx, line = 275):
+   -- Extra `@' at position 301 of first argument.
+!! Input index error (file = refman.idx, line = 276):
+   -- Extra `@' at position 53 of first argument.
+!! Input index error (file = refman.idx, line = 277):
+   -- Extra `@' at position 301 of first argument.
+!! Input index error (file = refman.idx, line = 278):
+   -- Extra `@' at position 53 of first argument.
+
+!! Input index error (file = refman.idx, line = 330):
+   -- Extra `@' at position 301 of first argument.
+!! Input index error (file = refman.idx, line = 331):
+   -- Extra `@' at position 53 of first argument.
+!! Input index error (file = refman.idx, line = 332):
+   -- Extra `@' at position 301 of first argument.
+!! Input index error (file = refman.idx, line = 333):
+   -- Extra `@' at position 53 of first argument.
+
+!! Input index error (file = refman.idx, line = 650):
+   -- Extra `@' at position 305 of first argument.
+!! Input index error (file = refman.idx, line = 651):
+   -- Extra `@' at position 53 of first argument.
+!! Input index error (file = refman.idx, line = 652):
+   -- Extra `@' at position 305 of first argument.
+!! Input index error (file = refman.idx, line = 653):
+   -- Extra `@' at position 53 of first argument.
+
+!! Input index error (file = refman.idx, line = 743):
+   -- Extra `@' at position 255 of first argument.
+!! Input index error (file = refman.idx, line = 744):
+   -- Extra `@' at position 53 of first argument.
+!! Input index error (file = refman.idx, line = 745):
+   -- Extra `@' at position 255 of first argument.
+!! Input index error (file = refman.idx, line = 746):
+   -- Extra `@' at position 53 of first argument.
+.
+!! Input index error (file = refman.idx, line = 1675):
+   -- Extra `@' at position 255 of first argument.
+!! Input index error (file = refman.idx, line = 1676):
+   -- Extra `@' at position 53 of first argument.
+!! Input index error (file = refman.idx, line = 1677):
+   -- Extra `@' at position 255 of first argument.
+!! Input index error (file = refman.idx, line = 1678):
+   -- Extra `@' at position 53 of first argument.
+
+!! Input index error (file = refman.idx, line = 1698):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 1699):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 1700):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 1701):
+   -- First argument too long (max 1024).
+
+!! Input index error (file = refman.idx, line = 1766):
+   -- First argument too long (max 1024).
+
+!! Input index error (file = refman.idx, line = 1774):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 1775):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 1776):
+   -- First argument too long (max 1024).
+
+!! Input index error (file = refman.idx, line = 1811):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 1812):
+   -- First argument too long (max 1024).
+
+!! Input index error (file = refman.idx, line = 1820):
+   -- First argument too long (max 1024).
+!! Input index error (file = refman.idx, line = 1821):
+   -- First argument too long (max 1024).
+done (1887 entries accepted, 36 rejected).
+Sorting entries..................done (22498 comparisons).
+Generating output file refman.ind.....done (3253 lines written, 0 warnings).
+Output written in refman.ind.
+Transcript written in refman.ilg.

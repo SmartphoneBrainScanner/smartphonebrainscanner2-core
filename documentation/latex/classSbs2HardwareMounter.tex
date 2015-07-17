@@ -1,0 +1,184 @@
+\hypertarget{classSbs2HardwareMounter}{\section{Sbs2\-Hardware\-Mounter Class Reference}
+\label{classSbs2HardwareMounter}\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}}
+}
+
+
+{\ttfamily \#include $<$sbs2hardwaremounter.\-h$>$}
+
+Inheritance diagram for Sbs2\-Hardware\-Mounter\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSbs2HardwareMounter}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classSbs2HardwareMounter_a5a37fde350e3db7bf70d7be368b876e9}{start} ()=0
+\item 
+virtual void \hyperlink{classSbs2HardwareMounter_a27bc12c9e5a1eeeed3669bc6afd780dd}{stop} ()=0
+\item 
+virtual void \hyperlink{classSbs2HardwareMounter_ae890d839cf616daf0ea80cc2e44ce2bd}{invalidate} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSbs2HardwareMounter_a42bb432337e0cffc85baadf83a1813cd}{device\-Found} (Q\-Map$<$ Q\-String, Q\-Variant $>$ params)
+\item 
+void \hyperlink{classSbs2HardwareMounter_a715feed025039fbf3aaba0cb0621b453}{device\-Lost} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSbs2HardwareMounter_a791fa95ec691263fc0fdf1bddd21e92a}{$\sim$\-Sbs2\-Hardware\-Mounter} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Q\-String \hyperlink{classSbs2HardwareMounter_ae859631cf871c19b0b1163f26eacde4f}{get\-Identifier} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSbs2HardwareMounter_a0b57bd594cc2519164ca079580937181}{Sbs2\-Hardware\-Mounter} (Q\-Object $\ast$parent=0)
+\item 
+void \hyperlink{classSbs2HardwareMounter_ac2129b6eb23d4eddcc9b388dee96ba18}{my\-Sleep} ()
+\item 
+virtual void \hyperlink{classSbs2HardwareMounter_aa6be696873d18aea5c5e27d6ff92105d}{init} ()
+\item 
+virtual void \hyperlink{classSbs2HardwareMounter_af6c3fc37fa15ecadcf968d6ffcae0ec6}{mount} ()
+\item 
+virtual void \hyperlink{classSbs2HardwareMounter_ae248c626ae5bf0d7a73550e859d96190}{umount} ()
+\item 
+virtual void \hyperlink{classSbs2HardwareMounter_a73ed9f3ddf38747263ca040f5e433270}{read\-Hardware\-Parameters} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Q\-String \hyperlink{classSbs2HardwareMounter_a84df0b714f439793b05c23244b88fa4d}{mounted\-Hardware} = \char`\"{}\char`\"{}
+\item 
+static Q\-String \hyperlink{classSbs2HardwareMounter_a00ac9b3100310ddf9615116c8d33af9c}{identifier} = \char`\"{}\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Smartphone Brain Scanner 2 License Agreement (M\-I\-T License)
+
+Copyright (c) 2012 Arkadiusz Stopczynski, Jakob Eg Larsen, Carsten Stahlhut, Michael Kai Petersen, Lars Kai Hansen. Technical University of Denmark, \hyperlink{namespaceDTU}{D\-T\-U} Informatics, Cognitive Systems Section. \href{http://code.google.com/p/smartphonebrainscanner2}{\tt http\-://code.\-google.\-com/p/smartphonebrainscanner2}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\-Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\-:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+T\-H\-E S\-O\-F\-T\-W\-A\-R\-E I\-S P\-R\-O\-V\-I\-D\-E\-D \char`\"{}\-A\-S I\-S\char`\"{}, W\-I\-T\-H\-O\-U\-T W\-A\-R\-R\-A\-N\-T\-Y O\-F A\-N\-Y K\-I\-N\-D, E\-X\-P\-R\-E\-S\-S O\-R I\-M\-P\-L\-I\-E\-D, I\-N\-C\-L\-U\-D\-I\-N\-G B\-U\-T N\-O\-T L\-I\-M\-I\-T\-E\-D T\-O T\-H\-E W\-A\-R\-R\-A\-N\-T\-I\-E\-S O\-F M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y, F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E A\-N\-D N\-O\-N\-I\-N\-F\-R\-I\-N\-G\-E\-M\-E\-N\-T. I\-N N\-O E\-V\-E\-N\-T S\-H\-A\-L\-L T\-H\-E A\-U\-T\-H\-O\-R\-S O\-R C\-O\-P\-Y\-R\-I\-G\-H\-T H\-O\-L\-D\-E\-R\-S B\-E L\-I\-A\-B\-L\-E F\-O\-R A\-N\-Y C\-L\-A\-I\-M, D\-A\-M\-A\-G\-E\-S O\-R O\-T\-H\-E\-R L\-I\-A\-B\-I\-L\-I\-T\-Y, W\-H\-E\-T\-H\-E\-R I\-N A\-N A\-C\-T\-I\-O\-N O\-F C\-O\-N\-T\-R\-A\-C\-T, T\-O\-R\-T O\-R O\-T\-H\-E\-R\-W\-I\-S\-E, A\-R\-I\-S\-I\-N\-G F\-R\-O\-M, O\-U\-T O\-F O\-R I\-N C\-O\-N\-N\-E\-C\-T\-I\-O\-N W\-I\-T\-H T\-H\-E S\-O\-F\-T\-W\-A\-R\-E O\-R T\-H\-E U\-S\-E O\-R O\-T\-H\-E\-R D\-E\-A\-L\-I\-N\-G\-S I\-N T\-H\-E S\-O\-F\-T\-W\-A\-R\-E. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSbs2HardwareMounter_a791fa95ec691263fc0fdf1bddd21e92a}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!$\sim$\-Sbs2\-Hardware\-Mounter@{$\sim$\-Sbs2\-Hardware\-Mounter}}
+\index{$\sim$\-Sbs2\-Hardware\-Mounter@{$\sim$\-Sbs2\-Hardware\-Mounter}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{$\sim$\-Sbs2\-Hardware\-Mounter}]{\setlength{\rightskip}{0pt plus 5cm}Sbs2\-Hardware\-Mounter\-::$\sim$\-Sbs2\-Hardware\-Mounter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSbs2HardwareMounter_a791fa95ec691263fc0fdf1bddd21e92a}
+\hypertarget{classSbs2HardwareMounter_a0b57bd594cc2519164ca079580937181}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}}
+\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{Sbs2\-Hardware\-Mounter}]{\setlength{\rightskip}{0pt plus 5cm}Sbs2\-Hardware\-Mounter\-::\-Sbs2\-Hardware\-Mounter (
+\begin{DoxyParamCaption}
+\item[{Q\-Object $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2HardwareMounter_a0b57bd594cc2519164ca079580937181}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSbs2HardwareMounter_a42bb432337e0cffc85baadf83a1813cd}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!device\-Found@{device\-Found}}
+\index{device\-Found@{device\-Found}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{device\-Found}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Hardware\-Mounter\-::device\-Found (
+\begin{DoxyParamCaption}
+\item[{Q\-Map$<$ Q\-String, Q\-Variant $>$}]{params}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{classSbs2HardwareMounter_a42bb432337e0cffc85baadf83a1813cd}
+\hypertarget{classSbs2HardwareMounter_a715feed025039fbf3aaba0cb0621b453}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!device\-Lost@{device\-Lost}}
+\index{device\-Lost@{device\-Lost}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{device\-Lost}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Hardware\-Mounter\-::device\-Lost (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{classSbs2HardwareMounter_a715feed025039fbf3aaba0cb0621b453}
+\hypertarget{classSbs2HardwareMounter_ae859631cf871c19b0b1163f26eacde4f}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!get\-Identifier@{get\-Identifier}}
+\index{get\-Identifier@{get\-Identifier}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{get\-Identifier}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Sbs2\-Hardware\-Mounter\-::get\-Identifier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classSbs2HardwareMounter_ae859631cf871c19b0b1163f26eacde4f}
+\hypertarget{classSbs2HardwareMounter_aa6be696873d18aea5c5e27d6ff92105d}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!init@{init}}
+\index{init@{init}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Hardware\-Mounter\-::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classSbs2HardwareMounter_aa6be696873d18aea5c5e27d6ff92105d}
+\hypertarget{classSbs2HardwareMounter_ae890d839cf616daf0ea80cc2e44ce2bd}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!invalidate@{invalidate}}
+\index{invalidate@{invalidate}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{invalidate}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Sbs2\-Hardware\-Mounter\-::invalidate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}}\label{classSbs2HardwareMounter_ae890d839cf616daf0ea80cc2e44ce2bd}
+\hypertarget{classSbs2HardwareMounter_af6c3fc37fa15ecadcf968d6ffcae0ec6}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!mount@{mount}}
+\index{mount@{mount}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{mount}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Hardware\-Mounter\-::mount (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classSbs2HardwareMounter_af6c3fc37fa15ecadcf968d6ffcae0ec6}
+\hypertarget{classSbs2HardwareMounter_ac2129b6eb23d4eddcc9b388dee96ba18}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!my\-Sleep@{my\-Sleep}}
+\index{my\-Sleep@{my\-Sleep}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{my\-Sleep}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Hardware\-Mounter\-::my\-Sleep (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2HardwareMounter_ac2129b6eb23d4eddcc9b388dee96ba18}
+\hypertarget{classSbs2HardwareMounter_a73ed9f3ddf38747263ca040f5e433270}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!read\-Hardware\-Parameters@{read\-Hardware\-Parameters}}
+\index{read\-Hardware\-Parameters@{read\-Hardware\-Parameters}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{read\-Hardware\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Hardware\-Mounter\-::read\-Hardware\-Parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classSbs2HardwareMounter_a73ed9f3ddf38747263ca040f5e433270}
+\hypertarget{classSbs2HardwareMounter_a5a37fde350e3db7bf70d7be368b876e9}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!start@{start}}
+\index{start@{start}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Hardware\-Mounter\-::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}}\label{classSbs2HardwareMounter_a5a37fde350e3db7bf70d7be368b876e9}
+\hypertarget{classSbs2HardwareMounter_a27bc12c9e5a1eeeed3669bc6afd780dd}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!stop@{stop}}
+\index{stop@{stop}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Sbs2\-Hardware\-Mounter\-::stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}}\label{classSbs2HardwareMounter_a27bc12c9e5a1eeeed3669bc6afd780dd}
+\hypertarget{classSbs2HardwareMounter_ae248c626ae5bf0d7a73550e859d96190}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!umount@{umount}}
+\index{umount@{umount}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{umount}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Hardware\-Mounter\-::umount (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classSbs2HardwareMounter_ae248c626ae5bf0d7a73550e859d96190}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classSbs2HardwareMounter_a00ac9b3100310ddf9615116c8d33af9c}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!identifier@{identifier}}
+\index{identifier@{identifier}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{identifier}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Sbs2\-Hardware\-Mounter\-::identifier = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}}\label{classSbs2HardwareMounter_a00ac9b3100310ddf9615116c8d33af9c}
+\hypertarget{classSbs2HardwareMounter_a84df0b714f439793b05c23244b88fa4d}{\index{Sbs2\-Hardware\-Mounter@{Sbs2\-Hardware\-Mounter}!mounted\-Hardware@{mounted\-Hardware}}
+\index{mounted\-Hardware@{mounted\-Hardware}!Sbs2HardwareMounter@{Sbs2\-Hardware\-Mounter}}
+\subsubsection[{mounted\-Hardware}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Sbs2\-Hardware\-Mounter\-::mounted\-Hardware = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}}\label{classSbs2HardwareMounter_a84df0b714f439793b05c23244b88fa4d}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/hardware/\hyperlink{sbs2hardwaremounter_8h}{sbs2hardwaremounter.\-h}\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/hardware/\hyperlink{sbs2hardwaremounter_8cpp}{sbs2hardwaremounter.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,136 @@
+\hypertarget{classJAMA_1_1Cholesky}{\section{J\-A\-M\-A\-:\-:Cholesky$<$ Real $>$ Class Template Reference}
+\label{classJAMA_1_1Cholesky}\index{J\-A\-M\-A\-::\-Cholesky$<$ Real $>$@{J\-A\-M\-A\-::\-Cholesky$<$ Real $>$}}
+}
+
+
+{\ttfamily \#include $<$jama\-\_\-cholesky.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classJAMA_1_1Cholesky_a0af68661b83b7a6be938b42e2b2591b6}{Cholesky} ()
+\item 
+\hyperlink{classJAMA_1_1Cholesky_af859c41220c4313470d28fa13706ff63}{Cholesky} (const \hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \&A)
+\item 
+\hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \hyperlink{classJAMA_1_1Cholesky_a274b8bbd584bcf84ec860a24aa2b8b2a}{get\-L} () const 
+\item 
+\hyperlink{classTNT_1_1Array1D}{Array1\-D}$<$ Real $>$ \hyperlink{classJAMA_1_1Cholesky_af0f727e2b0e989f7606cdb49de69f119}{solve} (const \hyperlink{classTNT_1_1Array1D}{Array1\-D}$<$ Real $>$ \&B)
+\item 
+\hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \hyperlink{classJAMA_1_1Cholesky_a8a3c0067663955146713a9aa3b8a3413}{solve} (const \hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \&B)
+\item 
+int \hyperlink{classJAMA_1_1Cholesky_ab8ac7d6f0c9ef4e0fb74b001fe03ff90}{is\-\_\-spd} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Real$>$class J\-A\-M\-A\-::\-Cholesky$<$ Real $>$}
+
+For a symmetric, positive definite matrix A, this function computes the \hyperlink{classJAMA_1_1Cholesky}{Cholesky} factorization, i.\-e. it computes a lower triangular matrix L such that A = L$\ast$\-L'. If the matrix is not symmetric or positive definite, the function computes only a partial decomposition. This can be tested with the \hyperlink{classJAMA_1_1Cholesky_ab8ac7d6f0c9ef4e0fb74b001fe03ff90}{is\-\_\-spd()} flag.
+
+Typical usage looks like\-: 
+\begin{DoxyPre}
+ \hyperlink{classTNT_1_1Array2D}{Array2D<double>} A(n,n);
+ \hyperlink{classTNT_1_1Array2D}{Array2D<double>} L;\end{DoxyPre}
+
+
+
+\begin{DoxyPre}  ...\end{DoxyPre}
+
+
+
+\begin{DoxyPre} Cholesky<double> chol(A);\end{DoxyPre}
+
+
+
+\begin{DoxyPre} if (chol.is\_spd())
+    L = chol.getL();\end{DoxyPre}
+
+
+
+\begin{DoxyPre} else
+    cout << "factorization was not complete.\(\backslash\)n";\end{DoxyPre}
+
+
+
+\begin{DoxyPre} \end{DoxyPre}
+
+
+(Adapted from \hyperlink{namespaceJAMA}{J\-A\-M\-A}, a Java Matrix Library, developed by jointly by the Mathworks and N\-I\-S\-T; see \href{http://math.nist.gov/javanumerics/jama}{\tt http\-://math.\-nist.\-gov/javanumerics/jama}). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classJAMA_1_1Cholesky_a0af68661b83b7a6be938b42e2b2591b6}{\index{J\-A\-M\-A\-::\-Cholesky@{J\-A\-M\-A\-::\-Cholesky}!Cholesky@{Cholesky}}
+\index{Cholesky@{Cholesky}!JAMA::Cholesky@{J\-A\-M\-A\-::\-Cholesky}}
+\subsubsection[{Cholesky}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf J\-A\-M\-A\-::\-Cholesky}$<$ Real $>$\-::{\bf Cholesky} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classJAMA_1_1Cholesky_a0af68661b83b7a6be938b42e2b2591b6}
+\hypertarget{classJAMA_1_1Cholesky_af859c41220c4313470d28fa13706ff63}{\index{J\-A\-M\-A\-::\-Cholesky@{J\-A\-M\-A\-::\-Cholesky}!Cholesky@{Cholesky}}
+\index{Cholesky@{Cholesky}!JAMA::Cholesky@{J\-A\-M\-A\-::\-Cholesky}}
+\subsubsection[{Cholesky}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf J\-A\-M\-A\-::\-Cholesky}$<$ Real $>$\-::{\bf Cholesky} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array2\-D}$<$ Real $>$ \&}]{A}
+\end{DoxyParamCaption}
+)}}\label{classJAMA_1_1Cholesky_af859c41220c4313470d28fa13706ff63}
+Constructs a lower triangular matrix L, such that L$\ast$\-L'= A. If A is not symmetric positive-\/definite (S\-P\-D), only a partial factorization is performed. If \hyperlink{classJAMA_1_1Cholesky_ab8ac7d6f0c9ef4e0fb74b001fe03ff90}{is\-\_\-spd()} evalutate true (1) then the factorizaiton was successful. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classJAMA_1_1Cholesky_a274b8bbd584bcf84ec860a24aa2b8b2a}{\index{J\-A\-M\-A\-::\-Cholesky@{J\-A\-M\-A\-::\-Cholesky}!get\-L@{get\-L}}
+\index{get\-L@{get\-L}!JAMA::Cholesky@{J\-A\-M\-A\-::\-Cholesky}}
+\subsubsection[{get\-L}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf Array2\-D}$<$ Real $>$ {\bf J\-A\-M\-A\-::\-Cholesky}$<$ Real $>$\-::get\-L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classJAMA_1_1Cholesky_a274b8bbd584bcf84ec860a24aa2b8b2a}
+\begin{DoxyReturn}{Returns}
+the lower triangular factor, L, such that L$\ast$\-L'=A. 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1Cholesky_ab8ac7d6f0c9ef4e0fb74b001fe03ff90}{\index{J\-A\-M\-A\-::\-Cholesky@{J\-A\-M\-A\-::\-Cholesky}!is\-\_\-spd@{is\-\_\-spd}}
+\index{is\-\_\-spd@{is\-\_\-spd}!JAMA::Cholesky@{J\-A\-M\-A\-::\-Cholesky}}
+\subsubsection[{is\-\_\-spd}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ int {\bf J\-A\-M\-A\-::\-Cholesky}$<$ Real $>$\-::is\-\_\-spd (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classJAMA_1_1Cholesky_ab8ac7d6f0c9ef4e0fb74b001fe03ff90}
+\begin{DoxyReturn}{Returns}
+1, if original matrix to be factored was symmetric positive-\/definite (S\-P\-D). 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1Cholesky_af0f727e2b0e989f7606cdb49de69f119}{\index{J\-A\-M\-A\-::\-Cholesky@{J\-A\-M\-A\-::\-Cholesky}!solve@{solve}}
+\index{solve@{solve}!JAMA::Cholesky@{J\-A\-M\-A\-::\-Cholesky}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf Array1\-D}$<$ Real $>$ {\bf J\-A\-M\-A\-::\-Cholesky}$<$ Real $>$\-::solve (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array1\-D}$<$ Real $>$ \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{classJAMA_1_1Cholesky_af0f727e2b0e989f7606cdb49de69f119}
+Solve a linear system A$\ast$x = b, using the previously computed cholesky factorization of A\-: L$\ast$\-L'.
+
+
+\begin{DoxyParams}{Parameters}
+{\em B} & A Matrix with as many rows as A and any number of columns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+x so that L$\ast$\-L'$\ast$x = b. If b is nonconformat, or if A was not symmetric posidtive definite, a null (0x0) array is returned. 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1Cholesky_a8a3c0067663955146713a9aa3b8a3413}{\index{J\-A\-M\-A\-::\-Cholesky@{J\-A\-M\-A\-::\-Cholesky}!solve@{solve}}
+\index{solve@{solve}!JAMA::Cholesky@{J\-A\-M\-A\-::\-Cholesky}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf Array2\-D}$<$ Real $>$ {\bf J\-A\-M\-A\-::\-Cholesky}$<$ Real $>$\-::solve (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array2\-D}$<$ Real $>$ \&}]{B}
+\end{DoxyParamCaption}
+)}}\label{classJAMA_1_1Cholesky_a8a3c0067663955146713a9aa3b8a3413}
+Solve a linear system A$\ast$\-X = B, using the previously computed cholesky factorization of A\-: L$\ast$\-L'.
+
+
+\begin{DoxyParams}{Parameters}
+{\em B} & A Matrix with as many rows as A and any number of columns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X so that L$\ast$\-L'$\ast$\-X = B. If B is nonconformat, or if A was not symmetric posidtive definite, a null (0x0) array is returned. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/jama125/\hyperlink{jama__cholesky_8h}{jama\-\_\-cholesky.\-h}\end{DoxyCompactItemize}

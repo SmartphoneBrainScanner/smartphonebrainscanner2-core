@@ -1,0 +1,258 @@
+\hypertarget{classDTU_1_1DtuArray2D}{\section{D\-T\-U\-:\-:Dtu\-Array2\-D$<$ T $>$ Class Template Reference}
+\label{classDTU_1_1DtuArray2D}\index{D\-T\-U\-::\-Dtu\-Array2\-D$<$ T $>$@{D\-T\-U\-::\-Dtu\-Array2\-D$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$dtu\-\_\-array\-\_\-2d.\-h$>$}
+
+Inheritance diagram for D\-T\-U\-:\-:Dtu\-Array2\-D$<$ T $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDTU_1_1DtuArray2D}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef T \hyperlink{classDTU_1_1DtuArray2D_afd205bf3e12c0c1a57d0a451fd45446d}{value\-\_\-type}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDTU_1_1DtuArray2D_a6e06c78ecfbd2efdbe3c3e13df18c4c7}{Dtu\-Array2\-D} ()
+\item 
+\hyperlink{classDTU_1_1DtuArray2D_a1095f0d0a7f8ca187c15b4ef5488f68d}{Dtu\-Array2\-D} (int m, int n)
+\item 
+\hyperlink{classDTU_1_1DtuArray2D_af581f4e57787b3d46be392ce28f75fe9}{Dtu\-Array2\-D} (int m, int n, T $\ast$a)
+\item 
+\hyperlink{classDTU_1_1DtuArray2D_a1190f5752ba914133a2a77449ce56a05}{Dtu\-Array2\-D} (int m, int n, const T \&a)
+\item 
+\hyperlink{classDTU_1_1DtuArray2D_a88e0a39a0a5e84e14eee359ebb2bd3e1}{Dtu\-Array2\-D} (const \hyperlink{classTNT_1_1Array2D}{T\-N\-T\-::\-Array2\-D}$<$ T $>$ \&A)
+\item 
+\hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D} \& \hyperlink{classDTU_1_1DtuArray2D_a3ce392195f883257dc8133f7fab9564d}{operator=} (const T \&a)
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_a1c57e7cdb472b95640e16f69b664d797}{add} (const \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$B, \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$out)
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_aef64358747786ad8a0223161086cc7d0}{subtract} (const \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$B, \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$out)
+\item 
+void \hyperlink{classDTU_1_1DtuArray2D_aa395f408b57f194d773d309b5bcb3107}{multiply} (double scalar, \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$out)
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_af5b3ec0622fd426688ea0ab77b26db51}{multiply} (const \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$B, \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$out)
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_abfd1831b2f3ff56bb30ebae5a5b59b63}{multiply\-R} (const \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ \&B, \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ \&out)
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_a1d0e65eb4b55f8f7821adf7888fc6b5a}{multiply} (const \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$B, double scalar, \hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$out)
+\item 
+void \hyperlink{classDTU_1_1DtuArray2D_af581f022e7453af3da50685391f71f35}{transpose} (\hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$A)
+\item 
+void \hyperlink{classDTU_1_1DtuArray2D_a076b2f5fced5f94eff5f21c51ad80961}{transpose} (\hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ \&A)
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_a95044424cf0a7805be6bcddb6b2683f2}{transpose\-\_\-insitu} ()
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_a817f8d8127c60c21481e42531389376c}{get\-S\-V\-D} (\hyperlink{classJAMA_1_1SVD}{J\-A\-M\-A\-::\-S\-V\-D}$<$ T $>$ \&A)
+\item 
+void \hyperlink{classDTU_1_1DtuArray2D_ac84d734c8563a5abd76a043fc3c3a0e6}{pinv} (\hyperlink{classDTU_1_1DtuArray2D}{Dtu\-Array2\-D}$<$ T $>$ $\ast$A)
+\item 
+T \hyperlink{classDTU_1_1DtuArray2D_a8a8b977b5acee1e45c175b188685779b}{trace} ()
+\item 
+void \hyperlink{classDTU_1_1DtuArray2D_aecc0518069f41f2e12e88b35933e3573}{to\-Identity\-Matrix} ()
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_a68ddbc5c53f0e19a2fc2bae855e36077}{dim1} () const 
+\item 
+int \hyperlink{classDTU_1_1DtuArray2D_aefec13b0e62c9b7f56b6109f47ea757e}{dim2} () const 
+\item 
+\hyperlink{classTNT_1_1Array2D}{T\-N\-T\-::\-Array2\-D}$<$ T $>$ \hyperlink{classDTU_1_1DtuArray2D_a906c78d88bdb45a4f9d8805d3a0c6262}{to\-Tnt\-Array2\-D} ()
+\item 
+void \hyperlink{classDTU_1_1DtuArray2D_a3d918f63f7cb85cdc05739ac4c79807c}{print} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classDTU_1_1DtuArray2D_afd205bf3e12c0c1a57d0a451fd45446d}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!value\-\_\-type@{value\-\_\-type}}
+\index{value\-\_\-type@{value\-\_\-type}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{value\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ typedef T {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::{\bf value\-\_\-type}}}\label{classDTU_1_1DtuArray2D_afd205bf3e12c0c1a57d0a451fd45446d}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classDTU_1_1DtuArray2D_a6e06c78ecfbd2efdbe3c3e13df18c4c7}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!Dtu\-Array2\-D@{Dtu\-Array2\-D}}
+\index{Dtu\-Array2\-D@{Dtu\-Array2\-D}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{Dtu\-Array2\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::{\bf Dtu\-Array2\-D} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a6e06c78ecfbd2efdbe3c3e13df18c4c7}
+\hypertarget{classDTU_1_1DtuArray2D_a1095f0d0a7f8ca187c15b4ef5488f68d}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!Dtu\-Array2\-D@{Dtu\-Array2\-D}}
+\index{Dtu\-Array2\-D@{Dtu\-Array2\-D}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{Dtu\-Array2\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::{\bf Dtu\-Array2\-D} (
+\begin{DoxyParamCaption}
+\item[{int}]{m, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a1095f0d0a7f8ca187c15b4ef5488f68d}
+\hypertarget{classDTU_1_1DtuArray2D_af581f4e57787b3d46be392ce28f75fe9}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!Dtu\-Array2\-D@{Dtu\-Array2\-D}}
+\index{Dtu\-Array2\-D@{Dtu\-Array2\-D}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{Dtu\-Array2\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::{\bf Dtu\-Array2\-D} (
+\begin{DoxyParamCaption}
+\item[{int}]{m, }
+\item[{int}]{n, }
+\item[{T $\ast$}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_af581f4e57787b3d46be392ce28f75fe9}
+\hypertarget{classDTU_1_1DtuArray2D_a1190f5752ba914133a2a77449ce56a05}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!Dtu\-Array2\-D@{Dtu\-Array2\-D}}
+\index{Dtu\-Array2\-D@{Dtu\-Array2\-D}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{Dtu\-Array2\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::{\bf Dtu\-Array2\-D} (
+\begin{DoxyParamCaption}
+\item[{int}]{m, }
+\item[{int}]{n, }
+\item[{const T \&}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a1190f5752ba914133a2a77449ce56a05}
+\hypertarget{classDTU_1_1DtuArray2D_a88e0a39a0a5e84e14eee359ebb2bd3e1}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!Dtu\-Array2\-D@{Dtu\-Array2\-D}}
+\index{Dtu\-Array2\-D@{Dtu\-Array2\-D}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{Dtu\-Array2\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::{\bf Dtu\-Array2\-D} (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-N\-T\-::\-Array2\-D}$<$ T $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a88e0a39a0a5e84e14eee359ebb2bd3e1}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classDTU_1_1DtuArray2D_a1c57e7cdb472b95640e16f69b664d797}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!add@{add}}
+\index{add@{add}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{B, }
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_a1c57e7cdb472b95640e16f69b664d797}
+basic maths \hypertarget{classDTU_1_1DtuArray2D_a68ddbc5c53f0e19a2fc2bae855e36077}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!dim1@{dim1}}
+\index{dim1@{dim1}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{dim1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::dim1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a68ddbc5c53f0e19a2fc2bae855e36077}
+\hypertarget{classDTU_1_1DtuArray2D_aefec13b0e62c9b7f56b6109f47ea757e}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!dim2@{dim2}}
+\index{dim2@{dim2}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{dim2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::dim2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_aefec13b0e62c9b7f56b6109f47ea757e}
+\hypertarget{classDTU_1_1DtuArray2D_a817f8d8127c60c21481e42531389376c}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!get\-S\-V\-D@{get\-S\-V\-D}}
+\index{get\-S\-V\-D@{get\-S\-V\-D}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{get\-S\-V\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::get\-S\-V\-D (
+\begin{DoxyParamCaption}
+\item[{{\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ T $>$ \&}]{A}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_a817f8d8127c60c21481e42531389376c}
+\hypertarget{classDTU_1_1DtuArray2D_aa395f408b57f194d773d309b5bcb3107}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!multiply@{multiply}}
+\index{multiply@{multiply}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{multiply}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::multiply (
+\begin{DoxyParamCaption}
+\item[{double}]{scalar, }
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_aa395f408b57f194d773d309b5bcb3107}
+\hypertarget{classDTU_1_1DtuArray2D_af5b3ec0622fd426688ea0ab77b26db51}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!multiply@{multiply}}
+\index{multiply@{multiply}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{multiply}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::multiply (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{B, }
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_af5b3ec0622fd426688ea0ab77b26db51}
+\hypertarget{classDTU_1_1DtuArray2D_a1d0e65eb4b55f8f7821adf7888fc6b5a}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!multiply@{multiply}}
+\index{multiply@{multiply}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{multiply}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::multiply (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{B, }
+\item[{double}]{constant, }
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_a1d0e65eb4b55f8f7821adf7888fc6b5a}
+see int Dtu\-Array2\-D$<$\-T$>$\-::multiply(const Array2\-D$<$\-T$>$ \&\-B, Dtu\-Array2\-D$<$\-T$>$ \&out) for alternative implementations of multiplication \hypertarget{classDTU_1_1DtuArray2D_abfd1831b2f3ff56bb30ebae5a5b59b63}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!multiply\-R@{multiply\-R}}
+\index{multiply\-R@{multiply\-R}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{multiply\-R}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::multiply\-R (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dtu\-Array2\-D}$<$ T $>$ \&}]{B, }
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ \&}]{out}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_abfd1831b2f3ff56bb30ebae5a5b59b63}
+\hypertarget{classDTU_1_1DtuArray2D_a3ce392195f883257dc8133f7fab9564d}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!operator=@{operator=}}
+\index{operator=@{operator=}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Dtu\-Array2\-D}$<$ T $>$ \& {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a3ce392195f883257dc8133f7fab9564d}
+\hypertarget{classDTU_1_1DtuArray2D_ac84d734c8563a5abd76a043fc3c3a0e6}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!pinv@{pinv}}
+\index{pinv@{pinv}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{pinv}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::pinv (
+\begin{DoxyParamCaption}
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{A}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_ac84d734c8563a5abd76a043fc3c3a0e6}
+\hypertarget{classDTU_1_1DtuArray2D_a3d918f63f7cb85cdc05739ac4c79807c}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!print@{print}}
+\index{print@{print}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a3d918f63f7cb85cdc05739ac4c79807c}
+\hypertarget{classDTU_1_1DtuArray2D_aef64358747786ad8a0223161086cc7d0}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!subtract@{subtract}}
+\index{subtract@{subtract}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{subtract}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::subtract (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{B, }
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_aef64358747786ad8a0223161086cc7d0}
+\hypertarget{classDTU_1_1DtuArray2D_aecc0518069f41f2e12e88b35933e3573}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!to\-Identity\-Matrix@{to\-Identity\-Matrix}}
+\index{to\-Identity\-Matrix@{to\-Identity\-Matrix}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{to\-Identity\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::to\-Identity\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_aecc0518069f41f2e12e88b35933e3573}
+\hypertarget{classDTU_1_1DtuArray2D_a906c78d88bdb45a4f9d8805d3a0c6262}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!to\-Tnt\-Array2\-D@{to\-Tnt\-Array2\-D}}
+\index{to\-Tnt\-Array2\-D@{to\-Tnt\-Array2\-D}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{to\-Tnt\-Array2\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array2\-D}$<$ T $>$ {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::to\-Tnt\-Array2\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a906c78d88bdb45a4f9d8805d3a0c6262}
+\hypertarget{classDTU_1_1DtuArray2D_a8a8b977b5acee1e45c175b188685779b}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!trace@{trace}}
+\index{trace@{trace}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{trace}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ T {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::trace (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDTU_1_1DtuArray2D_a8a8b977b5acee1e45c175b188685779b}
+\hypertarget{classDTU_1_1DtuArray2D_af581f022e7453af3da50685391f71f35}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!transpose@{transpose}}
+\index{transpose@{transpose}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::transpose (
+\begin{DoxyParamCaption}
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ $\ast$}]{A}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_af581f022e7453af3da50685391f71f35}
+array operations \hypertarget{classDTU_1_1DtuArray2D_a076b2f5fced5f94eff5f21c51ad80961}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!transpose@{transpose}}
+\index{transpose@{transpose}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::transpose (
+\begin{DoxyParamCaption}
+\item[{{\bf Dtu\-Array2\-D}$<$ T $>$ \&}]{A}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_a076b2f5fced5f94eff5f21c51ad80961}
+\hypertarget{classDTU_1_1DtuArray2D_a95044424cf0a7805be6bcddb6b2683f2}{\index{D\-T\-U\-::\-Dtu\-Array2\-D@{D\-T\-U\-::\-Dtu\-Array2\-D}!transpose\-\_\-insitu@{transpose\-\_\-insitu}}
+\index{transpose\-\_\-insitu@{transpose\-\_\-insitu}!DTU::DtuArray2D@{D\-T\-U\-::\-Dtu\-Array2\-D}}
+\subsubsection[{transpose\-\_\-insitu}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ T $>$\-::transpose\-\_\-insitu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDTU_1_1DtuArray2D_a95044424cf0a7805be6bcddb6b2683f2}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/\hyperlink{dtu__array__2d_8h}{dtu\-\_\-array\-\_\-2d.\-h}\end{DoxyCompactItemize}

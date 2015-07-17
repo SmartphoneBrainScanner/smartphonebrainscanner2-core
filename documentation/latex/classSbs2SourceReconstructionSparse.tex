@@ -1,0 +1,178 @@
+\hypertarget{classSbs2SourceReconstructionSparse}{\section{Sbs2\-Source\-Reconstruction\-Sparse Class Reference}
+\label{classSbs2SourceReconstructionSparse}\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+}
+
+
+{\ttfamily \#include $<$sbs2sourcereconstruction\-\_\-sparse.\-h$>$}
+
+Inheritance diagram for Sbs2\-Source\-Reconstruction\-Sparse\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSbs2SourceReconstructionSparse}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSbs2SourceReconstructionSparse_ab51a1e6f1836882079c63792d79b475a}{Sbs2\-Source\-Reconstruction\-Sparse} (int channels\-\_\-input, int sources\-\_\-input, int samples\-\_\-, Q\-Vector$<$ double $>$ lambdas\-\_\-, Q\-String hardware\-\_\-, Q\-Object $\ast$parent=0, int num\-Datos\-Train\-\_\-input=8, int num\-Datos\-Test\-\_\-input=6, double error\-\_\-tol\-\_\-=0.\-0001)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_a7ce38152947515d6823d27366d708e58}{f\-\_\-objective\-\_\-general\-\_\-group\-\_\-lasso} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$A\-\_\-normalized, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$S, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$Y, double lambda, double $\ast$out)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_a37faa1ccf1cd9e4f5c505291b01679e3}{derivative\-\_\-square\-\_\-loss\-\_\-frobenius} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$A, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$Y, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$S, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$out)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_ab65afe0fe91f8f79bfcfeb678b4dedfa}{proximal\-\_\-operator\-\_\-standard\-\_\-group\-\_\-lasso} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$X, double $\ast$regularizer\-\_\-factor, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$out)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_a305baa833a5487152f006781ae563ec9}{fista\-\_\-method\-\_\-group\-\_\-lasso\-\_\-v2} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$A\-\_\-normalized, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$Y, double lambda, double L, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$estimated\-\_\-\-S)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_ae4fa7617ed4e1b06991ce00da77d3dae}{cross\-\_\-validation\-\_\-k\-\_\-channel} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$Y\-\_\-mean\-\_\-0, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$estimated\-\_\-\-S)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_ae18dc4db1615715a25cf07085c76c9ca}{root\-Mean\-Square\-Error} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$Y\-\_\-mean\-\_\-0\-\_\-test, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$A\-\_\-normalized\-\_\-test, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$estimated\-\_\-\-S, double $\ast$rmse)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_a715684d11b00b3fbeba117730bbfe7ae}{do\-Rec} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$Y\-\_\-input, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$S\-\_\-output, int $\ast$is\-Source\-Reconstruction\-Ready)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_af444570b73ff117a96a2555e57209616}{do\-Rec\-Pow} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$Y\-\_\-input, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$S\-\_\-output, int $\ast$is\-Source\-Reconstruction\-Ready)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_a1b1e7a6b575f2b73198d5a01f17775c8}{preprocess\-Data} ()
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_a63f21863593eea269b4bbba988872213}{calculate\-Mean} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$input, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$output)
+\item 
+void \hyperlink{classSbs2SourceReconstructionSparse_a04505e279c6030ac70461aa7abf551d2}{calculate\-Power} (\hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$input, \hyperlink{classDTU_1_1DtuArray2D}{D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$output)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Smartphone Brain Scanner 2 License Agreement (M\-I\-T License)
+
+Copyright (c) 2012 Arkadiusz Stopczynski, Jakob Eg Larsen, Carsten Stahlhut, Michael Kai Petersen, Lars Kai Hansen. Technical University of Denmark, \hyperlink{namespaceDTU}{D\-T\-U} Informatics, Cognitive Systems Section. \href{http://code.google.com/p/smartphonebrainscanner2}{\tt http\-://code.\-google.\-com/p/smartphonebrainscanner2}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\-Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\-:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+T\-H\-E S\-O\-F\-T\-W\-A\-R\-E I\-S P\-R\-O\-V\-I\-D\-E\-D \char`\"{}\-A\-S I\-S\char`\"{}, W\-I\-T\-H\-O\-U\-T W\-A\-R\-R\-A\-N\-T\-Y O\-F A\-N\-Y K\-I\-N\-D, E\-X\-P\-R\-E\-S\-S O\-R I\-M\-P\-L\-I\-E\-D, I\-N\-C\-L\-U\-D\-I\-N\-G B\-U\-T N\-O\-T L\-I\-M\-I\-T\-E\-D T\-O T\-H\-E W\-A\-R\-R\-A\-N\-T\-I\-E\-S O\-F M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y, F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E A\-N\-D N\-O\-N\-I\-N\-F\-R\-I\-N\-G\-E\-M\-E\-N\-T. I\-N N\-O E\-V\-E\-N\-T S\-H\-A\-L\-L T\-H\-E A\-U\-T\-H\-O\-R\-S O\-R C\-O\-P\-Y\-R\-I\-G\-H\-T H\-O\-L\-D\-E\-R\-S B\-E L\-I\-A\-B\-L\-E F\-O\-R A\-N\-Y C\-L\-A\-I\-M, D\-A\-M\-A\-G\-E\-S O\-R O\-T\-H\-E\-R L\-I\-A\-B\-I\-L\-I\-T\-Y, W\-H\-E\-T\-H\-E\-R I\-N A\-N A\-C\-T\-I\-O\-N O\-F C\-O\-N\-T\-R\-A\-C\-T, T\-O\-R\-T O\-R O\-T\-H\-E\-R\-W\-I\-S\-E, A\-R\-I\-S\-I\-N\-G F\-R\-O\-M, O\-U\-T O\-F O\-R I\-N C\-O\-N\-N\-E\-C\-T\-I\-O\-N W\-I\-T\-H T\-H\-E S\-O\-F\-T\-W\-A\-R\-E O\-R T\-H\-E U\-S\-E O\-R O\-T\-H\-E\-R D\-E\-A\-L\-I\-N\-G\-S I\-N T\-H\-E S\-O\-F\-T\-W\-A\-R\-E. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSbs2SourceReconstructionSparse_ab51a1e6f1836882079c63792d79b475a}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{Sbs2\-Source\-Reconstruction\-Sparse}]{\setlength{\rightskip}{0pt plus 5cm}Sbs2\-Source\-Reconstruction\-Sparse\-::\-Sbs2\-Source\-Reconstruction\-Sparse (
+\begin{DoxyParamCaption}
+\item[{int}]{channels\-\_\-input, }
+\item[{int}]{sources\-\_\-input, }
+\item[{int}]{samples\-\_\-, }
+\item[{Q\-Vector$<$ double $>$}]{lambdas\-\_\-, }
+\item[{Q\-String}]{hardware\-\_\-, }
+\item[{Q\-Object $\ast$}]{parent = {\ttfamily 0}, }
+\item[{int}]{num\-Datos\-Train\-\_\-input = {\ttfamily 8}, }
+\item[{int}]{num\-Datos\-Test\-\_\-input = {\ttfamily 6}, }
+\item[{double}]{error\-\_\-tol\-\_\- = {\ttfamily 0.0001}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classSbs2SourceReconstructionSparse_ab51a1e6f1836882079c63792d79b475a}
+Variables used in the function fista\-\_\-method\-\_\-group\-\_\-lasso\-\_\-v2 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSbs2SourceReconstructionSparse_a63f21863593eea269b4bbba988872213}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!calculate\-Mean@{calculate\-Mean}}
+\index{calculate\-Mean@{calculate\-Mean}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{calculate\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::calculate\-Mean (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{input, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{output}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_a63f21863593eea269b4bbba988872213}
+\hypertarget{classSbs2SourceReconstructionSparse_a04505e279c6030ac70461aa7abf551d2}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!calculate\-Power@{calculate\-Power}}
+\index{calculate\-Power@{calculate\-Power}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{calculate\-Power}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::calculate\-Power (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{input, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{output}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_a04505e279c6030ac70461aa7abf551d2}
+\hypertarget{classSbs2SourceReconstructionSparse_ae4fa7617ed4e1b06991ce00da77d3dae}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!cross\-\_\-validation\-\_\-k\-\_\-channel@{cross\-\_\-validation\-\_\-k\-\_\-channel}}
+\index{cross\-\_\-validation\-\_\-k\-\_\-channel@{cross\-\_\-validation\-\_\-k\-\_\-channel}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{cross\-\_\-validation\-\_\-k\-\_\-channel}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::cross\-\_\-validation\-\_\-k\-\_\-channel (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{Y\-\_\-mean\-\_\-0, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{estimated\-\_\-\-S}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_ae4fa7617ed4e1b06991ce00da77d3dae}
+\hypertarget{classSbs2SourceReconstructionSparse_a37faa1ccf1cd9e4f5c505291b01679e3}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!derivative\-\_\-square\-\_\-loss\-\_\-frobenius@{derivative\-\_\-square\-\_\-loss\-\_\-frobenius}}
+\index{derivative\-\_\-square\-\_\-loss\-\_\-frobenius@{derivative\-\_\-square\-\_\-loss\-\_\-frobenius}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{derivative\-\_\-square\-\_\-loss\-\_\-frobenius}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::derivative\-\_\-square\-\_\-loss\-\_\-frobenius (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{A, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{Y, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{S, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_a37faa1ccf1cd9e4f5c505291b01679e3}
+\hypertarget{classSbs2SourceReconstructionSparse_a715684d11b00b3fbeba117730bbfe7ae}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!do\-Rec@{do\-Rec}}
+\index{do\-Rec@{do\-Rec}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{do\-Rec}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::do\-Rec (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{Y\-\_\-input, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{S\-\_\-output, }
+\item[{int $\ast$}]{is\-Source\-Reconstruction\-Ready}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_a715684d11b00b3fbeba117730bbfe7ae}
+\hypertarget{classSbs2SourceReconstructionSparse_af444570b73ff117a96a2555e57209616}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!do\-Rec\-Pow@{do\-Rec\-Pow}}
+\index{do\-Rec\-Pow@{do\-Rec\-Pow}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{do\-Rec\-Pow}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::do\-Rec\-Pow (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{Y\-\_\-input, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{S\-\_\-output, }
+\item[{int $\ast$}]{is\-Source\-Reconstruction\-Ready}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_af444570b73ff117a96a2555e57209616}
+\hypertarget{classSbs2SourceReconstructionSparse_a7ce38152947515d6823d27366d708e58}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!f\-\_\-objective\-\_\-general\-\_\-group\-\_\-lasso@{f\-\_\-objective\-\_\-general\-\_\-group\-\_\-lasso}}
+\index{f\-\_\-objective\-\_\-general\-\_\-group\-\_\-lasso@{f\-\_\-objective\-\_\-general\-\_\-group\-\_\-lasso}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{f\-\_\-objective\-\_\-general\-\_\-group\-\_\-lasso}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::f\-\_\-objective\-\_\-general\-\_\-group\-\_\-lasso (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{A\-\_\-normalized, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{S, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{Y, }
+\item[{double}]{lambda, }
+\item[{double $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_a7ce38152947515d6823d27366d708e58}
+\hypertarget{classSbs2SourceReconstructionSparse_a305baa833a5487152f006781ae563ec9}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!fista\-\_\-method\-\_\-group\-\_\-lasso\-\_\-v2@{fista\-\_\-method\-\_\-group\-\_\-lasso\-\_\-v2}}
+\index{fista\-\_\-method\-\_\-group\-\_\-lasso\-\_\-v2@{fista\-\_\-method\-\_\-group\-\_\-lasso\-\_\-v2}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{fista\-\_\-method\-\_\-group\-\_\-lasso\-\_\-v2}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::fista\-\_\-method\-\_\-group\-\_\-lasso\-\_\-v2 (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{A\-\_\-normalized, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{Y, }
+\item[{double}]{lambda, }
+\item[{double}]{L, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{estimated\-\_\-\-S}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_a305baa833a5487152f006781ae563ec9}
+\hypertarget{classSbs2SourceReconstructionSparse_a1b1e7a6b575f2b73198d5a01f17775c8}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!preprocess\-Data@{preprocess\-Data}}
+\index{preprocess\-Data@{preprocess\-Data}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{preprocess\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::preprocess\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_a1b1e7a6b575f2b73198d5a01f17775c8}
+\hypertarget{classSbs2SourceReconstructionSparse_ab65afe0fe91f8f79bfcfeb678b4dedfa}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!proximal\-\_\-operator\-\_\-standard\-\_\-group\-\_\-lasso@{proximal\-\_\-operator\-\_\-standard\-\_\-group\-\_\-lasso}}
+\index{proximal\-\_\-operator\-\_\-standard\-\_\-group\-\_\-lasso@{proximal\-\_\-operator\-\_\-standard\-\_\-group\-\_\-lasso}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{proximal\-\_\-operator\-\_\-standard\-\_\-group\-\_\-lasso}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::proximal\-\_\-operator\-\_\-standard\-\_\-group\-\_\-lasso (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{X, }
+\item[{double $\ast$}]{regularizer\-\_\-factor, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_ab65afe0fe91f8f79bfcfeb678b4dedfa}
+\hypertarget{classSbs2SourceReconstructionSparse_ae18dc4db1615715a25cf07085c76c9ca}{\index{Sbs2\-Source\-Reconstruction\-Sparse@{Sbs2\-Source\-Reconstruction\-Sparse}!root\-Mean\-Square\-Error@{root\-Mean\-Square\-Error}}
+\index{root\-Mean\-Square\-Error@{root\-Mean\-Square\-Error}!Sbs2SourceReconstructionSparse@{Sbs2\-Source\-Reconstruction\-Sparse}}
+\subsubsection[{root\-Mean\-Square\-Error}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Source\-Reconstruction\-Sparse\-::root\-Mean\-Square\-Error (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{Y\-\_\-mean\-\_\-0\-\_\-test, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{A\-\_\-normalized\-\_\-test, }
+\item[{{\bf D\-T\-U\-::\-Dtu\-Array2\-D}$<$ double $>$ $\ast$}]{estimated\-\_\-\-S, }
+\item[{double $\ast$}]{rmse}
+\end{DoxyParamCaption}
+)}}\label{classSbs2SourceReconstructionSparse_ae18dc4db1615715a25cf07085c76c9ca}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/source\-\_\-reconstruction/sparse/\hyperlink{sbs2sourcereconstruction__sparse_8h}{sbs2sourcereconstruction\-\_\-sparse.\-h}\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/source\-\_\-reconstruction/sparse/\hyperlink{sbs2sourcereconstruction__sparse_8cpp}{sbs2sourcereconstruction\-\_\-sparse.\-cpp}\end{DoxyCompactItemize}

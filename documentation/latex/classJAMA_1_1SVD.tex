@@ -1,0 +1,112 @@
+\hypertarget{classJAMA_1_1SVD}{\section{J\-A\-M\-A\-:\-:S\-V\-D$<$ Real $>$ Class Template Reference}
+\label{classJAMA_1_1SVD}\index{J\-A\-M\-A\-::\-S\-V\-D$<$ Real $>$@{J\-A\-M\-A\-::\-S\-V\-D$<$ Real $>$}}
+}
+
+
+{\ttfamily \#include $<$jama\-\_\-svd.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classJAMA_1_1SVD_a4aa25bafe4952f526a18c5aabcb3827e}{S\-V\-D} (const \hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \&Arg)
+\item 
+void \hyperlink{classJAMA_1_1SVD_ae7f5faa245069309abd8b1b630f71ca0}{get\-U} (\hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \&A)
+\item 
+void \hyperlink{classJAMA_1_1SVD_a16c66d5d97354f8b2ec87a4c603a02d6}{get\-V} (\hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \&A)
+\item 
+void \hyperlink{classJAMA_1_1SVD_afbb53e2a3828bd158a45ea87562e7a08}{get\-Singular\-Values} (\hyperlink{classTNT_1_1Array1D}{Array1\-D}$<$ Real $>$ \&x)
+\item 
+void \hyperlink{classJAMA_1_1SVD_ad25ba091d8385d45bb38e24962cad60a}{get\-S} (\hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \&A)
+\item 
+Real \hyperlink{classJAMA_1_1SVD_a67bc975d69b8eaf4c467641f4df6dcf4}{norm2} ()
+\item 
+Real \hyperlink{classJAMA_1_1SVD_a70b2e3aaa8720b352d126b30afe7e105}{cond} ()
+\item 
+int \hyperlink{classJAMA_1_1SVD_a20aa98558dc53170fd899b474f540bd2}{rank} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Real$>$class J\-A\-M\-A\-::\-S\-V\-D$<$ Real $>$}
+
+Singular Value Decomposition. 
+
+For an m-\/by-\/n matrix A with m $>$= n, the singular value decomposition is an m-\/by-\/n orthogonal matrix U, an n-\/by-\/n diagonal matrix S, and an n-\/by-\/n orthogonal matrix V so that A = U$\ast$\-S$\ast$\-V'. 
+
+The singular values, sigma\mbox{[}k\mbox{]} = S\mbox{[}k\mbox{]}\mbox{[}k\mbox{]}, are ordered so that sigma\mbox{[}0\mbox{]} $>$= sigma\mbox{[}1\mbox{]} $>$= ... $>$= sigma\mbox{[}n-\/1\mbox{]}. 
+
+The singular value decompostion always exists, so the constructor will never fail. The matrix condition number and the effective numerical rank can be computed from this decomposition.
+
+(Adapted from \hyperlink{namespaceJAMA}{J\-A\-M\-A}, a Java Matrix Library, developed by jointly by the Mathworks and N\-I\-S\-T; see \href{http://math.nist.gov/javanumerics/jama}{\tt http\-://math.\-nist.\-gov/javanumerics/jama}). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classJAMA_1_1SVD_a4aa25bafe4952f526a18c5aabcb3827e}{\index{J\-A\-M\-A\-::\-S\-V\-D@{J\-A\-M\-A\-::\-S\-V\-D}!S\-V\-D@{S\-V\-D}}
+\index{S\-V\-D@{S\-V\-D}!JAMA::SVD@{J\-A\-M\-A\-::\-S\-V\-D}}
+\subsubsection[{S\-V\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real$>$ {\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ Real $>$\-::{\bf S\-V\-D} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array2\-D}$<$ Real $>$ \&}]{Arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1SVD_a4aa25bafe4952f526a18c5aabcb3827e}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classJAMA_1_1SVD_a70b2e3aaa8720b352d126b30afe7e105}{\index{J\-A\-M\-A\-::\-S\-V\-D@{J\-A\-M\-A\-::\-S\-V\-D}!cond@{cond}}
+\index{cond@{cond}!JAMA::SVD@{J\-A\-M\-A\-::\-S\-V\-D}}
+\subsubsection[{cond}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real$>$ Real {\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ Real $>$\-::cond (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1SVD_a70b2e3aaa8720b352d126b30afe7e105}
+Two norm of condition number (max(\-S)/min(S)) \hypertarget{classJAMA_1_1SVD_ad25ba091d8385d45bb38e24962cad60a}{\index{J\-A\-M\-A\-::\-S\-V\-D@{J\-A\-M\-A\-::\-S\-V\-D}!get\-S@{get\-S}}
+\index{get\-S@{get\-S}!JAMA::SVD@{J\-A\-M\-A\-::\-S\-V\-D}}
+\subsubsection[{get\-S}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real$>$ void {\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ Real $>$\-::get\-S (
+\begin{DoxyParamCaption}
+\item[{{\bf Array2\-D}$<$ Real $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1SVD_ad25ba091d8385d45bb38e24962cad60a}
+Return the diagonal matrix of singular values \begin{DoxyReturn}{Returns}
+S 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1SVD_afbb53e2a3828bd158a45ea87562e7a08}{\index{J\-A\-M\-A\-::\-S\-V\-D@{J\-A\-M\-A\-::\-S\-V\-D}!get\-Singular\-Values@{get\-Singular\-Values}}
+\index{get\-Singular\-Values@{get\-Singular\-Values}!JAMA::SVD@{J\-A\-M\-A\-::\-S\-V\-D}}
+\subsubsection[{get\-Singular\-Values}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real$>$ void {\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ Real $>$\-::get\-Singular\-Values (
+\begin{DoxyParamCaption}
+\item[{{\bf Array1\-D}$<$ Real $>$ \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1SVD_afbb53e2a3828bd158a45ea87562e7a08}
+Return the one-\/dimensional array of singular values \hypertarget{classJAMA_1_1SVD_ae7f5faa245069309abd8b1b630f71ca0}{\index{J\-A\-M\-A\-::\-S\-V\-D@{J\-A\-M\-A\-::\-S\-V\-D}!get\-U@{get\-U}}
+\index{get\-U@{get\-U}!JAMA::SVD@{J\-A\-M\-A\-::\-S\-V\-D}}
+\subsubsection[{get\-U}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real$>$ void {\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ Real $>$\-::get\-U (
+\begin{DoxyParamCaption}
+\item[{{\bf Array2\-D}$<$ Real $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1SVD_ae7f5faa245069309abd8b1b630f71ca0}
+\hypertarget{classJAMA_1_1SVD_a16c66d5d97354f8b2ec87a4c603a02d6}{\index{J\-A\-M\-A\-::\-S\-V\-D@{J\-A\-M\-A\-::\-S\-V\-D}!get\-V@{get\-V}}
+\index{get\-V@{get\-V}!JAMA::SVD@{J\-A\-M\-A\-::\-S\-V\-D}}
+\subsubsection[{get\-V}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real$>$ void {\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ Real $>$\-::get\-V (
+\begin{DoxyParamCaption}
+\item[{{\bf Array2\-D}$<$ Real $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1SVD_a16c66d5d97354f8b2ec87a4c603a02d6}
+\hypertarget{classJAMA_1_1SVD_a67bc975d69b8eaf4c467641f4df6dcf4}{\index{J\-A\-M\-A\-::\-S\-V\-D@{J\-A\-M\-A\-::\-S\-V\-D}!norm2@{norm2}}
+\index{norm2@{norm2}!JAMA::SVD@{J\-A\-M\-A\-::\-S\-V\-D}}
+\subsubsection[{norm2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real$>$ Real {\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ Real $>$\-::norm2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1SVD_a67bc975d69b8eaf4c467641f4df6dcf4}
+Two norm (max(\-S)) \hypertarget{classJAMA_1_1SVD_a20aa98558dc53170fd899b474f540bd2}{\index{J\-A\-M\-A\-::\-S\-V\-D@{J\-A\-M\-A\-::\-S\-V\-D}!rank@{rank}}
+\index{rank@{rank}!JAMA::SVD@{J\-A\-M\-A\-::\-S\-V\-D}}
+\subsubsection[{rank}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real$>$ int {\bf J\-A\-M\-A\-::\-S\-V\-D}$<$ Real $>$\-::rank (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1SVD_a20aa98558dc53170fd899b474f540bd2}
+Effective numerical matrix rank \begin{DoxyReturn}{Returns}
+Number of nonnegligible singular values. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/jama125/\hyperlink{jama__svd_8h}{jama\-\_\-svd.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,71 @@
+\hypertarget{classSbs2EmocapPacket}{\section{Sbs2\-Emocap\-Packet Class Reference}
+\label{classSbs2EmocapPacket}\index{Sbs2\-Emocap\-Packet@{Sbs2\-Emocap\-Packet}}
+}
+
+
+{\ttfamily \#include $<$sbs2emocappacket.\-h$>$}
+
+Inheritance diagram for Sbs2\-Emocap\-Packet\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSbs2EmocapPacket}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSbs2EmocapPacket_a526fe093d78aec14bd3cb87e108c4f54}{Sbs2\-Emocap\-Packet} (Q\-Object $\ast$parent)
+\item 
+void \hyperlink{classSbs2EmocapPacket_a68263221ddb233ea7d8da392203a523e}{update} (char $\ast$data)
+\begin{DoxyCompactList}\small\item\em Method for updating data in the packet. To avoid continuous creation and destruction of objects, certain number of empty packets is constructed in initialization and then updated with wrap-\/around. Packets should see the raw data delieverd by \hyperlink{classSbs2DataReader}{Sbs2\-Data\-Reader} and form themselves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Smartphone Brain Scanner 2 License Agreement (M\-I\-T License)
+
+Copyright (c) 2012 Arkadiusz Stopczynski, Jakob Eg Larsen, Carsten Stahlhut, Michael Kai Petersen, Lars Kai Hansen. Technical University of Denmark, \hyperlink{namespaceDTU}{D\-T\-U} Informatics, Cognitive Systems Section. \href{http://code.google.com/p/smartphonebrainscanner2}{\tt http\-://code.\-google.\-com/p/smartphonebrainscanner2}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\-Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\-:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+T\-H\-E S\-O\-F\-T\-W\-A\-R\-E I\-S P\-R\-O\-V\-I\-D\-E\-D \char`\"{}\-A\-S I\-S\char`\"{}, W\-I\-T\-H\-O\-U\-T W\-A\-R\-R\-A\-N\-T\-Y O\-F A\-N\-Y K\-I\-N\-D, E\-X\-P\-R\-E\-S\-S O\-R I\-M\-P\-L\-I\-E\-D, I\-N\-C\-L\-U\-D\-I\-N\-G B\-U\-T N\-O\-T L\-I\-M\-I\-T\-E\-D T\-O T\-H\-E W\-A\-R\-R\-A\-N\-T\-I\-E\-S O\-F M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y, F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E A\-N\-D N\-O\-N\-I\-N\-F\-R\-I\-N\-G\-E\-M\-E\-N\-T. I\-N N\-O E\-V\-E\-N\-T S\-H\-A\-L\-L T\-H\-E A\-U\-T\-H\-O\-R\-S O\-R C\-O\-P\-Y\-R\-I\-G\-H\-T H\-O\-L\-D\-E\-R\-S B\-E L\-I\-A\-B\-L\-E F\-O\-R A\-N\-Y C\-L\-A\-I\-M, D\-A\-M\-A\-G\-E\-S O\-R O\-T\-H\-E\-R L\-I\-A\-B\-I\-L\-I\-T\-Y, W\-H\-E\-T\-H\-E\-R I\-N A\-N A\-C\-T\-I\-O\-N O\-F C\-O\-N\-T\-R\-A\-C\-T, T\-O\-R\-T O\-R O\-T\-H\-E\-R\-W\-I\-S\-E, A\-R\-I\-S\-I\-N\-G F\-R\-O\-M, O\-U\-T O\-F O\-R I\-N C\-O\-N\-N\-E\-C\-T\-I\-O\-N W\-I\-T\-H T\-H\-E S\-O\-F\-T\-W\-A\-R\-E O\-R T\-H\-E U\-S\-E O\-R O\-T\-H\-E\-R D\-E\-A\-L\-I\-N\-G\-S I\-N T\-H\-E S\-O\-F\-T\-W\-A\-R\-E. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSbs2EmocapPacket_a526fe093d78aec14bd3cb87e108c4f54}{\index{Sbs2\-Emocap\-Packet@{Sbs2\-Emocap\-Packet}!Sbs2\-Emocap\-Packet@{Sbs2\-Emocap\-Packet}}
+\index{Sbs2\-Emocap\-Packet@{Sbs2\-Emocap\-Packet}!Sbs2EmocapPacket@{Sbs2\-Emocap\-Packet}}
+\subsubsection[{Sbs2\-Emocap\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}Sbs2\-Emocap\-Packet\-::\-Sbs2\-Emocap\-Packet (
+\begin{DoxyParamCaption}
+\item[{Q\-Object $\ast$}]{parent}
+\end{DoxyParamCaption}
+)}}\label{classSbs2EmocapPacket_a526fe093d78aec14bd3cb87e108c4f54}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSbs2EmocapPacket_a68263221ddb233ea7d8da392203a523e}{\index{Sbs2\-Emocap\-Packet@{Sbs2\-Emocap\-Packet}!update@{update}}
+\index{update@{update}!Sbs2EmocapPacket@{Sbs2\-Emocap\-Packet}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Emocap\-Packet\-::update (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSbs2EmocapPacket_a68263221ddb233ea7d8da392203a523e}
+
+
+Method for updating data in the packet. To avoid continuous creation and destruction of objects, certain number of empty packets is constructed in initialization and then updated with wrap-\/around. Packets should see the raw data delieverd by \hyperlink{classSbs2DataReader}{Sbs2\-Data\-Reader} and form themselves. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to raw data. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classSbs2Packet_a8b80c76000ceead51e9278c833bb56ae}{Sbs2\-Packet}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/hardware/emocap/\hyperlink{sbs2emocappacket_8h}{sbs2emocappacket.\-h}\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/hardware/emocap/\hyperlink{sbs2emocappacket_8cpp}{sbs2emocappacket.\-cpp}\end{DoxyCompactItemize}

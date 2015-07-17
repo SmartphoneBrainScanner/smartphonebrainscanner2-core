@@ -1,0 +1,196 @@
+\hypertarget{classSbs2DataReader}{\section{Sbs2\-Data\-Reader Class Reference}
+\label{classSbs2DataReader}\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}}
+}
+
+
+{\ttfamily \#include $<$sbs2datareader.\-h$>$}
+
+Inheritance diagram for Sbs2\-Data\-Reader\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.413793cm]{classSbs2DataReader}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classSbs2DataReader_adf247d12bc7a9d4ec368c10a6516ee27}{device\-Found} (Q\-Map$<$ Q\-String, Q\-Variant $>$ params)
+\item 
+virtual void \hyperlink{classSbs2DataReader_a2dd9b209ae967396d82c041b7ea1e494}{device\-Lost} ()
+\item 
+virtual void \hyperlink{classSbs2DataReader_a1990beb8bea474d074befc259afaf7ed}{about\-To\-Quit} ()
+\item 
+virtual void \hyperlink{classSbs2DataReader_a2d96f5fd9a29c92799db5ab41ba80bf8}{udp\-Data\-Received} (Q\-Vector$<$ char $\ast$ $>$ $\ast$data, int counter)
+\item 
+virtual void \hyperlink{classSbs2DataReader_a29d2eea990fe1da78e5f83c34ef2bb84}{udp\-Data\-Received} (Q\-Udp\-Socket $\ast$raw\-Data\-Udp\-Input\-Socket)
+\item 
+virtual void \hyperlink{classSbs2DataReader_a3dab2a116c2bd5e594ab6f2044d03713}{turn\-Receive\-Udp\-Data\-On} (Q\-String address, int port)
+\item 
+virtual void \hyperlink{classSbs2DataReader_af30ede5dbff8dd3101bc6a7553d1c2cf}{turn\-Receive\-Udp\-Data\-Off} ()
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSbs2DataReader_af3811e79dd9f544405a5bb83d2c61a9c}{device\-Found\-Signal} (Q\-Map$<$ Q\-String, Q\-Variant $>$ params)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSbs2DataReader_a722a0ea14fc88b13817701f647c63d7e}{$\sim$\-Sbs2\-Data\-Reader} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSbs2DataReader_acb12eae29b9e3715e4604a745859c153}{Sbs2\-Data\-Reader} (\hyperlink{classSbs2Callback}{Sbs2\-Callback} $\ast$sbs2\-Callback\-\_\-, int read\-Only\-From\-Network\-\_\-=0, Q\-Object $\ast$parent=0)
+\item 
+virtual void \hyperlink{classSbs2DataReader_a08efa39d3a0b6a4f8f545a3fbd0998a0}{execute} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classSbs2DataReader_a09c24a1835b3289cc5f7cb5fe975823d}{frames\-Read}
+\item 
+int \hyperlink{classSbs2DataReader_a65ac7461c3253ec38d8837eac759cf8d}{current\-Index}
+\item 
+int \hyperlink{classSbs2DataReader_ac7d4147f409871c52e0a49f451f4aedf}{buffer\-Index}
+\item 
+int \hyperlink{classSbs2DataReader_a40cf787abf8171fcc26384d31e0fa440}{buffer\-Size}
+\item 
+int \hyperlink{classSbs2DataReader_abf87e9f54439bacc5e9181a7c61394b8}{running}
+\item 
+\hyperlink{classSbs2Callback}{Sbs2\-Callback} $\ast$ \hyperlink{classSbs2DataReader_a3e6b283fc7ad156341ca90c64139f88a}{sbs2\-Callback}
+\item 
+int \hyperlink{classSbs2DataReader_a7c66f0a2da31e3c186bfb3ac7da13ecb}{test\-Dummy\-Read}
+\item 
+\hyperlink{classSbs2NetworkHandler}{Sbs2\-Network\-Handler} $\ast$ \hyperlink{classSbs2DataReader_afb837cc5dbf1d189a64f47e76878bf4c}{sbs2\-Network\-Handler}
+\item 
+int \hyperlink{classSbs2DataReader_aaef5f0c54d01dec8075721c8367e68c2}{read\-Only\-From\-Network}
+\item 
+int \hyperlink{classSbs2DataReader_a187026725f6512dda1a579b5876cea83}{last\-Receive\-Raw\-Data\-Counter}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSbs2DataReader_a722a0ea14fc88b13817701f647c63d7e}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!$\sim$\-Sbs2\-Data\-Reader@{$\sim$\-Sbs2\-Data\-Reader}}
+\index{$\sim$\-Sbs2\-Data\-Reader@{$\sim$\-Sbs2\-Data\-Reader}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{$\sim$\-Sbs2\-Data\-Reader}]{\setlength{\rightskip}{0pt plus 5cm}Sbs2\-Data\-Reader\-::$\sim$\-Sbs2\-Data\-Reader (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSbs2DataReader_a722a0ea14fc88b13817701f647c63d7e}
+\hypertarget{classSbs2DataReader_acb12eae29b9e3715e4604a745859c153}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}}
+\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{Sbs2\-Data\-Reader}]{\setlength{\rightskip}{0pt plus 5cm}Sbs2\-Data\-Reader\-::\-Sbs2\-Data\-Reader (
+\begin{DoxyParamCaption}
+\item[{{\bf Sbs2\-Callback} $\ast$}]{sbs2\-Callback\-\_\-, }
+\item[{int}]{read\-Only\-From\-Network\-\_\- = {\ttfamily 0}, }
+\item[{Q\-Object $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_acb12eae29b9e3715e4604a745859c153}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSbs2DataReader_a1990beb8bea474d074befc259afaf7ed}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!about\-To\-Quit@{about\-To\-Quit}}
+\index{about\-To\-Quit@{about\-To\-Quit}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{about\-To\-Quit}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::about\-To\-Quit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{classSbs2DataReader_a1990beb8bea474d074befc259afaf7ed}
+\hypertarget{classSbs2DataReader_adf247d12bc7a9d4ec368c10a6516ee27}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!device\-Found@{device\-Found}}
+\index{device\-Found@{device\-Found}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{device\-Found}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::device\-Found (
+\begin{DoxyParamCaption}
+\item[{Q\-Map$<$ Q\-String, Q\-Variant $>$}]{params}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{classSbs2DataReader_adf247d12bc7a9d4ec368c10a6516ee27}
+\hypertarget{classSbs2DataReader_af3811e79dd9f544405a5bb83d2c61a9c}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!device\-Found\-Signal@{device\-Found\-Signal}}
+\index{device\-Found\-Signal@{device\-Found\-Signal}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{device\-Found\-Signal}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::device\-Found\-Signal (
+\begin{DoxyParamCaption}
+\item[{Q\-Map$<$ Q\-String, Q\-Variant $>$}]{params}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{classSbs2DataReader_af3811e79dd9f544405a5bb83d2c61a9c}
+\hypertarget{classSbs2DataReader_a2dd9b209ae967396d82c041b7ea1e494}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!device\-Lost@{device\-Lost}}
+\index{device\-Lost@{device\-Lost}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{device\-Lost}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::device\-Lost (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{classSbs2DataReader_a2dd9b209ae967396d82c041b7ea1e494}
+\hypertarget{classSbs2DataReader_a08efa39d3a0b6a4f8f545a3fbd0998a0}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!execute@{execute}}
+\index{execute@{execute}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classSbs2DataReader_a08efa39d3a0b6a4f8f545a3fbd0998a0}
+\hypertarget{classSbs2DataReader_af30ede5dbff8dd3101bc6a7553d1c2cf}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!turn\-Receive\-Udp\-Data\-Off@{turn\-Receive\-Udp\-Data\-Off}}
+\index{turn\-Receive\-Udp\-Data\-Off@{turn\-Receive\-Udp\-Data\-Off}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{turn\-Receive\-Udp\-Data\-Off}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::turn\-Receive\-Udp\-Data\-Off (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{classSbs2DataReader_af30ede5dbff8dd3101bc6a7553d1c2cf}
+\hypertarget{classSbs2DataReader_a3dab2a116c2bd5e594ab6f2044d03713}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!turn\-Receive\-Udp\-Data\-On@{turn\-Receive\-Udp\-Data\-On}}
+\index{turn\-Receive\-Udp\-Data\-On@{turn\-Receive\-Udp\-Data\-On}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{turn\-Receive\-Udp\-Data\-On}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::turn\-Receive\-Udp\-Data\-On (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{address, }
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{classSbs2DataReader_a3dab2a116c2bd5e594ab6f2044d03713}
+\hypertarget{classSbs2DataReader_a2d96f5fd9a29c92799db5ab41ba80bf8}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!udp\-Data\-Received@{udp\-Data\-Received}}
+\index{udp\-Data\-Received@{udp\-Data\-Received}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{udp\-Data\-Received}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::udp\-Data\-Received (
+\begin{DoxyParamCaption}
+\item[{Q\-Vector$<$ char $\ast$ $>$ $\ast$}]{data, }
+\item[{int}]{counter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{classSbs2DataReader_a2d96f5fd9a29c92799db5ab41ba80bf8}
+\hypertarget{classSbs2DataReader_a29d2eea990fe1da78e5f83c34ef2bb84}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!udp\-Data\-Received@{udp\-Data\-Received}}
+\index{udp\-Data\-Received@{udp\-Data\-Received}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{udp\-Data\-Received}]{\setlength{\rightskip}{0pt plus 5cm}void Sbs2\-Data\-Reader\-::udp\-Data\-Received (
+\begin{DoxyParamCaption}
+\item[{Q\-Udp\-Socket $\ast$}]{raw\-Data\-Udp\-Input\-Socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{classSbs2DataReader_a29d2eea990fe1da78e5f83c34ef2bb84}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classSbs2DataReader_ac7d4147f409871c52e0a49f451f4aedf}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!buffer\-Index@{buffer\-Index}}
+\index{buffer\-Index@{buffer\-Index}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{buffer\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Sbs2\-Data\-Reader\-::buffer\-Index\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_ac7d4147f409871c52e0a49f451f4aedf}
+\hypertarget{classSbs2DataReader_a40cf787abf8171fcc26384d31e0fa440}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!buffer\-Size@{buffer\-Size}}
+\index{buffer\-Size@{buffer\-Size}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{buffer\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Sbs2\-Data\-Reader\-::buffer\-Size\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_a40cf787abf8171fcc26384d31e0fa440}
+\hypertarget{classSbs2DataReader_a65ac7461c3253ec38d8837eac759cf8d}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!current\-Index@{current\-Index}}
+\index{current\-Index@{current\-Index}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{current\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Sbs2\-Data\-Reader\-::current\-Index\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_a65ac7461c3253ec38d8837eac759cf8d}
+\hypertarget{classSbs2DataReader_a09c24a1835b3289cc5f7cb5fe975823d}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!frames\-Read@{frames\-Read}}
+\index{frames\-Read@{frames\-Read}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{frames\-Read}]{\setlength{\rightskip}{0pt plus 5cm}int Sbs2\-Data\-Reader\-::frames\-Read\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_a09c24a1835b3289cc5f7cb5fe975823d}
+\hypertarget{classSbs2DataReader_a187026725f6512dda1a579b5876cea83}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!last\-Receive\-Raw\-Data\-Counter@{last\-Receive\-Raw\-Data\-Counter}}
+\index{last\-Receive\-Raw\-Data\-Counter@{last\-Receive\-Raw\-Data\-Counter}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{last\-Receive\-Raw\-Data\-Counter}]{\setlength{\rightskip}{0pt plus 5cm}int Sbs2\-Data\-Reader\-::last\-Receive\-Raw\-Data\-Counter\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_a187026725f6512dda1a579b5876cea83}
+\hypertarget{classSbs2DataReader_aaef5f0c54d01dec8075721c8367e68c2}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!read\-Only\-From\-Network@{read\-Only\-From\-Network}}
+\index{read\-Only\-From\-Network@{read\-Only\-From\-Network}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{read\-Only\-From\-Network}]{\setlength{\rightskip}{0pt plus 5cm}int Sbs2\-Data\-Reader\-::read\-Only\-From\-Network\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_aaef5f0c54d01dec8075721c8367e68c2}
+\hypertarget{classSbs2DataReader_abf87e9f54439bacc5e9181a7c61394b8}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!running@{running}}
+\index{running@{running}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{running}]{\setlength{\rightskip}{0pt plus 5cm}int Sbs2\-Data\-Reader\-::running\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_abf87e9f54439bacc5e9181a7c61394b8}
+\hypertarget{classSbs2DataReader_a3e6b283fc7ad156341ca90c64139f88a}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!sbs2\-Callback@{sbs2\-Callback}}
+\index{sbs2\-Callback@{sbs2\-Callback}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{sbs2\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sbs2\-Callback}$\ast$ Sbs2\-Data\-Reader\-::sbs2\-Callback\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_a3e6b283fc7ad156341ca90c64139f88a}
+\hypertarget{classSbs2DataReader_afb837cc5dbf1d189a64f47e76878bf4c}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!sbs2\-Network\-Handler@{sbs2\-Network\-Handler}}
+\index{sbs2\-Network\-Handler@{sbs2\-Network\-Handler}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{sbs2\-Network\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sbs2\-Network\-Handler}$\ast$ Sbs2\-Data\-Reader\-::sbs2\-Network\-Handler\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_afb837cc5dbf1d189a64f47e76878bf4c}
+\hypertarget{classSbs2DataReader_a7c66f0a2da31e3c186bfb3ac7da13ecb}{\index{Sbs2\-Data\-Reader@{Sbs2\-Data\-Reader}!test\-Dummy\-Read@{test\-Dummy\-Read}}
+\index{test\-Dummy\-Read@{test\-Dummy\-Read}!Sbs2DataReader@{Sbs2\-Data\-Reader}}
+\subsubsection[{test\-Dummy\-Read}]{\setlength{\rightskip}{0pt plus 5cm}int Sbs2\-Data\-Reader\-::test\-Dummy\-Read\hspace{0.3cm}{\ttfamily [protected]}}}\label{classSbs2DataReader_a7c66f0a2da31e3c186bfb3ac7da13ecb}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/hardware/\hyperlink{sbs2datareader_8h}{sbs2datareader.\-h}\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/hardware/\hyperlink{sbs2datareader_8cpp}{sbs2datareader.\-cpp}\end{DoxyCompactItemize}

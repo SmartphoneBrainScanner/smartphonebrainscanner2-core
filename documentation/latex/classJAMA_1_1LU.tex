@@ -1,0 +1,143 @@
+\hypertarget{classJAMA_1_1LU}{\section{J\-A\-M\-A\-:\-:L\-U$<$ Real $>$ Class Template Reference}
+\label{classJAMA_1_1LU}\index{J\-A\-M\-A\-::\-L\-U$<$ Real $>$@{J\-A\-M\-A\-::\-L\-U$<$ Real $>$}}
+}
+
+
+{\ttfamily \#include $<$jama\-\_\-lu.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classJAMA_1_1LU_af280c292fc2801a6fa5e5c0a84f15685}{L\-U} (const \hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \&A)
+\item 
+int \hyperlink{classJAMA_1_1LU_afc7269c15f48fbbefdcb067bf71cc179}{is\-Nonsingular} ()
+\item 
+\hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \hyperlink{classJAMA_1_1LU_a34b9bc8eef3f7771de20176b807bf977}{get\-L} ()
+\item 
+\hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \hyperlink{classJAMA_1_1LU_ad2148238b7e2c6a2db01985cb66f8f72}{get\-U} ()
+\item 
+\hyperlink{classTNT_1_1Array1D}{Array1\-D}$<$ int $>$ \hyperlink{classJAMA_1_1LU_a94dba52c7036cb779427106e65d85f1d}{get\-Pivot} ()
+\item 
+Real \hyperlink{classJAMA_1_1LU_a954d514e3e802da2fc8a422d15df5cfd}{det} ()
+\item 
+\hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \hyperlink{classJAMA_1_1LU_abf011e4d8405ec35412a7fc06bd7c9a8}{solve} (const \hyperlink{classTNT_1_1Array2D}{Array2\-D}$<$ Real $>$ \&B)
+\item 
+\hyperlink{classTNT_1_1Array1D}{Array1\-D}$<$ Real $>$ \hyperlink{classJAMA_1_1LU_abe62763addfd25c019f09b5420198d33}{solve} (const \hyperlink{classTNT_1_1Array1D}{Array1\-D}$<$ Real $>$ \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Real$>$class J\-A\-M\-A\-::\-L\-U$<$ Real $>$}
+
+\hyperlink{classJAMA_1_1LU}{L\-U} Decomposition. 
+
+For an m-\/by-\/n matrix A with m $>$= n, the \hyperlink{classJAMA_1_1LU}{L\-U} decomposition is an m-\/by-\/n unit lower triangular matrix L, an n-\/by-\/n upper triangular matrix U, and a permutation vector piv of length m so that A(piv,\-:) = L$\ast$\-U. If m $<$ n, then L is m-\/by-\/m and U is m-\/by-\/n. 
+
+The \hyperlink{classJAMA_1_1LU}{L\-U} decompostion with pivoting always exists, even if the matrix is singular, so the constructor will never fail. The primary use of the \hyperlink{classJAMA_1_1LU}{L\-U} decomposition is in the solution of square systems of simultaneous linear equations. This will fail if \hyperlink{classJAMA_1_1LU_afc7269c15f48fbbefdcb067bf71cc179}{is\-Nonsingular()} returns false. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classJAMA_1_1LU_af280c292fc2801a6fa5e5c0a84f15685}{\index{J\-A\-M\-A\-::\-L\-U@{J\-A\-M\-A\-::\-L\-U}!L\-U@{L\-U}}
+\index{L\-U@{L\-U}!JAMA::LU@{J\-A\-M\-A\-::\-L\-U}}
+\subsubsection[{L\-U}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf J\-A\-M\-A\-::\-L\-U}$<$ Real $>$\-::{\bf L\-U} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array2\-D}$<$ Real $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1LU_af280c292fc2801a6fa5e5c0a84f15685}
+\hyperlink{classJAMA_1_1LU}{L\-U} Decomposition 
+\begin{DoxyParams}{Parameters}
+{\em A} & Rectangular matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classJAMA_1_1LU}{L\-U} Decomposition object to access L, U and piv. 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classJAMA_1_1LU_a954d514e3e802da2fc8a422d15df5cfd}{\index{J\-A\-M\-A\-::\-L\-U@{J\-A\-M\-A\-::\-L\-U}!det@{det}}
+\index{det@{det}!JAMA::LU@{J\-A\-M\-A\-::\-L\-U}}
+\subsubsection[{det}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ Real {\bf J\-A\-M\-A\-::\-L\-U}$<$ Real $>$\-::det (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1LU_a954d514e3e802da2fc8a422d15df5cfd}
+Compute determinant using \hyperlink{classJAMA_1_1LU}{L\-U} factors. \begin{DoxyReturn}{Returns}
+determinant of A, or 0 if A is not square. 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1LU_a34b9bc8eef3f7771de20176b807bf977}{\index{J\-A\-M\-A\-::\-L\-U@{J\-A\-M\-A\-::\-L\-U}!get\-L@{get\-L}}
+\index{get\-L@{get\-L}!JAMA::LU@{J\-A\-M\-A\-::\-L\-U}}
+\subsubsection[{get\-L}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf Array2\-D}$<$Real$>$ {\bf J\-A\-M\-A\-::\-L\-U}$<$ Real $>$\-::get\-L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1LU_a34b9bc8eef3f7771de20176b807bf977}
+Return lower triangular factor \begin{DoxyReturn}{Returns}
+L 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1LU_a94dba52c7036cb779427106e65d85f1d}{\index{J\-A\-M\-A\-::\-L\-U@{J\-A\-M\-A\-::\-L\-U}!get\-Pivot@{get\-Pivot}}
+\index{get\-Pivot@{get\-Pivot}!JAMA::LU@{J\-A\-M\-A\-::\-L\-U}}
+\subsubsection[{get\-Pivot}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf Array1\-D}$<$int$>$ {\bf J\-A\-M\-A\-::\-L\-U}$<$ Real $>$\-::get\-Pivot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1LU_a94dba52c7036cb779427106e65d85f1d}
+Return pivot permutation vector \begin{DoxyReturn}{Returns}
+piv 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1LU_ad2148238b7e2c6a2db01985cb66f8f72}{\index{J\-A\-M\-A\-::\-L\-U@{J\-A\-M\-A\-::\-L\-U}!get\-U@{get\-U}}
+\index{get\-U@{get\-U}!JAMA::LU@{J\-A\-M\-A\-::\-L\-U}}
+\subsubsection[{get\-U}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf Array2\-D}$<$Real$>$ {\bf J\-A\-M\-A\-::\-L\-U}$<$ Real $>$\-::get\-U (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1LU_ad2148238b7e2c6a2db01985cb66f8f72}
+Return upper triangular factor \begin{DoxyReturn}{Returns}
+U portion of \hyperlink{classJAMA_1_1LU}{L\-U} factorization. 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1LU_afc7269c15f48fbbefdcb067bf71cc179}{\index{J\-A\-M\-A\-::\-L\-U@{J\-A\-M\-A\-::\-L\-U}!is\-Nonsingular@{is\-Nonsingular}}
+\index{is\-Nonsingular@{is\-Nonsingular}!JAMA::LU@{J\-A\-M\-A\-::\-L\-U}}
+\subsubsection[{is\-Nonsingular}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ int {\bf J\-A\-M\-A\-::\-L\-U}$<$ Real $>$\-::is\-Nonsingular (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1LU_afc7269c15f48fbbefdcb067bf71cc179}
+Is the matrix nonsingular? \begin{DoxyReturn}{Returns}
+1 (true) if upper triangular factor U (and hence A) is nonsingular, 0 otherwise. 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1LU_abf011e4d8405ec35412a7fc06bd7c9a8}{\index{J\-A\-M\-A\-::\-L\-U@{J\-A\-M\-A\-::\-L\-U}!solve@{solve}}
+\index{solve@{solve}!JAMA::LU@{J\-A\-M\-A\-::\-L\-U}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf Array2\-D}$<$Real$>$ {\bf J\-A\-M\-A\-::\-L\-U}$<$ Real $>$\-::solve (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array2\-D}$<$ Real $>$ \&}]{B}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1LU_abf011e4d8405ec35412a7fc06bd7c9a8}
+Solve A$\ast$\-X = B 
+\begin{DoxyParams}{Parameters}
+{\em B} & A Matrix with as many rows as A and any number of columns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X so that L$\ast$\-U$\ast$\-X = B(piv,\-:), if B is nonconformant, returns 0x0 (null) array. 
+\end{DoxyReturn}
+\hypertarget{classJAMA_1_1LU_abe62763addfd25c019f09b5420198d33}{\index{J\-A\-M\-A\-::\-L\-U@{J\-A\-M\-A\-::\-L\-U}!solve@{solve}}
+\index{solve@{solve}!JAMA::LU@{J\-A\-M\-A\-::\-L\-U}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Real $>$ {\bf Array1\-D}$<$Real$>$ {\bf J\-A\-M\-A\-::\-L\-U}$<$ Real $>$\-::solve (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array1\-D}$<$ Real $>$ \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classJAMA_1_1LU_abe62763addfd25c019f09b5420198d33}
+Solve A$\ast$x = b, where x and b are vectors of length equal to the number of rows in A.
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & a vector (Array1\-D$>$ of length equal to the first dimension of A. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+x a vector (Array1\-D$>$ so that L$\ast$\-U$\ast$x = b(piv), if B is nonconformant, returns 0x0 (null) array. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/jama125/\hyperlink{jama__lu_8h}{jama\-\_\-lu.\-h}\end{DoxyCompactItemize}

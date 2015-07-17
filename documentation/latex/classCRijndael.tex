@@ -1,0 +1,166 @@
+\hypertarget{classCRijndael}{\section{C\-Rijndael Class Reference}
+\label{classCRijndael}\index{C\-Rijndael@{C\-Rijndael}}
+}
+
+
+{\ttfamily \#include $<$Rijndael.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{classCRijndael_ac1444c814f491f48deb465ef667581d2a45277dc10dfb5fb3b29dd622f2fa95e1}{E\-C\-B} =0, 
+\hyperlink{classCRijndael_ac1444c814f491f48deb465ef667581d2a0e8f618dfec3ca34a604ed2ec597b4be}{C\-B\-C} =1, 
+\hyperlink{classCRijndael_ac1444c814f491f48deb465ef667581d2aeae0d000ef07f3925d0f8d52f5768f64}{C\-F\-B} =2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCRijndael_ac8d9fa05974a5db55a2d358d3a9053d9}{C\-Rijndael} ()
+\item 
+virtual \hyperlink{classCRijndael_a5546851f5b559f4e6390ded7d0275fe2}{$\sim$\-C\-Rijndael} ()
+\item 
+void \hyperlink{classCRijndael_a6bb75a9fa43efda9d1de93af7f2fa33f}{Make\-Key} (char const $\ast$key, char const $\ast$chain, int keylength=D\-E\-F\-A\-U\-L\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-S\-I\-Z\-E, int block\-Size=D\-E\-F\-A\-U\-L\-T\-\_\-\-B\-L\-O\-C\-K\-\_\-\-S\-I\-Z\-E)
+\item 
+void \hyperlink{classCRijndael_a09387f9fe5f14a9215e124971024d74a}{Encrypt\-Block} (char const $\ast$in, char $\ast$result)
+\item 
+void \hyperlink{classCRijndael_aa7f895798f3da4ce102ba0c85e417ed0}{Decrypt\-Block} (char const $\ast$in, char $\ast$result)
+\item 
+void \hyperlink{classCRijndael_a2eed7961ae006ecbbe7d4db81139d2c0}{Encrypt} (char const $\ast$in, char $\ast$result, size\-\_\-t n, int i\-Mode=\hyperlink{classCRijndael_ac1444c814f491f48deb465ef667581d2a45277dc10dfb5fb3b29dd622f2fa95e1}{E\-C\-B})
+\item 
+void \hyperlink{classCRijndael_ab897e845d52d1b7a9d9f918300181383}{Decrypt} (char const $\ast$in, char $\ast$result, size\-\_\-t n, int i\-Mode=\hyperlink{classCRijndael_ac1444c814f491f48deb465ef667581d2a45277dc10dfb5fb3b29dd622f2fa95e1}{E\-C\-B})
+\item 
+int \hyperlink{classCRijndael_a7bd67837a28c50ff22b67a1c63856650}{Get\-Key\-Length} ()
+\item 
+int \hyperlink{classCRijndael_ab4f96cd740474df6929bdd515abe7395}{Get\-Block\-Size} ()
+\item 
+int \hyperlink{classCRijndael_a16e1f262a77e108dc3dbc67bf52041b7}{Get\-Rounds} ()
+\item 
+void \hyperlink{classCRijndael_a8f67681d34a25ba8a920353592ab4b1e}{Reset\-Chain} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static char const $\ast$ \hyperlink{classCRijndael_ac00e57b7d923c1a6f3e310203e856c9c}{sm\-\_\-chain0} = \char`\"{}\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classCRijndael_ac1444c814f491f48deb465ef667581d2}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{classCRijndael_ac1444c814f491f48deb465ef667581d2}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{E\-C\-B@{E\-C\-B}!C\-Rijndael@{C\-Rijndael}}\index{C\-Rijndael@{C\-Rijndael}!E\-C\-B@{E\-C\-B}}\item[{\em 
+\hypertarget{classCRijndael_ac1444c814f491f48deb465ef667581d2a45277dc10dfb5fb3b29dd622f2fa95e1}{E\-C\-B}\label{classCRijndael_ac1444c814f491f48deb465ef667581d2a45277dc10dfb5fb3b29dd622f2fa95e1}
+}]\index{C\-B\-C@{C\-B\-C}!C\-Rijndael@{C\-Rijndael}}\index{C\-Rijndael@{C\-Rijndael}!C\-B\-C@{C\-B\-C}}\item[{\em 
+\hypertarget{classCRijndael_ac1444c814f491f48deb465ef667581d2a0e8f618dfec3ca34a604ed2ec597b4be}{C\-B\-C}\label{classCRijndael_ac1444c814f491f48deb465ef667581d2a0e8f618dfec3ca34a604ed2ec597b4be}
+}]\index{C\-F\-B@{C\-F\-B}!C\-Rijndael@{C\-Rijndael}}\index{C\-Rijndael@{C\-Rijndael}!C\-F\-B@{C\-F\-B}}\item[{\em 
+\hypertarget{classCRijndael_ac1444c814f491f48deb465ef667581d2aeae0d000ef07f3925d0f8d52f5768f64}{C\-F\-B}\label{classCRijndael_ac1444c814f491f48deb465ef667581d2aeae0d000ef07f3925d0f8d52f5768f64}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCRijndael_ac8d9fa05974a5db55a2d358d3a9053d9}{\index{C\-Rijndael@{C\-Rijndael}!C\-Rijndael@{C\-Rijndael}}
+\index{C\-Rijndael@{C\-Rijndael}!CRijndael@{C\-Rijndael}}
+\subsubsection[{C\-Rijndael}]{\setlength{\rightskip}{0pt plus 5cm}C\-Rijndael\-::\-C\-Rijndael (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classCRijndael_ac8d9fa05974a5db55a2d358d3a9053d9}
+\hypertarget{classCRijndael_a5546851f5b559f4e6390ded7d0275fe2}{\index{C\-Rijndael@{C\-Rijndael}!$\sim$\-C\-Rijndael@{$\sim$\-C\-Rijndael}}
+\index{$\sim$\-C\-Rijndael@{$\sim$\-C\-Rijndael}!CRijndael@{C\-Rijndael}}
+\subsubsection[{$\sim$\-C\-Rijndael}]{\setlength{\rightskip}{0pt plus 5cm}C\-Rijndael\-::$\sim$\-C\-Rijndael (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classCRijndael_a5546851f5b559f4e6390ded7d0275fe2}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCRijndael_ab897e845d52d1b7a9d9f918300181383}{\index{C\-Rijndael@{C\-Rijndael}!Decrypt@{Decrypt}}
+\index{Decrypt@{Decrypt}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Decrypt}]{\setlength{\rightskip}{0pt plus 5cm}void C\-Rijndael\-::\-Decrypt (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{in, }
+\item[{char $\ast$}]{result, }
+\item[{size\-\_\-t}]{n, }
+\item[{int}]{i\-Mode = {\ttfamily {\bf E\-C\-B}}}
+\end{DoxyParamCaption}
+)}}\label{classCRijndael_ab897e845d52d1b7a9d9f918300181383}
+\hypertarget{classCRijndael_aa7f895798f3da4ce102ba0c85e417ed0}{\index{C\-Rijndael@{C\-Rijndael}!Decrypt\-Block@{Decrypt\-Block}}
+\index{Decrypt\-Block@{Decrypt\-Block}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Decrypt\-Block}]{\setlength{\rightskip}{0pt plus 5cm}void C\-Rijndael\-::\-Decrypt\-Block (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{in, }
+\item[{char $\ast$}]{result}
+\end{DoxyParamCaption}
+)}}\label{classCRijndael_aa7f895798f3da4ce102ba0c85e417ed0}
+\hypertarget{classCRijndael_a2eed7961ae006ecbbe7d4db81139d2c0}{\index{C\-Rijndael@{C\-Rijndael}!Encrypt@{Encrypt}}
+\index{Encrypt@{Encrypt}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Encrypt}]{\setlength{\rightskip}{0pt plus 5cm}void C\-Rijndael\-::\-Encrypt (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{in, }
+\item[{char $\ast$}]{result, }
+\item[{size\-\_\-t}]{n, }
+\item[{int}]{i\-Mode = {\ttfamily {\bf E\-C\-B}}}
+\end{DoxyParamCaption}
+)}}\label{classCRijndael_a2eed7961ae006ecbbe7d4db81139d2c0}
+\hypertarget{classCRijndael_a09387f9fe5f14a9215e124971024d74a}{\index{C\-Rijndael@{C\-Rijndael}!Encrypt\-Block@{Encrypt\-Block}}
+\index{Encrypt\-Block@{Encrypt\-Block}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Encrypt\-Block}]{\setlength{\rightskip}{0pt plus 5cm}void C\-Rijndael\-::\-Encrypt\-Block (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{in, }
+\item[{char $\ast$}]{result}
+\end{DoxyParamCaption}
+)}}\label{classCRijndael_a09387f9fe5f14a9215e124971024d74a}
+\hypertarget{classCRijndael_ab4f96cd740474df6929bdd515abe7395}{\index{C\-Rijndael@{C\-Rijndael}!Get\-Block\-Size@{Get\-Block\-Size}}
+\index{Get\-Block\-Size@{Get\-Block\-Size}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Get\-Block\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int C\-Rijndael\-::\-Get\-Block\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCRijndael_ab4f96cd740474df6929bdd515abe7395}
+\hypertarget{classCRijndael_a7bd67837a28c50ff22b67a1c63856650}{\index{C\-Rijndael@{C\-Rijndael}!Get\-Key\-Length@{Get\-Key\-Length}}
+\index{Get\-Key\-Length@{Get\-Key\-Length}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Get\-Key\-Length}]{\setlength{\rightskip}{0pt plus 5cm}int C\-Rijndael\-::\-Get\-Key\-Length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCRijndael_a7bd67837a28c50ff22b67a1c63856650}
+\hypertarget{classCRijndael_a16e1f262a77e108dc3dbc67bf52041b7}{\index{C\-Rijndael@{C\-Rijndael}!Get\-Rounds@{Get\-Rounds}}
+\index{Get\-Rounds@{Get\-Rounds}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Get\-Rounds}]{\setlength{\rightskip}{0pt plus 5cm}int C\-Rijndael\-::\-Get\-Rounds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCRijndael_a16e1f262a77e108dc3dbc67bf52041b7}
+\hypertarget{classCRijndael_a6bb75a9fa43efda9d1de93af7f2fa33f}{\index{C\-Rijndael@{C\-Rijndael}!Make\-Key@{Make\-Key}}
+\index{Make\-Key@{Make\-Key}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Make\-Key}]{\setlength{\rightskip}{0pt plus 5cm}void C\-Rijndael\-::\-Make\-Key (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{key, }
+\item[{char const $\ast$}]{chain, }
+\item[{int}]{keylength = {\ttfamily DEFAULT\-\_\-BLOCK\-\_\-SIZE}, }
+\item[{int}]{block\-Size = {\ttfamily DEFAULT\-\_\-BLOCK\-\_\-SIZE}}
+\end{DoxyParamCaption}
+)}}\label{classCRijndael_a6bb75a9fa43efda9d1de93af7f2fa33f}
+\hypertarget{classCRijndael_a8f67681d34a25ba8a920353592ab4b1e}{\index{C\-Rijndael@{C\-Rijndael}!Reset\-Chain@{Reset\-Chain}}
+\index{Reset\-Chain@{Reset\-Chain}!CRijndael@{C\-Rijndael}}
+\subsubsection[{Reset\-Chain}]{\setlength{\rightskip}{0pt plus 5cm}void C\-Rijndael\-::\-Reset\-Chain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCRijndael_a8f67681d34a25ba8a920353592ab4b1e}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCRijndael_ac00e57b7d923c1a6f3e310203e856c9c}{\index{C\-Rijndael@{C\-Rijndael}!sm\-\_\-chain0@{sm\-\_\-chain0}}
+\index{sm\-\_\-chain0@{sm\-\_\-chain0}!CRijndael@{C\-Rijndael}}
+\subsubsection[{sm\-\_\-chain0}]{\setlength{\rightskip}{0pt plus 5cm}char const $\ast$ C\-Rijndael\-::sm\-\_\-chain0 = \char`\"{}\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\textbackslash{}0\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}}\label{classCRijndael_ac00e57b7d923c1a6f3e310203e856c9c}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/utils/\hyperlink{Rijndael_8h}{Rijndael.\-h}\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/utils/\hyperlink{Rijndael_8cpp}{Rijndael.\-cpp}\end{DoxyCompactItemize}

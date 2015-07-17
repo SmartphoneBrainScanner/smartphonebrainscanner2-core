@@ -1,0 +1,225 @@
+\hypertarget{classTNT_1_1Array3D}{\section{T\-N\-T\-:\-:Array3\-D$<$ T $>$ Class Template Reference}
+\label{classTNT_1_1Array3D}\index{T\-N\-T\-::\-Array3\-D$<$ T $>$@{T\-N\-T\-::\-Array3\-D$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$tnt\-\_\-array3d.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef T \hyperlink{classTNT_1_1Array3D_a51945370abf416e829e6a50bdb0af6d5}{value\-\_\-type}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTNT_1_1Array3D_a94ceeeadc5904e9ec4069ef61394ff8e}{Array3\-D} ()
+\item 
+\hyperlink{classTNT_1_1Array3D_a3556263018d605d22ce74699f3898559}{Array3\-D} (int m, int n, int g)
+\item 
+\hyperlink{classTNT_1_1Array3D_a3e5d89a3999c39540a441aeebcd8edc4}{Array3\-D} (int m, int n, int g, T val)
+\item 
+\hyperlink{classTNT_1_1Array3D_a5830c3a1275b2498bdceb6502e63c28f}{Array3\-D} (int m, int n, int g, T $\ast$a)
+\item 
+\hyperlink{classTNT_1_1Array3D_a35b7704b6c061b4150d64592650ba83f}{operator T $\ast$$\ast$$\ast$} ()
+\item 
+\hyperlink{classTNT_1_1Array3D_a420ffed5ca81952d989afe406450a9b0}{operator const T $\ast$$\ast$$\ast$} ()
+\item 
+\hyperlink{classTNT_1_1Array3D_ae137326853df4e4cdcc52afff3f5d85a}{Array3\-D} (const \hyperlink{classTNT_1_1Array3D}{Array3\-D} \&A)
+\item 
+\hyperlink{classTNT_1_1Array3D}{Array3\-D} \& \hyperlink{classTNT_1_1Array3D_a405e5c9c24c7b3895533fa8f870f9bfd}{operator=} (const T \&a)
+\item 
+\hyperlink{classTNT_1_1Array3D}{Array3\-D} \& \hyperlink{classTNT_1_1Array3D_a13fa6cf87fcfc5847972569f325f9b56}{operator=} (const \hyperlink{classTNT_1_1Array3D}{Array3\-D} \&A)
+\item 
+\hyperlink{classTNT_1_1Array3D}{Array3\-D} \& \hyperlink{classTNT_1_1Array3D_aded40455c8a0b48c3c3d0688ea90180a}{ref} (const \hyperlink{classTNT_1_1Array3D}{Array3\-D} \&A)
+\item 
+\hyperlink{classTNT_1_1Array3D}{Array3\-D} \hyperlink{classTNT_1_1Array3D_abef414d4382ab6cac80bb32a53f8db55}{copy} () const 
+\item 
+\hyperlink{classTNT_1_1Array3D}{Array3\-D} \& \hyperlink{classTNT_1_1Array3D_ac9004a4cc385cbfc0d3b742efd605e1c}{inject} (const \hyperlink{classTNT_1_1Array3D}{Array3\-D} \&A)
+\item 
+T $\ast$$\ast$ \hyperlink{classTNT_1_1Array3D_aea9175ed3125b3061f3be0db72656518}{operator\mbox{[}$\,$\mbox{]}} (int i)
+\item 
+const T $\ast$const $\ast$ \hyperlink{classTNT_1_1Array3D_ad5587fca33f70c1b3b3f421fc5087c25}{operator\mbox{[}$\,$\mbox{]}} (int i) const 
+\item 
+int \hyperlink{classTNT_1_1Array3D_ad75b16e73207a349a9a996659c338296}{dim1} () const 
+\item 
+int \hyperlink{classTNT_1_1Array3D_a458595e0b81ebbc1b193b4b737defd00}{dim2} () const 
+\item 
+int \hyperlink{classTNT_1_1Array3D_a0f147ed03d878ed375e21ef8a00af483}{dim3} () const 
+\item 
+\hyperlink{classTNT_1_1Array3D_af22e1bc22155dc84168ae00f5f26258b}{$\sim$\-Array3\-D} ()
+\item 
+int \hyperlink{classTNT_1_1Array3D_a50bbefb0aa842c2d7208b67fb09bb0d9}{ref\-\_\-count} ()
+\item 
+\hyperlink{classTNT_1_1Array3D}{Array3\-D} \hyperlink{classTNT_1_1Array3D_a365b3f6c5eb41e5189b20b25d80aee98}{subarray} (int i0, int i1, int j0, int j1, int k0, int k1)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classTNT_1_1Array3D_a51945370abf416e829e6a50bdb0af6d5}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!value\-\_\-type@{value\-\_\-type}}
+\index{value\-\_\-type@{value\-\_\-type}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{value\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ typedef T {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::{\bf value\-\_\-type}}}\label{classTNT_1_1Array3D_a51945370abf416e829e6a50bdb0af6d5}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classTNT_1_1Array3D_a94ceeeadc5904e9ec4069ef61394ff8e}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!Array3\-D@{Array3\-D}}
+\index{Array3\-D@{Array3\-D}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{Array3\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::{\bf Array3\-D} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTNT_1_1Array3D_a94ceeeadc5904e9ec4069ef61394ff8e}
+\hypertarget{classTNT_1_1Array3D_a3556263018d605d22ce74699f3898559}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!Array3\-D@{Array3\-D}}
+\index{Array3\-D@{Array3\-D}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{Array3\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::{\bf Array3\-D} (
+\begin{DoxyParamCaption}
+\item[{int}]{m, }
+\item[{int}]{n, }
+\item[{int}]{g}
+\end{DoxyParamCaption}
+)}}\label{classTNT_1_1Array3D_a3556263018d605d22ce74699f3898559}
+\hypertarget{classTNT_1_1Array3D_a3e5d89a3999c39540a441aeebcd8edc4}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!Array3\-D@{Array3\-D}}
+\index{Array3\-D@{Array3\-D}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{Array3\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::{\bf Array3\-D} (
+\begin{DoxyParamCaption}
+\item[{int}]{m, }
+\item[{int}]{n, }
+\item[{int}]{g, }
+\item[{T}]{val}
+\end{DoxyParamCaption}
+)}}\label{classTNT_1_1Array3D_a3e5d89a3999c39540a441aeebcd8edc4}
+\hypertarget{classTNT_1_1Array3D_a5830c3a1275b2498bdceb6502e63c28f}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!Array3\-D@{Array3\-D}}
+\index{Array3\-D@{Array3\-D}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{Array3\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::{\bf Array3\-D} (
+\begin{DoxyParamCaption}
+\item[{int}]{m, }
+\item[{int}]{n, }
+\item[{int}]{g, }
+\item[{T $\ast$}]{a}
+\end{DoxyParamCaption}
+)}}\label{classTNT_1_1Array3D_a5830c3a1275b2498bdceb6502e63c28f}
+\hypertarget{classTNT_1_1Array3D_ae137326853df4e4cdcc52afff3f5d85a}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!Array3\-D@{Array3\-D}}
+\index{Array3\-D@{Array3\-D}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{Array3\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::{\bf Array3\-D} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array3\-D}$<$ T $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_ae137326853df4e4cdcc52afff3f5d85a}
+\hypertarget{classTNT_1_1Array3D_af22e1bc22155dc84168ae00f5f26258b}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!$\sim$\-Array3\-D@{$\sim$\-Array3\-D}}
+\index{$\sim$\-Array3\-D@{$\sim$\-Array3\-D}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{$\sim$\-Array3\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::$\sim${\bf Array3\-D} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classTNT_1_1Array3D_af22e1bc22155dc84168ae00f5f26258b}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classTNT_1_1Array3D_abef414d4382ab6cac80bb32a53f8db55}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!copy@{copy}}
+\index{copy@{copy}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Array3\-D}$<$ T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::copy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classTNT_1_1Array3D_abef414d4382ab6cac80bb32a53f8db55}
+\hypertarget{classTNT_1_1Array3D_ad75b16e73207a349a9a996659c338296}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!dim1@{dim1}}
+\index{dim1@{dim1}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{dim1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::dim1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_ad75b16e73207a349a9a996659c338296}
+\hypertarget{classTNT_1_1Array3D_a458595e0b81ebbc1b193b4b737defd00}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!dim2@{dim2}}
+\index{dim2@{dim2}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{dim2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::dim2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_a458595e0b81ebbc1b193b4b737defd00}
+\hypertarget{classTNT_1_1Array3D_a0f147ed03d878ed375e21ef8a00af483}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!dim3@{dim3}}
+\index{dim3@{dim3}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{dim3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::dim3 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_a0f147ed03d878ed375e21ef8a00af483}
+\hypertarget{classTNT_1_1Array3D_ac9004a4cc385cbfc0d3b742efd605e1c}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!inject@{inject}}
+\index{inject@{inject}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{inject}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Array3\-D}$<$ T $>$ \& {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::inject (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array3\-D}$<$ T $>$ \&}]{A}
+\end{DoxyParamCaption}
+)}}\label{classTNT_1_1Array3D_ac9004a4cc385cbfc0d3b742efd605e1c}
+\hypertarget{classTNT_1_1Array3D_a420ffed5ca81952d989afe406450a9b0}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!operator const T $\ast$$\ast$$\ast$@{operator const T $\ast$$\ast$$\ast$}}
+\index{operator const T $\ast$$\ast$$\ast$@{operator const T $\ast$$\ast$$\ast$}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{operator const T $\ast$$\ast$$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::operator const T $\ast$$\ast$$\ast$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_a420ffed5ca81952d989afe406450a9b0}
+\hypertarget{classTNT_1_1Array3D_a35b7704b6c061b4150d64592650ba83f}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!operator T $\ast$$\ast$$\ast$@{operator T $\ast$$\ast$$\ast$}}
+\index{operator T $\ast$$\ast$$\ast$@{operator T $\ast$$\ast$$\ast$}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{operator T $\ast$$\ast$$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::operator T $\ast$$\ast$$\ast$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_a35b7704b6c061b4150d64592650ba83f}
+\hypertarget{classTNT_1_1Array3D_a405e5c9c24c7b3895533fa8f870f9bfd}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!operator=@{operator=}}
+\index{operator=@{operator=}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Array3\-D}$<$ T $>$ \& {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_a405e5c9c24c7b3895533fa8f870f9bfd}
+\hypertarget{classTNT_1_1Array3D_a13fa6cf87fcfc5847972569f325f9b56}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!operator=@{operator=}}
+\index{operator=@{operator=}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Array3\-D}$<$ T $>$ \& {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array3\-D}$<$ T $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_a13fa6cf87fcfc5847972569f325f9b56}
+\hypertarget{classTNT_1_1Array3D_aea9175ed3125b3061f3be0db72656518}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ T $\ast$$\ast$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_aea9175ed3125b3061f3be0db72656518}
+\hypertarget{classTNT_1_1Array3D_ad5587fca33f70c1b3b3f421fc5087c25}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ const T $\ast$const $\ast$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_ad5587fca33f70c1b3b3f421fc5087c25}
+\hypertarget{classTNT_1_1Array3D_aded40455c8a0b48c3c3d0688ea90180a}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!ref@{ref}}
+\index{ref@{ref}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{ref}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Array3\-D}$<$ T $>$ \& {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::ref (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array3\-D}$<$ T $>$ \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_aded40455c8a0b48c3c3d0688ea90180a}
+\hypertarget{classTNT_1_1Array3D_a50bbefb0aa842c2d7208b67fb09bb0d9}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!ref\-\_\-count@{ref\-\_\-count}}
+\index{ref\-\_\-count@{ref\-\_\-count}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{ref\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::ref\-\_\-count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTNT_1_1Array3D_a50bbefb0aa842c2d7208b67fb09bb0d9}
+\hypertarget{classTNT_1_1Array3D_a365b3f6c5eb41e5189b20b25d80aee98}{\index{T\-N\-T\-::\-Array3\-D@{T\-N\-T\-::\-Array3\-D}!subarray@{subarray}}
+\index{subarray@{subarray}!TNT::Array3D@{T\-N\-T\-::\-Array3\-D}}
+\subsubsection[{subarray}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Array3\-D}$<$ T $>$ {\bf T\-N\-T\-::\-Array3\-D}$<$ T $>$\-::subarray (
+\begin{DoxyParamCaption}
+\item[{int}]{i0, }
+\item[{int}]{i1, }
+\item[{int}]{j0, }
+\item[{int}]{j1, }
+\item[{int}]{k0, }
+\item[{int}]{k1}
+\end{DoxyParamCaption}
+)}}\label{classTNT_1_1Array3D_a365b3f6c5eb41e5189b20b25d80aee98}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/media/philipjhj/\-Data/\-One\-Drive/\-Studie/\-Studenterprogrammør/\-S\-B\-S3/smartphonebrainscanner2-\/core/src/jama125/\hyperlink{tnt__array3d_8h}{tnt\-\_\-array3d.\-h}\end{DoxyCompactItemize}
