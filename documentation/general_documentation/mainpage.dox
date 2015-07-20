@@ -1,0 +1,7 @@
+/*! \mainpage My Personal Index Page
+ *
+ * \section intro_sec Introduction
+ *
+ * SmartphoneBrainScanner2 is a framework for building cross-platform real-time EEG applications. Originally developed at Technical University of Denmark for collecting and analyzing signals from Emotiv EPOC headset, its extensible architecture allows working with various EEG systems and multiple platforms.
+ *
+ */

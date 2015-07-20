@@ -22,3 +22,9 @@ android/
 
 # OSX
 .DS_Store
+
+
+# Doxygen output
+documentation/html/
+documentation/latex/
+!documentation/latex/refman.pdf
