@@ -22,3 +22,6 @@ android/
 
 # OSX
 .DS_Store
+
+# Doxygen generated documentation
+doc/*
