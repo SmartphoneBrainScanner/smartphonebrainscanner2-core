@@ -1,21 +1,36 @@
 QT += network
 
 macx {
+    message("OSX")
+
     LIBS += -framework IOKit -framework CoreFoundation
     SOURCES += $$PWD/platform/osx/hid.c
     HEADERS +=  $$PWD/platform/osx/hidapi.h
-    message("OSX")
 }
 
 unix:!macx:!android-g++ {
+    message("LINUX")
+
     LIBS += `pkg-config libudev --libs` -lrt
     SOURCES += $$PWD/platform/linux/hid.c
     HEADERS +=  $$PWD/platform/linux/hidapi.h
-    message("LINUX")
+}
+
+macx:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-macx.a) {
+    message("Binary decryptor for Mac found!")
+    LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-macx
+} else:android:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-android.a) {
+    message("Binary decryptor for Android found!")
+    LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-android
+} else:unix:!android:!macx:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-unix.a) {
+    message("Binary decryptor for Linux found!")
+    LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-unix
+} else {
+    message("No suitable binary decryptor was found, using dummy decryptor instead. Expect random noise")
+    SOURCES += $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp
 }
 
 INCLUDEPATH += $$PWD
-
 
 SOURCES += $$PWD/FFTReal.cpp \
     $$PWD/utils/Rijndael.cpp \
@@ -40,7 +55,6 @@ SOURCES += $$PWD/FFTReal.cpp \
     $$PWD/hardware/emotiv/sbs2emotivmounter.cpp \
     $$PWD/hardware/emotiv/sbs2emotivdatareader.cpp \
     $$PWD/hardware/emotiv/sbs2emotivpacket.cpp \
-    $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp \
     $$PWD/source_reconstruction/sparse/math_utilities.cpp \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.cpp \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.cpp \
