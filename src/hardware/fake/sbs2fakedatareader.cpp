@@ -78,7 +78,7 @@ void Sbs2FakeDataReader::start()
 {
     if (filename.length() == 0)
     {
-        qDebug() << "No data file!";
+        qDebug() << "Sbs2FakeDataReader::No data file!";
         return;
     }
 

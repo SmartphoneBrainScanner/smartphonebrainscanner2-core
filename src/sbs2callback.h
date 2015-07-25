@@ -93,6 +93,9 @@ public slots:
     void turnFilterOn(int fbandLow_, int fbandHigh_);
     void turnFilterOff();
 
+    void turnPcaOn(int threshold_);
+    void turnPcaOff();
+
     void turnChannelSpectrogramOn(int spectrogramChannelSamples_ = 128, int spectrogramChannelLength_ = 128, int spectrogramChannelDelta_ = 0);
     void turnChannelSpectrogramOff();
 
