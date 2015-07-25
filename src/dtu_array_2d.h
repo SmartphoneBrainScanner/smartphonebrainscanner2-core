@@ -28,6 +28,9 @@
 #include "jama125/tnt_array2d_utils.h"
 #include "jama125/jama_svd.h"
 
+// MRA
+#include "jama125/jama_eig.h"
+
 
 
 namespace DTU
@@ -63,6 +66,9 @@ class DtuArray2D : public TNT::Array2D<T>
         void pinv(DtuArray2D<T>* A); // write to given variable
         inline T trace();
         void toIdentityMatrix();
+
+        // MRA
+        int getEig(DtuArray2D<T>* V, DtuArray2D<T>* D);
 		
         inline int dim1() const { return this->m_; } //rows
         inline int dim2() const { return this->n_; } //columns
@@ -429,10 +435,25 @@ int DtuArray2D<T>::subtract(const DtuArray2D<T>* B, DtuArray2D<T>* out)
 	
 }
 
+// MRA
+template <class T>
+int DtuArray2D<T>::getEig(DtuArray2D<T>* V, DtuArray2D<T>* D)
+{
+    JAMA::Eigenvalue<T> A = JAMA::Eigenvalue<T>(this->toTntArray2D());
+
+    A.getV(*V);
+    A.getD(*D);
+
+    return 0;
+}
+
 template <class T>
 int DtuArray2D<T>::getSVD(JAMA::SVD<T> &out)
 {
     out = JAMA::SVD<T>(this->toTntArray2D());
+
+    // MRA
+    return 0;
 }
 
 template <class T>

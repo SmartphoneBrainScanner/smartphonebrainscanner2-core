@@ -41,6 +41,16 @@ void Sbs2Callback::turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrder_)
     sbs2DataHandler->turnFilterOn(fbandLow_,fbandHigh_,filterOrder_);
 }
 
+void Sbs2Callback::turnPcaOn(int threshold_)
+{
+    sbs2DataHandler->turnPcaOn(threshold_);
+}
+
+void Sbs2Callback::turnPcaOff()
+{
+    sbs2DataHandler->turnPcaOff();
+}
+
 QString Sbs2Callback::getRawFilename()
 {
     return sbs2DataHandler->getRawFilename();

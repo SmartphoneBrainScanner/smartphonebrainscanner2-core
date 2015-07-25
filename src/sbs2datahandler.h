@@ -30,6 +30,9 @@
 #include <source_reconstruction/sbs2sourcereconstruction.h>
 #include <QtCore>
 
+// MRA
+#include <sbs2pca.h>
+
 class Sbs2NetworkHandler;
 
 class Sbs2DataHandler : public QObject
@@ -41,6 +44,9 @@ public:
     
     //filtering
     virtual void filter();
+
+    // MRA
+    void pca_filter();
 
     //recording
     virtual void record();
@@ -57,12 +63,24 @@ public:
     DTU::DtuArray2D<double>* getSourceReconstructionSpectrogramValues();
     DTU::DtuArray2D<double>* getSourceReconstructionMeanValues();
 
+    // MRA
+    DTU::DtuArray2D<double>* getPcaValues() { return pcaReturnValues; }
+
     int getPacketZero();
 
 protected:
     int samplesCollected;
     Sbs2Packet* thisPacket;
 
+    // MRA
+    Sbs2Pca* sbs2Pca;
+    int pcaSamplesSkipped;
+    int pcaBlockSize;
+    int pcaBlockSkip;
+    int pcaThreshold;
+    int pcaOn;
+    DTU::DtuArray2D<double>* toPcaValues;
+    DTU::DtuArray2D<double>* pcaReturnValues;
 
     //filtering
     int filterOn;
@@ -134,8 +152,15 @@ signals:
     void setWindowTypeSignal(Sbs2Spectrogram::WindowType windowType);
     void udpMessageReceived(QString data, QString sender, int port);
 
+    // MRA
+    void pcaUpdated();
+
 public slots:
     void setThisPacket(Sbs2Packet* thisPacket_);
+
+    // MRA PCA
+    void turnPcaOn(int threshold_);
+    void turnPcaOff();
 
     //filtering
     void turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrder_);

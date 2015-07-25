@@ -43,7 +43,7 @@ void Sbs2Filter::loadFilter()
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        qDebug() << "ERROR: file problem for " << filename;
+        qDebug() << "ERROR: file problem";
         return;
     }
 

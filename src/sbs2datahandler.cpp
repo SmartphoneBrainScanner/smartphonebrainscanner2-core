@@ -48,8 +48,79 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     sbs2NetworkHandler = new Sbs2NetworkHandler();
     networkSendRawDataOn = 0;
 
+
+    // MRA
+    sbs2Pca = 0;
+    pcaOn = 0;
+    turnPcaOn(12000);
+
     QThreadPool::globalInstance()->setMaxThreadCount(6); //3 is minimal right now, annyoing that it needs to be set manually
     qDebug() <<  QThreadPool::globalInstance()->activeThreadCount() << QThreadPool::globalInstance()->maxThreadCount() << QThread::idealThreadCount();
+
+}
+
+// MRA
+void Sbs2DataHandler::pca_filter()
+{
+    if(!pcaOn)
+        return;
+
+    for (int ch=0; ch < Sbs2Common::channelsNo(); ++ch)
+    {
+        (*toPcaValues)[pcaSamplesSkipped][ch] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)];
+    }
+
+    pcaSamplesSkipped++;
+
+    // are we ready to process?
+    if(pcaSamplesSkipped == pcaBlockSkip)
+    {
+        // feed new data
+        sbs2Pca->newData(toPcaValues);
+
+        // do pca stuff
+        sbs2Pca->doPca(pcaReturnValues);
+
+        pcaSamplesSkipped = 0;
+
+        emit pcaUpdated();
+    }
+}
+
+
+
+// MRA
+void Sbs2DataHandler::turnPcaOn(int threshold_)
+{
+    const int channels = 14;
+    pcaBlockSize = 64;
+    pcaBlockSkip = 8;
+    pcaThreshold = threshold_;
+
+    pcaSamplesSkipped = 0;
+
+    if(sbs2Pca == 0)
+        sbs2Pca = Sbs2Pca::New(channels, pcaBlockSize, pcaBlockSkip, pcaThreshold);
+
+    toPcaValues = new DTU::DtuArray2D<double>(pcaBlockSkip, channels);
+    (*toPcaValues) = 0;
+
+    pcaReturnValues = new DTU::DtuArray2D<double>(pcaBlockSkip, channels);
+    (*pcaReturnValues) = 0;
+
+    pcaOn = 1;
+}
+
+// MRA
+void Sbs2DataHandler::turnPcaOff()
+{
+    if(sbs2Pca != 0)
+    {
+        delete sbs2Pca;
+        sbs2Pca = 0;
+    }
+
+    pcaOn = 0;
 }
 
 void Sbs2DataHandler::setThisPacket(Sbs2Packet *thisPacket_)
