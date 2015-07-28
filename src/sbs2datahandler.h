@@ -32,6 +32,8 @@
 
 // MRA
 #include <sbs2pca.h>
+#include "sbs2dummypca.h"
+
 
 class Sbs2NetworkHandler;
 
@@ -63,9 +65,6 @@ public:
     DTU::DtuArray2D<double>* getSourceReconstructionSpectrogramValues();
     DTU::DtuArray2D<double>* getSourceReconstructionMeanValues();
 
-    // MRA
-    DTU::DtuArray2D<double>* getPcaValues() { return pcaReturnValues; }
-
     int getPacketZero();
 
 protected:
@@ -73,7 +72,7 @@ protected:
     Sbs2Packet* thisPacket;
 
     // MRA
-    Sbs2Pca* sbs2Pca;
+    Sbs2DummyPca* sbs2Pca;
     int pcaSamplesSkipped;
     int pcaBlockSize;
     int pcaBlockSkip;
