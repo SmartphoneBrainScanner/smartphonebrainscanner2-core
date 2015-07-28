@@ -68,23 +68,15 @@ void Sbs2DataHandler::pca_filter()
 
     for (int ch=0; ch < Sbs2Common::channelsNo(); ++ch)
     {
-        (*toPcaValues)[pcaSamplesSkipped][ch] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)];
+        (*toPcaValues)[0][ch] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)];
     }
 
-    pcaSamplesSkipped++;
+    // do pca stuff
+    sbs2Pca->doPca(toPcaValues, pcaReturnValues);
 
-    // are we ready to process?
-    if(pcaSamplesSkipped == pcaBlockSkip)
+    for (int ch=0; ch < Sbs2Common::channelsNo(); ++ch)
     {
-        // feed new data
-        sbs2Pca->newData(toPcaValues);
-
-        // do pca stuff
-        sbs2Pca->doPca(pcaReturnValues);
-
-        pcaSamplesSkipped = 0;
-
-        emit pcaUpdated();
+        thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)] = (*pcaReturnValues)[0][ch];
     }
 }
 
@@ -94,19 +86,14 @@ void Sbs2DataHandler::pca_filter()
 void Sbs2DataHandler::turnPcaOn(int threshold_)
 {
     const int channels = 14;
-    pcaBlockSize = 64;
-    pcaBlockSkip = 8;
-    pcaThreshold = threshold_;
-
-    pcaSamplesSkipped = 0;
 
     if(sbs2Pca == 0)
-        sbs2Pca = Sbs2Pca::New(channels, pcaBlockSize, pcaBlockSkip, pcaThreshold);
+        sbs2Pca = Sbs2DummyPca::New(channels); //, pcaBlockSize, pcaBlockSkip, pcaThreshold);
 
-    toPcaValues = new DTU::DtuArray2D<double>(pcaBlockSkip, channels);
+    toPcaValues = new DTU::DtuArray2D<double>(1, channels);
     (*toPcaValues) = 0;
 
-    pcaReturnValues = new DTU::DtuArray2D<double>(pcaBlockSkip, channels);
+    pcaReturnValues = new DTU::DtuArray2D<double>(1, channels);
     (*pcaReturnValues) = 0;
 
     pcaOn = 1;

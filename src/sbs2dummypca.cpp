@@ -4,16 +4,16 @@
 Sbs2DummyPca* Sbs2DummyPca::m_pInstance = 0;
 
 
-Sbs2DummyPca* Sbs2DummyPca::New(QObject *parent)
+Sbs2DummyPca* Sbs2DummyPca::New(int channels_, QObject *parent)
 {
     if (!m_pInstance)
-        m_pInstance = new Sbs2DummyPca(parent);
+        m_pInstance = new Sbs2DummyPca(channels_, parent);
 
     return m_pInstance;
 }
 
 
-Sbs2DummyPca::Sbs2DummyPca(QObject *parent): QObject(parent)
+Sbs2DummyPca::Sbs2DummyPca(int channels_, QObject *parent): QObject(parent), channels(channels_)
 {
 }
 
@@ -21,10 +21,10 @@ Sbs2DummyPca::Sbs2DummyPca(QObject *parent): QObject(parent)
 void Sbs2DummyPca::doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues)
 {
 
-    if (values->dim1() != returnValues->dim1()) // 14 for emotiv
+    if (values->dim1() != 1)
         return;
 
-    if (values->dim2() != 1) // columns of the values
+    if (values->dim2() != returnValues->dim2()) // columns of the values
         return;
 
     for (int j=0; j<values->dim1(); j++)

@@ -41,7 +41,7 @@ class Sbs2DummyPca : public QObject
     Q_OBJECT
 
 public:
-    static Sbs2DummyPca* New(QObject *parent = 0);
+    static Sbs2DummyPca* New(int channels_, QObject *parent = 0);
     void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
     ~Sbs2DummyPca();
 
@@ -49,11 +49,11 @@ private:
 
 private:
      static Sbs2DummyPca* m_pInstance;
-     Sbs2DummyPca(QObject *parent = 0);
+     Sbs2DummyPca(int channels_, QObject *parent = 0);
 
      DTU::DtuArray2D<double>* inputdata;
 
-
+     int channels; // number of channels
 
 signals:
     
