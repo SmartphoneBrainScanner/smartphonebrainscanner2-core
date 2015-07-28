@@ -35,6 +35,15 @@ class Sbs2Callback : public QObject
     Q_OBJECT
 public:
     explicit Sbs2Callback(QObject *parent = 0);
+    /**
+     * @brief getData gets called by the hardware specific datareader when a
+     * new data packet is ready to be processed.
+     *
+     * This implementation is a dummy and should be overwritten whenever you
+     * extend the Sbs2Callback class.
+     *
+     * @param packet Pointer to a packet containing new data to be processed.
+     */
     virtual void getData(Sbs2Packet* packet) {};
     static int getCurrentPacketCounter();
     static int getCurrentPacket();
