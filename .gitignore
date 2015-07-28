@@ -25,3 +25,6 @@ android/
 
 # Doxygen generated documentation
 doc/*
+
+# Emacs backup
+*~
