@@ -77,7 +77,6 @@ protected:
     int pcaBlockSize;
     int pcaBlockSkip;
     int pcaThreshold;
-    int pcaOn;
     DTU::DtuArray2D<double>* toPcaValues;
     DTU::DtuArray2D<double>* pcaReturnValues;
 
@@ -158,7 +157,7 @@ public slots:
     void setThisPacket(Sbs2Packet* thisPacket_);
 
     // MRA PCA
-    void turnPcaOn(int threshold_);
+    void turnPcaOn();
     void turnPcaOff();
 
     //filtering

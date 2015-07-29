@@ -20,40 +20,41 @@
 #ifndef SBS2DUMMYPCA_H
 #define SBS2DUMMYPCA_H
 
+
 #include <QObject>
-#include <sbs2common.h>
 #include <QFile>
 #include <QStringList>
-#include <dtu_array_2d.h>
 
-/**
-  @todo Filter should be a container for particular implementations of the filter, either static or adaptive.
-  */
+#include "sbs2common.h"
+#include "dtu_array_2d.h"
 
 
 /**
-  @class Class of a temporal filter.
-  */
-
+    @class DummyPca
+    \brief Principal component temporal filter.
+ */
 
 class Sbs2DummyPca : public QObject
 {
     Q_OBJECT
 
 public:
-    static Sbs2DummyPca* New(int channels_, QObject *parent = 0);
-    void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
+    Sbs2DummyPca(int channels_, int blockSize_ = 64, QObject *parent = 0);
     ~Sbs2DummyPca();
 
-private:
+    void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
+    void turnOn() { on = true; }
+    void turnOff() { on = false; }
+    bool isOn() { return on; }
 
 private:
-     static Sbs2DummyPca* m_pInstance;
-     Sbs2DummyPca(int channels_, QObject *parent = 0);
-
-     DTU::DtuArray2D<double>* inputdata;
-
      int channels; // number of channels
+     int blockSize;
+     bool on;
+
+     DTU::DtuArray2D<double>* dataDeque;
+     int dataDequeStart;
+     int dataDequeEnd;
 
 signals:
     

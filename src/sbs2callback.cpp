@@ -41,9 +41,9 @@ void Sbs2Callback::turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrder_)
     sbs2DataHandler->turnFilterOn(fbandLow_,fbandHigh_,filterOrder_);
 }
 
-void Sbs2Callback::turnPcaOn(int threshold_)
+void Sbs2Callback::turnPcaOn()
 {
-    sbs2DataHandler->turnPcaOn(threshold_);
+    sbs2DataHandler->turnPcaOn();
 }
 
 void Sbs2Callback::turnPcaOff()

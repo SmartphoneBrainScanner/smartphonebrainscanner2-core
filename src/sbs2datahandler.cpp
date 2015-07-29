@@ -50,21 +50,22 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
 
 
     // MRA
-    sbs2Pca = 0;
-    pcaOn = 0;
-    turnPcaOn(12000);
+    // sbs2Pca = 0;
+    sbs2Pca = new Sbs2DummyPca(14, 64);
+    toPcaValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
+    (*toPcaValues) = 0;
+
+    pcaReturnValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
+    (*pcaReturnValues) = 0;
+
 
     QThreadPool::globalInstance()->setMaxThreadCount(6); //3 is minimal right now, annyoing that it needs to be set manually
     qDebug() <<  QThreadPool::globalInstance()->activeThreadCount() << QThreadPool::globalInstance()->maxThreadCount() << QThread::idealThreadCount();
-
 }
 
 // MRA
 void Sbs2DataHandler::pca_filter()
 {
-    if(!pcaOn)
-        return;
-
     for (int ch=0; ch < Sbs2Common::channelsNo(); ++ch)
     {
         (*toPcaValues)[0][ch] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)];
@@ -80,34 +81,17 @@ void Sbs2DataHandler::pca_filter()
 }
 
 
-
 // MRA
-void Sbs2DataHandler::turnPcaOn(int threshold_)
+void Sbs2DataHandler::turnPcaOn()
 {
-    const int channels = 14;
-
-    if(sbs2Pca == 0)
-        sbs2Pca = Sbs2DummyPca::New(channels); //, pcaBlockSize, pcaBlockSkip, pcaThreshold);
-
-    toPcaValues = new DTU::DtuArray2D<double>(1, channels);
-    (*toPcaValues) = 0;
-
-    pcaReturnValues = new DTU::DtuArray2D<double>(1, channels);
-    (*pcaReturnValues) = 0;
-
-    pcaOn = 1;
+    sbs2Pca->turnOn();
 }
+
 
 // MRA
 void Sbs2DataHandler::turnPcaOff()
 {
-    if(sbs2Pca != 0)
-    {
-        delete sbs2Pca;
-        sbs2Pca = 0;
-    }
-
-    pcaOn = 0;
+    sbs2Pca->turnOff();
 }
 
 void Sbs2DataHandler::setThisPacket(Sbs2Packet *thisPacket_)
@@ -677,6 +661,7 @@ void Sbs2DataHandler::setSourceReconstructionVerticesToExtract(QVector<int> *ver
 
 Sbs2DataHandler::~Sbs2DataHandler()
 {
+    delete sbs2Pca;
 }
 
 void Sbs2DataHandler::setVerticesToExtract(QVector<int> *verticesToExtract)
