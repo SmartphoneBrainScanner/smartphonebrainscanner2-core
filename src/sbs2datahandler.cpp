@@ -52,13 +52,12 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
 
     // MRA
     // sbs2Pca = 0;
-    sbs2Pca = new Sbs2DummyPca(14, 64);
+    sbs2Pca = new Sbs2DummyPca(14, 64, 1, 12000);
     toPcaValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
     (*toPcaValues) = 0;
 
     pcaReturnValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
     (*pcaReturnValues) = 0;
-
 
     QThreadPool::globalInstance()->setMaxThreadCount(6); //3 is minimal right now, annyoing that it needs to be set manually
     qDebug() <<  QThreadPool::globalInstance()->activeThreadCount() << QThreadPool::globalInstance()->maxThreadCount() << QThread::idealThreadCount();

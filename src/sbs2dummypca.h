@@ -39,7 +39,7 @@ class Sbs2DummyPca : public QObject
     Q_OBJECT
 
 public:
-    Sbs2DummyPca(int channels_, int blockSize_ = 64, QObject *parent = 0);
+    Sbs2DummyPca(int channels_, int blockSize_ = 64, int blockSkip_ = 1, float threshold_ = 12000, QObject *parent = 0);
     ~Sbs2DummyPca();
 
     void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
@@ -50,11 +50,31 @@ public:
 private:
      int channels; // number of channels
      int blockSize;
+     int blockSkip;
+     float threshold;
      bool on;
+
+     int numOverlap; // number of overlapping block, i.e. how many blocks contribute to reconstruction of a given signal segment
+     int signalIndex; // index for signal circular buffer.
 
      DTU::DtuArray2D<double>* dataDeque;
      int dataDequeStart;
      int dataDequeEnd;
+
+     DTU::DtuArray2D<double>* mean;
+     DTU::DtuArray2D<double>* inputDataZeroMean;
+     DTU::DtuArray2D<double>* inputDataZeroMeanT;
+
+     DTU::DtuArray2D<double>* cov; // covariance matrix
+     DTU::DtuArray2D<double>* eigen_val; // eigen values
+     DTU::DtuArray2D<double>* eigen_vec; // eigen vectors
+
+     DTU::DtuArray2D<double>* transformedData;
+
+     DTU::DtuArray2D<double>* averageData; // circular buffer holding the last "numOverlap" blocks
+     double* averageOffsets; // contains indices for reconstruction
+
+     DTU::DtuArray2D<double>* reconstructedData; // reconstructed block
 
 signals:
     
