@@ -30,8 +30,14 @@
 
 
 /**
-    @class DummyPca
+    @class Sbs2DummyPca
     \brief Principal component temporal filter.
+
+   An instance should be constructed in the start of the program and samples
+   feed to the doPca method. The user of the class should allocate input and
+   output arrays. The PCA processing can be turned on with turnOn. When turned
+   on the input values are copied to the output with no further processing.
+
  */
 
 class Sbs2DummyPca : public QObject
@@ -39,12 +45,28 @@ class Sbs2DummyPca : public QObject
     Q_OBJECT
 
 public:
+    /** Contructor
+     *
+     * @param channels_ Number of channels, e.g., electrodes
+     * @param blockSize_ The number of samples the PCA should work on at each step
+     * @param blockskip_ The number of samples to skip when doing the PCA
+     * @param threshold_ The threshold that cuts PCA components
+     *
+     * @return object
+     */
     Sbs2DummyPca(int channels_, int blockSize_ = 64, int blockSkip_ = 1, float threshold_ = 12000, QObject *parent = 0);
     ~Sbs2DummyPca();
 
+    /// Do the actual processing
     void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
+
+    /// Turn processing in PCA filter on
     void turnOn() { on = true; }
+
+    /// Bypass processing in PCA filter
     void turnOff() { on = false; }
+
+    /// Test if filter is on
     bool isOn() { return on; }
 
 private:
