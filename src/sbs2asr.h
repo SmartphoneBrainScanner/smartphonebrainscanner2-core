@@ -17,8 +17,8 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef SBS2DUMMYPCA_H
-#define SBS2DUMMYPCA_H
+#ifndef SBS2ASR_H
+#define SBS2ASR_H
 
 
 #include <QObject>
@@ -30,17 +30,17 @@
 
 
 /**
-    @class Sbs2DummyPca
-    \brief Principal component temporal filter.
+    @class Sbs2Asr
+    \brief Artifact subspace reconstruction.
 
    An instance should be constructed in the start of the program and samples
-   feed to the doPca method. The user of the class should allocate input and
-   output arrays. The PCA processing can be turned on with turnOn. When turned
+   feed to the doAsr method. The user of the class should allocate input and
+   output arrays. The ASR processing can be turned on with turnOn. When turned
    on the input values are copied to the output with no further processing.
 
  */
 
-class Sbs2DummyPca : public QObject
+class Sbs2Asr : public QObject
 {
     Q_OBJECT
 
@@ -54,16 +54,16 @@ public:
      *
      * @return object
      */
-    Sbs2DummyPca(int channels_, int blockSize_ = 64, int blockSkip_ = 1, float threshold_ = 12000, QObject *parent = 0);
-    ~Sbs2DummyPca();
+    Sbs2Asr(int channels_, int blockSize_ = 64, int blockSkip_ = 1, float threshold_ = 12000, QObject *parent = 0);
+    ~Sbs2Asr();
 
     /// Do the actual processing
-    void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
+    void doAsr(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
 
-    /// Turn processing in PCA filter on
+    /// Turn processing in ASR filter on
     void turnOn() { on = true; }
 
-    /// Bypass processing in PCA filter
+    /// Bypass processing in ASR filter
     void turnOff() { on = false; }
 
     /// Test if filter is on
@@ -103,6 +103,6 @@ signals:
 public slots:
 };
 
-#endif // SBS2DUMMYPCA_H
+#endif // SBS2ASR_H
 
 

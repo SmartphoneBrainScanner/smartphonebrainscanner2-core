@@ -1,8 +1,8 @@
-#include "sbs2dummypca.h"
+#include "sbs2asr.h"
 
 
-Sbs2DummyPca::Sbs2DummyPca(int channels_, int blockSize_, int blockSkip_,
-                           float threshold_, QObject *parent):
+Sbs2Asr::Sbs2Asr(int channels_, int blockSize_, int blockSkip_,
+             float threshold_, QObject *parent):
     QObject(parent), channels(channels_), blockSize(blockSize_),
     blockSkip(blockSkip_)
 {
@@ -12,9 +12,9 @@ Sbs2DummyPca::Sbs2DummyPca(int channels_, int blockSize_, int blockSkip_,
     numOverlap = blockSize / blockSkip;
 
     // make sure blockSize / blockSkip is an integer
-    if (blockSkip*numOverlap != blockSize)
+    if (blockSkip * numOverlap != blockSize)
     {
-        qDebug() << "Sbs2Pca Error: Ratio blockSize/blockSkip must be integer!";
+        qDebug() << "Sbs2Asr Error: Ratio blockSize/blockSkip must be integer!";
         return;
     }
 
@@ -55,11 +55,11 @@ Sbs2DummyPca::Sbs2DummyPca(int channels_, int blockSize_, int blockSkip_,
     reconstructedData = new DTU::DtuArray2D<double>(blockSize, channels);
     (*reconstructedData) = 0;
 
-    qDebug() << "sbs2dummypca.cpp: Sbs2DummyPca::Sbs2DummyPca: on =" << on << ", channels =" << channels;
+    qDebug() << "sbs2asr.cpp: Sbs2Asr::Sbs2Asr: on =" << on << ", channels =" << channels;
 }
 
 
-void Sbs2DummyPca::doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues)
+void Sbs2Asr::doAsr(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues)
 {
     assert(values->dim1() == 1);
     assert(returnValues->dim1() == 1);
@@ -70,10 +70,11 @@ void Sbs2DummyPca::doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double
     for (int k=0; k < dataDeque->dim2(); k++)
         (*dataDeque)[dataDequeNewEnd][k] = (*values)[0][k];
 
-    // qDebug() << "sbs2dummypca.cpp: Sbs2DummyPca::doPca: on = " << (*dataDeque)[0][0];
+    // qDebug() << "sbs2asr.cpp: Sbs2Asr::doAsr: on = " << (*dataDeque)[0][0];
 
     if (on)
     {
+
         // Update mean
         for (int k=0; k < mean->dim2(); k++)
             (*mean)[0][k] = (*mean)[0][k]
@@ -93,10 +94,10 @@ void Sbs2DummyPca::doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double
         inputDataZeroMeanT->multiply(inputDataZeroMean, cov);
 
         // Eigenvectors decomposition
-        cov->getEig(eigen_vec, eigen_val);
+        cov->getEig(eigen_vec, eigen_val);  // Timing: 200 microsec
 
         // Transform to PC-space
-        inputDataZeroMean->multiply(eigen_vec, transformedData);
+        inputDataZeroMean->multiply(eigen_vec, transformedData);  // Timing: 100 microsec
 
         for (int ch = 0; ch < channels; ch++)
         {
@@ -156,7 +157,7 @@ void Sbs2DummyPca::doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double
             }
         }
 
-        // pca done - ready for next block
+        // ASR done - ready for next block
         signalIndex = (signalIndex+1) % numOverlap;
     }
     else
@@ -173,7 +174,7 @@ void Sbs2DummyPca::doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double
 }
 
 
-Sbs2DummyPca::~Sbs2DummyPca()
+Sbs2Asr::~Sbs2Asr()
 {
     delete dataDeque;
     delete mean;

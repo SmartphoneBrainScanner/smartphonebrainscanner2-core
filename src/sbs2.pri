@@ -70,8 +70,7 @@ SOURCES += $$PWD/FFTReal.cpp \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.cpp \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.cpp \
     $$PWD/source_reconstruction/sbs2sourcereconstruction.cpp \
-    $$PWD/sbs2pca.cpp \
-    $$PWD/sbs2dummypca.cpp
+    $$PWD/sbs2asr.cpp
 
 
 HEADERS += \
@@ -131,5 +130,4 @@ HEADERS += \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.h \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.h \
     $$PWD/source_reconstruction/sbs2sourcereconstruction.h \
-    $$PWD/sbs2pca.h \
-    $$PWD/sbs2dummypca.h
+    $$PWD/sbs2asr.h

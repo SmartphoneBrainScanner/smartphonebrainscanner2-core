@@ -49,49 +49,47 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     sbs2NetworkHandler = new Sbs2NetworkHandler();
     networkSendRawDataOn = 0;
 
+    // Artifact subspace reconstruction
+    sbs2Asr = new Sbs2Asr(14, 64, 1, 12000);
+    toAsrValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
+    (*toAsrValues) = 0;
 
-    // MRA
-    // sbs2Pca = 0;
-    sbs2Pca = new Sbs2DummyPca(14, 64, 1, 12000);
-    toPcaValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
-    (*toPcaValues) = 0;
-
-    pcaReturnValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
-    (*pcaReturnValues) = 0;
+    asrReturnValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
+    (*asrReturnValues) = 0;
 
     QThreadPool::globalInstance()->setMaxThreadCount(6); //3 is minimal right now, annyoing that it needs to be set manually
     qDebug() <<  QThreadPool::globalInstance()->activeThreadCount() << QThreadPool::globalInstance()->maxThreadCount() << QThread::idealThreadCount();
 }
 
-// MRA
-void Sbs2DataHandler::pca_filter()
+
+void Sbs2DataHandler::asr_filter()
 {
     for (int ch=0; ch < Sbs2Common::channelsNo(); ++ch)
     {
-        (*toPcaValues)[0][ch] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)];
+        (*toAsrValues)[0][ch] = thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)];
     }
 
-    // do pca stuff
-    sbs2Pca->doPca(toPcaValues, pcaReturnValues);
+    // Actual ASR
+    sbs2Asr->doAsr(toAsrValues, asrReturnValues);
 
     for (int ch=0; ch < Sbs2Common::channelsNo(); ++ch)
     {
-        thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)] = (*pcaReturnValues)[0][ch];
+        thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(ch)] = (*asrReturnValues)[0][ch];
     }
 }
 
 
 // MRA
-void Sbs2DataHandler::turnPcaOn()
+void Sbs2DataHandler::turnAsrOn()
 {
-    sbs2Pca->turnOn();
+    sbs2Asr->turnOn();
 }
 
 
 // MRA
-void Sbs2DataHandler::turnPcaOff()
+void Sbs2DataHandler::turnAsrOff()
 {
-    sbs2Pca->turnOff();
+    sbs2Asr->turnOff();
 }
 
 void Sbs2DataHandler::setThisPacket(Sbs2Packet *thisPacket_)
@@ -628,7 +626,7 @@ void Sbs2DataHandler::setSourceReconstructionVerticesToExtract(QVector<int> *ver
 
 Sbs2DataHandler::~Sbs2DataHandler()
 {
-    delete sbs2Pca;
+    delete sbs2Asr;
 }
 
 void Sbs2DataHandler::setVerticesToExtract(QVector<int> *verticesToExtract)
