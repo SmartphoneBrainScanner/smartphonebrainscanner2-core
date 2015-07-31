@@ -1,4 +1,4 @@
-/**
+/*
 * Smartphone Brain Scanner 2 License Agreement (MIT License)
 *
 * Copyright (c) 2012 Arkadiusz Stopczynski, Jakob Eg Larsen, Carsten Stahlhut, Michael Kai Petersen, Lars Kai Hansen.
@@ -29,7 +29,10 @@
 #include <hardware/sbs2hardwaremounter.h>
 #include <sbs2callback.h>
 
-
+/**
+ * @brief The Sbs2FileHandler class takes care of creating data recording files
+ * and writing to them.
+ */
 class Sbs2FileHandler : public QObject
 {
     Q_OBJECT
@@ -48,7 +51,7 @@ private:
     std::ofstream rawFile;
     QDateTime* currentTime;
     QFile* metaFile;
-    int packetZero;
+    int packetZero; /**< Packet number of the first data packet in the current recording */
 
 private:
     QString normalizeInt(int data);
