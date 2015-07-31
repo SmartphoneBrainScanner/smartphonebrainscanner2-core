@@ -39,23 +39,25 @@
 class Sbs2Filter : public QObject
 {
     Q_OBJECT
-public:
 
-    static Sbs2Filter* New(int fbandLow_, int fbandHigh_, int order_, QObject *parent = 0);
+public:
+    Sbs2Filter(int fbandLow_, int fbandHigh_, int order_, QObject *parent = 0);
     void loadFilter();
-    void updateFilter(int order_, int fbandLow_, int fbandHigh_);
+    void updateFilter(int fbandLow_, int fbandHigh_);
     void doFilter(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
     ~Sbs2Filter();
+    void turnOn() { on = true; }
+    void turnOff() { on = false; }
+    bool isOn() { return on; }
 
 private:
 
 private:
-     DTU::DtuArray2D<double>* hcoef2;
-     int fbandLow;
-     int fbandHigh;
-     int order;
-     static Sbs2Filter* m_pInstance;
-     Sbs2Filter(int fbandLow_, int fbandHigh_, int order_, QObject *parent = 0);
+    DTU::DtuArray2D<double>* hcoef2;
+    bool on;
+    int fbandLow;
+    int fbandHigh;
+    int order;
 
 signals:
     
