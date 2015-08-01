@@ -1394,6 +1394,9 @@ QString Sbs2Common::setDefaultRootAppPath()
 #if defined(MEEGO_EDITION_HARMATTAN)
     Sbs2Common::setRootAppPath(QDir::toNativeSeparators(QDir::homePath())+"/MyDocs/smartphonebrainscanner2_data/");
 #endif
+#ifdef Q_OS_WIN
+    Sbs2Common::setRootAppPath(QDir::toNativeSeparators(QDir::homePath()+"/smartphonebrainscanner2_data"));
+#endif
 
     return Sbs2Common::getRootAppPath();
 }

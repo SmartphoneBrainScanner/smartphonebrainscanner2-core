@@ -44,51 +44,39 @@ void Sbs2EmotivDataReader::execute()
     int cc = 0;
     int uu = 0;
     int res = 0;
-    while(1)
-    {
-	if(!running)
-	    return;
-#ifdef Q_OS_MAC
-	if (testDummyRead)
-	{
-	    counter = (counter +1)%1024000;
-	    if (counter > 0)
-		continue;
-	}
-	else
-	{
-	    res = hid_read(handle, (unsigned char*)buffer_main, sizeof(buffer_main));
-	    if (res > 0)
-		cc = 1;
-	    if (res == -1)
-	    {
-		uu += (1-cc);
-		if (uu == 100000)
-		{
-		    resetHandle();
-		    uu = 0;
-		}
-		continue;
-	    }
-	}
-#else
-	if (testDummyRead)
-	{
-	    counter = (counter +1)%1024000;
-	    if (counter > 0)
-		continue;
-	}
-	else
-	{
-	    rawFile.read(buffer_main, 32);
-	}
-#endif
+    while(1) {
+        if (!running) {
+            return;
+        }
 
-	++framesRead;
-	sbs2EmotivDecryptor->decrypt(buffer_main,buffer_final);
-	sbs2Packets[currentIndex] -> update(buffer_final);
-	sbs2Callback->getData(sbs2Packets[currentIndex]);
-	currentIndex = (currentIndex+1)%256;
+        if (testDummyRead) {
+            counter = (counter +1)%1024000;
+            if (counter > 0)
+            continue;
+        } else {
+            #if defined(Q_OS_MAC) || defined(Q_OS_WIN)
+                res = hid_read(handle, (unsigned char*)buffer_main, sizeof(buffer_main));
+                if (res > 0) {
+                    cc = 1;
+                }
+                if (res == -1) {
+                    uu += (1-cc);
+                    if (uu == 100000) {
+                        resetHandle();
+                        uu = 0;
+                    }
+                    continue;
+                }
+            #else
+                rawFile.read(buffer_main, 32);
+            #endif
+        }
+
+        ++framesRead;
+        sbs2EmotivDecryptor->decrypt(buffer_main,buffer_final);
+        sbs2Packets[currentIndex] -> update(buffer_final);
+        sbs2Callback->getData(sbs2Packets[currentIndex]);
+        currentIndex = (currentIndex+1)%256;
     }
 }
 
@@ -96,12 +84,12 @@ void Sbs2EmotivDataReader::deviceFound(QMap<QString, QVariant> params)
 {
     Sbs2DataReader::deviceFound(params);
 
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
     handle = Sbs2EmotivMounter::getHandle();
 #endif
     sbs2EmotivDecryptor->setSerialNumber(params["serialNumber"].toString());
     running = 1;
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
 
 #else
     rawFile.open(params["path"].toString().toStdString().c_str(), std::ios::in | std::ios::binary);
@@ -237,7 +225,7 @@ void Sbs2EmotivDataReader::turnReceiveUdpDataOn(QString address, int port)
 
 void Sbs2EmotivDataReader::resetHandle()
 {
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
     hid_close(handle);
     hid_exit();
     handle = hid_open(0x1234, 0xed02, NULL);
