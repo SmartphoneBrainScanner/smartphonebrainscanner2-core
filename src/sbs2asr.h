@@ -80,8 +80,7 @@ private:
      int signalIndex; // index for signal circular buffer.
 
      DTU::DtuArray2D<double>* dataDeque;
-     int dataDequeStart;
-     int dataDequeEnd;
+     int dataDequeHead;
 
      DTU::DtuArray2D<double>* mean;
      DTU::DtuArray2D<double>* inputDataZeroMean;

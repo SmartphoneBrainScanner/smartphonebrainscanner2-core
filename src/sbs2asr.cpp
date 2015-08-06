@@ -21,10 +21,9 @@ Sbs2Asr::Sbs2Asr(int channels_, int blockSize_, int blockSkip_,
     signalIndex = 0;
 
     // Initialize ring buffer for input data
-    dataDeque = new DTU::DtuArray2D<double>(2 * blockSize, channels);
+    dataDeque = new DTU::DtuArray2D<double>(blockSize+1, channels);
     (*dataDeque) = 0;
-    dataDequeStart = 0;
-    dataDequeEnd = blockSize;
+    dataDequeHead = 0;
 
     mean = new DTU::DtuArray2D<double>(1, channels);
     (*mean) = 0;
@@ -65,31 +64,36 @@ void Sbs2Asr::doAsr(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* re
     assert(returnValues->dim1() == 1);
     assert(values->dim2() == returnValues->dim2());
 
-    // Insert new data point in ring buffer
-    int dataDequeNewEnd = (dataDequeEnd + 1) % blockSize;
-    for (int k=0; k < dataDeque->dim2(); k++)
-        (*dataDeque)[dataDequeNewEnd][k] = (*values)[0][k];
-
-    // qDebug() << "sbs2asr.cpp: Sbs2Asr::doAsr: on = " << (*dataDeque)[0][0];
 
     if (on)
     {
+        // Insert new data point in ring buffer
+        for (int k=0; k < channels; k++) {
+            (*dataDeque)[dataDequeHead][k] = (*values)[0][k];
+        }
+
+        //qDebug() << "sbs2asr.cpp: Sbs2Asr::doAsr: on = " <<(*dataDeque)[69][0];
+
+        int dataDequeTail = (dataDequeHead+1)%(blockSize+1);
 
         // Update mean
-        for (int k=0; k < mean->dim2(); k++)
+        for (int k=0; k < channels; k++)
             (*mean)[0][k] = (*mean)[0][k]
-                - (*dataDeque)[dataDequeStart][k] / blockSize
-                + (*dataDeque)[dataDequeNewEnd][k] / blockSize;
+                - (*dataDeque)[dataDequeTail][k] / blockSize
+                + (*dataDeque)[dataDequeHead][k] / blockSize;
 
         // Remove mean from data
-        for (int j=0; j < inputDataZeroMean->dim1(); j++)
+        for (int j=0; j < blockSize; j++)
         {
-            int i = (dataDequeStart + j + 1) % blockSize;
-            for (int k=0; k < inputDataZeroMean->dim2(); k++)
+            int i = (dataDequeTail + j + 1) % (blockSize + 1);
+            for (int k=0; k < channels; k++)
             {
                 (*inputDataZeroMean)[j][k] = (*dataDeque)[i][k] - (*mean)[0][k];
             }
         }
+        qDebug() << "sbs2asr.cpp: Sbs2Asr::doAsr: on, mean = " << (*mean)[0][0];
+
+
         inputDataZeroMean->transpose(inputDataZeroMeanT);
         inputDataZeroMeanT->multiply(inputDataZeroMean, cov);
 
@@ -159,6 +163,10 @@ void Sbs2Asr::doAsr(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* re
 
         // ASR done - ready for next block
         signalIndex = (signalIndex+1) % numOverlap;
+
+        // Update ringbuffer indices
+        dataDequeHead = (dataDequeHead+1) % (blockSize+1);
+
     }
     else
     {
@@ -168,9 +176,6 @@ void Sbs2Asr::doAsr(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* re
                (*returnValues)[j][k] = (*values)[j][k];
     }
 
-    // Update ringbuffer indices
-    dataDequeStart = (dataDequeStart + 1) % blockSize;
-    dataDequeEnd = dataDequeNewEnd;
 }
 
 
