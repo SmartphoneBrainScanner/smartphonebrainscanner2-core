@@ -16,6 +16,14 @@ unix:!macx:!android-g++ {
     HEADERS +=  $$PWD/platform/linux/hidapi.h
 }
 
+win32 {
+    message("WINDOWS")
+
+    LIBS += -lSetupAPI
+    SOURCES += $$PWD/platform/windows/hid.c
+    HEADERS +=  $$PWD/platform/windows/hidapi.h
+}
+
 macx:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-macx.a) {
     message("Binary decryptor for Mac found!")
     LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-macx
@@ -25,6 +33,9 @@ macx:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-macx.a) {
 } else:unix:!android:!macx:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-unix.a) {
     message("Binary decryptor for Linux found!")
     LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-unix
+} else:win32:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-windows.a) {
+    message("Binary decryptor for Windows found!")
+    LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-windows
 } else {
     message("No suitable binary decryptor was found, using dummy decryptor instead. Expect random noise")
     SOURCES += $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp

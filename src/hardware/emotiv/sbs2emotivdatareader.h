@@ -28,6 +28,9 @@
 #ifdef Q_OS_MAC
 #include <platform/osx/hidapi.h>
 #endif
+#ifdef Q_OS_WIN
+#include <platform/windows/hidapi.h>
+#endif
 
 class Sbs2EmotivDataReader: public Sbs2DataReader
 {
@@ -51,7 +54,7 @@ private:
     static Sbs2EmotivDataReader* m_pInstance;
     QVector<Sbs2EmotivPacket*> sbs2Packets;
 
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
     hid_device *handle;
 #endif
 
