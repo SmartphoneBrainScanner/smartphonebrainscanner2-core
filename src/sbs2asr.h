@@ -61,20 +61,26 @@ public:
     void doAsr(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues);
 
     /// Turn processing in ASR filter on
-    void turnOn() { on = true; }
+    void turnOn() { action = 1; }
 
     /// Bypass processing in ASR filter
-    void turnOff() { on = false; }
+    void turnOff() { action = 4; }
 
     /// Test if filter is on
-    bool isOn() { return on; }
+    bool isOn() { return action; }
 
 private:
      int channels; // number of channels
      int blockSize;
      int blockSkip;
      float threshold;
-     bool on;
+     DTU::DtuArray2D<double>* thresholdFinal;
+     int action = 1; /* Defines what action the ASR filter should perform.
+                   1 = collect data for calibration of threshold values
+                   2 = use calibrated threshold
+                   3 = use fixed threshold
+                   4 = do not use the filter (bypass)
+                   */
 
      int numOverlap; // number of overlapping block, i.e. how many blocks contribute to reconstruction of a given signal segment
      int signalIndex; // index for signal circular buffer.
@@ -82,7 +88,12 @@ private:
      DTU::DtuArray2D<double>* dataDeque;
      int dataDequeHead;
 
+     DTU::DtuArray2D<double>* dataCalibration;
+     int numElCalibration;
+     int dataCalibrationHead;
+
      DTU::DtuArray2D<double>* mean;
+     DTU::DtuArray2D<double>* meanCalibrated;
      DTU::DtuArray2D<double>* inputDataZeroMean;
      DTU::DtuArray2D<double>* inputDataZeroMeanT;
 
@@ -96,6 +107,9 @@ private:
      double* averageOffsets; // contains indices for reconstruction
 
      DTU::DtuArray2D<double>* reconstructedData; // reconstructed block
+
+     void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues, DTU::DtuArray2D<double>* pcaThreshold, DTU::DtuArray2D<double>* pcaMean);
+     void doCalibration(DTU::DtuArray2D<double>* values);
 
 signals:
     
