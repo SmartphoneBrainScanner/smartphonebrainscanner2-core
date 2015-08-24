@@ -70,7 +70,9 @@ SOURCES += $$PWD/FFTReal.cpp \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.cpp \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.cpp \
     $$PWD/source_reconstruction/sbs2sourcereconstruction.cpp \
-    $$PWD/sbs2asr.cpp
+    $$PWD/sbs2asr.cpp \
+    $$PWD/hardware/fake/sbs2fakedatareader.cpp \
+    $$PWD/hardware/fake/sbs2fakepacket.cpp
 
 
 HEADERS += \
@@ -130,4 +132,6 @@ HEADERS += \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.h \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.h \
     $$PWD/source_reconstruction/sbs2sourcereconstruction.h \
-    $$PWD/sbs2asr.h
+    $$PWD/sbs2asr.h \
+    $$PWD/hardware/fake/sbs2fakedatareader.h \
+    $$PWD/hardware/fake/sbs2fakepacket.h

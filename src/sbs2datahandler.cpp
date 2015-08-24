@@ -50,7 +50,7 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     networkSendRawDataOn = 0;
 
     // Artifact subspace reconstruction
-    sbs2Asr = new Sbs2Asr(14, 64, 1, 12000);
+    sbs2Asr = new Sbs2Asr(14, 64, 1, 12000, 15);
     toAsrValues = new DTU::DtuArray2D<double>(1, Sbs2Common::channelsNo());
     (*toAsrValues) = 0;
 
