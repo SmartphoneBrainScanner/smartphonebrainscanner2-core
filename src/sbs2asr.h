@@ -54,7 +54,7 @@ public:
      *
      * @return object
      */
-    Sbs2Asr(int channels_, int blockSize_ = 64, int blockSkip_ = 1, float threshold_ = 12000, QObject *parent = 0);
+    Sbs2Asr(int channels_, int blockSize_ = 64, int blockSkip_ = 1, float threshold_ = 12000, int calibrationTime = 60, QObject *parent = 0);
     ~Sbs2Asr();
 
     /// Do the actual processing
@@ -75,7 +75,12 @@ private:
      int blockSkip;
      float threshold;
      DTU::DtuArray2D<double>* thresholdFinal;
-     int action = 1; /* Defines what action the ASR filter should perform.
+
+     int thresholdMultiplier;
+     int lookAhead;
+     int eigComputeFreq;
+     int currentSamp;
+     int action; /* Defines what action the ASR filter should perform.
                    1 = collect data for calibration of threshold values
                    2 = use calibrated threshold
                    3 = use fixed threshold
@@ -87,19 +92,33 @@ private:
 
      DTU::DtuArray2D<double>* dataDeque;
      int dataDequeHead;
+     int dataDequeCurrent;
+     int dataDequeRows;
+     int printValues;
 
-     DTU::DtuArray2D<double>* dataCalibration;
-     int numElCalibration;
-     int dataCalibrationHead;
-
+     DTU::DtuArray2D<double>* calibrationData;
+     DTU::DtuArray2D<double>* calibrationDataZeroMean;
+     DTU::DtuArray2D<double>* calibrationDataZeroMeanT;
+     int calibrationNumEl;
+     int calibrationDataHead;
+     int calibrationTime;
+     DTU::DtuArray2D<double>* calibrationCov; // covariance matrix
+     DTU::DtuArray2D<double>* calibrationCovTransformed;
+     DTU::DtuArray2D<double>* calibrationCovFinal;
+     DTU::DtuArray2D<double>* calibrationEigenVal; // eigen values
+     DTU::DtuArray2D<double>* calibrationEigenVec; // eigen vectors
+     DTU::DtuArray2D<double>* calibrationTransformedData;
+     DTU::DtuArray2D<double>* calibrationTransformedDataDiag;
      DTU::DtuArray2D<double>* mean;
-     DTU::DtuArray2D<double>* meanCalibrated;
+     DTU::DtuArray2D<double>* calibrationMean;
      DTU::DtuArray2D<double>* inputDataZeroMean;
      DTU::DtuArray2D<double>* inputDataZeroMeanT;
 
      DTU::DtuArray2D<double>* cov; // covariance matrix
+     DTU::DtuArray2D<double>* covFinal;
      DTU::DtuArray2D<double>* eigen_val; // eigen values
      DTU::DtuArray2D<double>* eigen_vec; // eigen vectors
+     DTU::DtuArray2D<double>* eigen_vecT;
 
      DTU::DtuArray2D<double>* transformedData;
 
@@ -108,7 +127,7 @@ private:
 
      DTU::DtuArray2D<double>* reconstructedData; // reconstructed block
 
-     void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues, DTU::DtuArray2D<double>* pcaThreshold, DTU::DtuArray2D<double>* pcaMean);
+     void doPca(DTU::DtuArray2D<double>* values, DTU::DtuArray2D<double>* returnValues, DTU::DtuArray2D<double>* pcaThreshold);
      void doCalibration(DTU::DtuArray2D<double>* values);
 
 signals:
