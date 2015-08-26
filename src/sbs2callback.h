@@ -90,7 +90,7 @@ public slots:
     void insertIntoMetaFile(QString event);
 
 
-    void turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrder_);
+    void turnFilterOn(int fbandLow_, int fbandHigh_);
     void turnFilterOff();
 
     void turnChannelSpectrogramOn(int spectrogramChannelSamples_ = 128, int spectrogramChannelLength_ = 128, int spectrogramChannelDelta_ = 0);

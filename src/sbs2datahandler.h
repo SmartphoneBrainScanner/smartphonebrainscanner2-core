@@ -35,21 +35,22 @@ class Sbs2NetworkHandler;
 class Sbs2DataHandler : public QObject
 {
     Q_OBJECT
+
 public:
     explicit Sbs2DataHandler(QObject *parent = 0);
     ~Sbs2DataHandler();
     
-    //filtering
+    // Temporal filtering
     virtual void filter();
 
-    //recording
+    // Recording
     virtual void record();
     virtual QString getRawFilename();
 
-    //spectrogram
+    // Spectrogram
     virtual void spectrogramChannel();
 
-    //network
+    // Network
     virtual void sendRawData();
 
     //access
@@ -63,31 +64,25 @@ protected:
     int samplesCollected;
     Sbs2Packet* thisPacket;
 
-
-    //filtering
-    int filterOn;
-    int filterOrder;
-    int fbandLow;
-    int fbandHigh;
-	//objects
+    // Temporal filtering
     Sbs2Filter* sbs2Filter;
-	//data matrices
+    int filterOrder;
     DTU::DtuArray2D<double>* toFilterValues;
     DTU::DtuArray2D<double>* filterResultValues;
 
-    //recording
+
+    // Recording
     int recording;
-	//objects
     Sbs2FileHandler* sbs2FileHandler;
 
 
-    //spectral analysis
+    // Spectral analysis
     int spectrogramChannelOn;
     int spectrogramChannelSamples; //on how many samples perform spectrogram
     int spectrogramChannelLength; //freq, 128 for emotiv
     int spectrogramChannelDelta;    //distance between spectrograms
     int spectrogramChannelDeltaCollected; //how many samples already collected
-	//objects
+    // objects
     Sbs2Spectrogram* sbs2Spectrogram;
 	//data matrices
     DTU::DtuArray2D<double>* toSpectrogramValues;
@@ -95,7 +90,7 @@ protected:
     DTU::DtuArray2D<double>* powerValues;
 
 
-    //source reconstruction
+    // Source reconstruction
     QString sourceReconstructionMethod;
     int sourceReconstructionOn;
     int isSourceReconstructionReady;
@@ -108,16 +103,15 @@ protected:
 
     QString hardware;
 
-	//objects
+    // objects
     Sbs2SourceReconstruction* sbs2SourceReconstruction;
-	//data matrices
+    // data matrices
     DTU::DtuArray2D<double>* toSourceReconstructionValues;
     DTU::DtuArray2D<double>* sourceReconstructionValues;
     DTU::DtuArray2D<double>* sourceReconstructionSpectrogramValues;
 
 
-
-    //network
+    // Network
     int networkSendRawDataOn;
 	//objects
     Sbs2NetworkHandler* sbs2NetworkHandler;
@@ -137,21 +131,21 @@ signals:
 public slots:
     void setThisPacket(Sbs2Packet* thisPacket_);
 
-    //filtering
-    void turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrder_);
+    // Temporal filtering
+    void turnFilterOn(int fbandLow_, int fbandHigh_);
     void turnFilterOff();
 
-    //recording
+    // Recording
     void startRecording(QString user, QString description);
     void stopRecording();
     void insertIntoMetaFile(QString event);
 
-    //spectral analysis
+    // Spectral analysis
     void turnChannelSpectrogramOn(int spectrogramChannelSamples_ = 128, int spectrogramChannelLength_ = 128, int spectrogramChannelDelta_ = 0);
     void turnChannelSpectrogramOff();
     void setWindowType(Sbs2Spectrogram::WindowType windowType);
 
-    //source reconstruction
+    // Source reconstruction
     void setSourceReconstructionVerticesToExtract(QVector<int>* verticesToExtract);
 
     void turnOnSourceReconstructionLoreta(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_);
@@ -161,7 +155,7 @@ public slots:
     void turnOffSourceReconstruction();
     void setVerticesToExtract(QVector<int>* verticesToExtract);
 
-    //network
+    // Network
     void turnSendRawDataOn(QString rawDataServerAddress_, int rawDataPort_, int rawDataSize_ = 32, int rawDataQueueLength_ = 8);
     void turnSendRawDataOff();
     void addRawDataHost(QString address, int port);
@@ -176,9 +170,6 @@ public slots:
     void turnReceiveMessageOn(QString address, int port);
     void turnReceiveMessageOff();
     void readMessage(QString data, QString sender, int senderPort);
-
-
-
 };
 
 #endif // SBS2DATAHANDLER_H

@@ -7,12 +7,13 @@ Sbs2DataHandler::Sbs2DataHandler(QObject *parent) :
     samplesCollected = 0;
     packetsSeen = 0;
 
-    //filtering
-    filterOn = 0;
-    filterOrder = 0;
-    sbs2Filter = 0;
-    toFilterValues = 0;
-    filterResultValues = 0;
+    // Temporal filtering
+    filterOrder = 32;
+    sbs2Filter = new Sbs2Filter(8, 30, filterOrder);
+    toFilterValues = new DTU::DtuArray2D<double> (Sbs2Common::channelsNo(), filterOrder+1);
+    (*toFilterValues) = 0;
+    filterResultValues = new DTU::DtuArray2D<double> (Sbs2Common::channelsNo(), 1);
+    (*filterResultValues) = 0;
 
     //recording
     recording = 0;
@@ -58,6 +59,7 @@ void Sbs2DataHandler::setThisPacket(Sbs2Packet *thisPacket_)
     ++packetsSeen;
 }
 
+
 void Sbs2DataHandler::sendRawData()
 {
     if (!networkSendRawDataOn)
@@ -65,25 +67,22 @@ void Sbs2DataHandler::sendRawData()
     sbs2NetworkHandler->sendRawData(thisPacket->rawData);
 }
 
+
 void Sbs2DataHandler::filter()
 {
-    if (!filterOn)
-        return;
-
-    for (int row=0; row<Sbs2Common::channelsNo(); ++row)
-    {
+    for (int row=0; row<Sbs2Common::channelsNo(); ++row) {
         for (int column = filterOrder; column > 0; --column)
             (*toFilterValues)[row][column] = (*toFilterValues)[row][column-1];
 
         (*toFilterValues)[row][0] = thisPacket->values[Sbs2Common::getChannelNames()->at(row)];
     }
 
-    sbs2Filter->doFilter(toFilterValues,filterResultValues);
+    sbs2Filter->doFilter(toFilterValues, filterResultValues);
 
     for (int row = 0; row<Sbs2Common::channelsNo(); ++row)
         thisPacket->filteredValues[Sbs2Common::getChannelNames()->at(row)] = (*filterResultValues)[row][0];
-
 }
+
 
 void Sbs2DataHandler::spectrogramChannel()
 {
@@ -121,53 +120,19 @@ void Sbs2DataHandler::spectrogramChannel()
     emit spectrogramUpdated();
 }
 
+
 void Sbs2DataHandler::turnFilterOff()
 {
-    filterOn = 0;
-    if (!(toFilterValues == 0))
-    {
-        delete toFilterValues;
-        toFilterValues = 0;
-    }
-    if (!(filterResultValues == 0))
-    {
-        delete filterResultValues;
-        filterResultValues = 0;
-    }
-    if (!(sbs2Filter == 0))
-    {
-        delete sbs2Filter;
-        sbs2Filter = 0;
-    }
-
+    sbs2Filter->turnOff();
 }
 
-void Sbs2DataHandler::turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrder_)
+
+void Sbs2DataHandler::turnFilterOn(int fbandLow_, int fbandHigh_)
 {
-    fbandLow = fbandLow_;
-    fbandHigh = fbandHigh_;
-    filterOrder = filterOrder_;
-
-    if (!(toFilterValues == 0))
-    {
-        delete toFilterValues;
-        toFilterValues = 0;
-    }
-    if (!(filterResultValues == 0))
-    {
-        delete filterResultValues;
-        filterResultValues = 0;
-    }
-
-    sbs2Filter = Sbs2Filter::New(fbandLow,fbandHigh,filterOrder,this);
-
-    toFilterValues = new DTU::DtuArray2D<double> (Sbs2Common::channelsNo(),filterOrder+1);
-    filterResultValues = new DTU::DtuArray2D<double> (Sbs2Common::channelsNo(),1);
-    reset();
-    sbs2Filter->updateFilter(filterOrder,fbandLow,fbandHigh);
-
-    filterOn = 1;
+    sbs2Filter->updateFilter(fbandLow_, fbandHigh_);
+    sbs2Filter->turnOn();
 }
+
 
 /**
  * @brief Call Sbs2FileHandler::dumpRawData() to write raw data of the current packet to file if currently recording.
@@ -177,6 +142,7 @@ void Sbs2DataHandler::record()
     if (recording)
         sbs2FileHandler->dumpRawData(thisPacket->rawData);
 }
+
 
 /**
  * @brief Instantiate Sbs2FileHandler object and set it up for recording data.
@@ -191,8 +157,8 @@ void Sbs2DataHandler::startRecording(QString user, QString description)
     sbs2FileHandler = Sbs2FileHandler::New(this);
     sbs2FileHandler->createMetaFile(user,description);
     recording = 1;
-
 }
+
 
 /**
  * @brief Stop recording data.
@@ -204,6 +170,7 @@ void Sbs2DataHandler::stopRecording()
     recording = 0;
     sbs2FileHandler->close();
 }
+
 
 void Sbs2DataHandler::turnChannelSpectrogramOff()
 {
@@ -228,8 +195,8 @@ void Sbs2DataHandler::turnChannelSpectrogramOff()
         delete sbs2Spectrogram;
         sbs2Spectrogram = 0;
     }
-
 }
+
 
 void Sbs2DataHandler::turnChannelSpectrogramOn(int spectrogramChannelSamples_, int spectrogramChannelLength_, int spectrogramChannelDelta_)
 {
@@ -525,6 +492,7 @@ void Sbs2DataHandler::turnOnSourceReconstructionSparse(int sourceReconstructionS
 
     sourceReconstructionOn = 1;
 }
+
 
 /**
 * @brief Sbs2DataHandler::sourceReconstruction
