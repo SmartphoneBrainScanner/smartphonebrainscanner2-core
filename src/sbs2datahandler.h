@@ -153,11 +153,11 @@ public slots:
 
     // Temporal filtering
     void turnFilterOn(int fbandLow_, int fbandHigh_);
+    void turnFilterOff();
 
     // Artifact subspace reconstruction
     void turnAsrOn();
     void turnAsrOff();
-    void turnFilterOff();
 
     // Recording
     void startRecording(QString user, QString description);
