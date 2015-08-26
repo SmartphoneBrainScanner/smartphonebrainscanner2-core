@@ -151,23 +151,12 @@ signals:
 public slots:
     void setThisPacket(Sbs2Packet* thisPacket_);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     // Temporal filtering
     void turnFilterOn(int fbandLow_, int fbandHigh_);
-=======
-    // MRA PCA
-    void turnPcaOn();
-    void turnPcaOff();
-=======
+
     // Artifact subspace reconstruction
     void turnAsrOn();
     void turnAsrOff();
->>>>>>> Renamed pca/dummypca to asr.
-
-    //filtering
-    void turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrder_);
->>>>>>> Include MRA's pca artifact filter
     void turnFilterOff();
 
     // Recording
