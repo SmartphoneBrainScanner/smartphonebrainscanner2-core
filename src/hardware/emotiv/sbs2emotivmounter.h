@@ -31,6 +31,10 @@
 #include <platform/linux/hidapi.h>
 #endif
 
+#ifdef Q_OS_WIN
+#include <platform/windows/hidapi.h>
+#endif
+
 class Sbs2EmotivMounter: public Sbs2HardwareMounter
 {
     Q_OBJECT
@@ -38,7 +42,7 @@ class Sbs2EmotivMounter: public Sbs2HardwareMounter
 public:
     static Sbs2EmotivMounter* New(QObject* parent = 0);
     ~Sbs2EmotivMounter();
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
     static hid_device* getHandle() {return handle;};
 #endif
 
@@ -52,7 +56,7 @@ private:
 
 private:
     static Sbs2EmotivMounter* m_pInstance;
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
     static hid_device *handle;
 #endif
 #ifdef Q_OS_LINUX

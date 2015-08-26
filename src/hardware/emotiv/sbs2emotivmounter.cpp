@@ -4,7 +4,7 @@
 Sbs2EmotivMounter* Sbs2EmotivMounter::m_pInstance = 0;
 
 /* Handle to hid_device, used in OSX for querying serial number and reading the data. */
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
 hid_device* Sbs2EmotivMounter::handle = 0;
 #endif
 
@@ -57,7 +57,7 @@ void Sbs2EmotivMounter::mount()
     system("su -c 'chmod 777 /dev/hidraw*'");
 #endif
     /* For OSX use hid_open to access the device. */
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
     struct hid_device_info *devs, *cur_dev;
     int found = 0;
     wchar_t* _serial_number = 0;
@@ -65,27 +65,24 @@ void Sbs2EmotivMounter::mount()
     devs = hid_enumerate(0x1234, 0xed02);
     cur_dev = devs;
     while (cur_dev) {
-	if (found == 0)
-	{
-	    _serial_number = (wchar_t*)malloc(60*sizeof(wchar_t));
-	    wcscpy(_serial_number,cur_dev->serial_number);
-	    found++;
-	}
-	else
-	{
-	    if (wcscmp(cur_dev->serial_number,_serial_number) == 0)
-	    {
-		//handle = hid_open_path(cur_dev->path); //patch from Emotiv, test if works
-		handle = hid_open(0x1234,0xed02,cur_dev->serial_number);
-		found++;
-		break;
-	    }
-	}
-	cur_dev = cur_dev->next;
+        if (found == 0) {
+            _serial_number = (wchar_t*)malloc(60*sizeof(wchar_t));
+            wcscpy(_serial_number,cur_dev->serial_number);
+            found++;
+        } else {
+            if (wcscmp(cur_dev->serial_number,_serial_number) == 0) {
+                if (cur_dev->interface_number == 1) {
+                    handle = hid_open_path(cur_dev->path);
+                    //handle = hid_open(0x1234,0xed02,cur_dev->serial_number);
+                    found++;
+                    break;
+                }
+            }
+        }
+        cur_dev = cur_dev->next;
     }
-    if (!handle)
-    {
-	qDebug() << "unable to open device";
+    if (!handle) {
+        qDebug() << "unable to open device";
     }
 #endif
 }
@@ -180,7 +177,7 @@ QString Sbs2EmotivMounter::readSerialNumber()
     }
     hid_free_enumeration(devs);
 
-#elif defined(Q_OS_MAC)
+#elif defined(Q_OS_MAC) || defined(Q_OS_WIN)
     wchar_t wstr[17];
     char tmpSerial[17];
     tmpSerial[16]=0;
@@ -238,6 +235,9 @@ void Sbs2EmotivMounter::readHardwareParameters()
     hid_free_enumeration(devs);
 
     qDebug() << "[LINUX] hidraw device found:  " << serialNumber << path;
+#elif defined (Q_OS_WIN)
+    path = QString("/dev/null");
+    qDebug() << "[WINDOWS] hidraw device found:  " << serialNumber;
 #elif defined(Q_OS_MAC)
     path = QString("/dev/null");
     qDebug() << "[OSX] hidraw device found:  " << serialNumber;

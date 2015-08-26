@@ -134,6 +134,9 @@ void Sbs2DataHandler::turnFilterOn(int fbandLow_, int fbandHigh_)
 }
 
 
+/**
+ * @brief Call Sbs2FileHandler::dumpRawData() to write raw data of the current packet to file if currently recording.
+ */
 void Sbs2DataHandler::record()
 {
     if (recording)
@@ -141,6 +144,12 @@ void Sbs2DataHandler::record()
 }
 
 
+/**
+ * @brief Instantiate Sbs2FileHandler object and set it up for recording data.
+ *
+ * @param user String to identify the user being recorded.
+ * @param description Extra description for identifying the recording.
+ */
 void Sbs2DataHandler::startRecording(QString user, QString description)
 {
     user = user.trimmed();
@@ -151,6 +160,11 @@ void Sbs2DataHandler::startRecording(QString user, QString description)
 }
 
 
+/**
+ * @brief Stop recording data.
+ *
+ * Calls Sbs2FileHandler::close() to clean up after recording.
+ */
 void Sbs2DataHandler::stopRecording()
 {
     recording = 0;
@@ -478,6 +492,7 @@ void Sbs2DataHandler::turnOnSourceReconstructionSparse(int sourceReconstructionS
 
     sourceReconstructionOn = 1;
 }
+
 
 /**
 * @brief Sbs2DataHandler::sourceReconstruction
