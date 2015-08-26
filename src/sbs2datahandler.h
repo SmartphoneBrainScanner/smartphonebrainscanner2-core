@@ -79,17 +79,11 @@ protected:
     DTU::DtuArray2D<double>* toAsrValues;
     DTU::DtuArray2D<double>* asrReturnValues;
 
-    //filtering
-    int filterOn;
-    int filterOrder;
-    int fbandLow;
-    int fbandHigh;
-	//objects
+    // Temporal filtering
     Sbs2Filter* sbs2Filter;
     int filterOrder;
     DTU::DtuArray2D<double>* toFilterValues;
     DTU::DtuArray2D<double>* filterResultValues;
-
 
     // Recording
     int recording;
