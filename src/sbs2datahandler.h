@@ -30,9 +30,7 @@
 #include <source_reconstruction/sbs2sourcereconstruction.h>
 #include <QtCore>
 
-// MRA
-#include <sbs2pca.h>
-#include "sbs2dummypca.h"
+#include "sbs2asr.h"
 
 
 class Sbs2NetworkHandler;
@@ -48,7 +46,10 @@ public:
     // Temporal filtering
     virtual void filter();
 
-    // Recording
+    // Artifact subspace reconstruction
+    void asr_filter();
+
+    //recording
     virtual void record();
     virtual QString getRawFilename();
 
@@ -70,13 +71,13 @@ protected:
     Sbs2Packet* thisPacket;
 
     // MRA
-    Sbs2DummyPca* sbs2Pca;
-    int pcaSamplesSkipped;
-    int pcaBlockSize;
-    int pcaBlockSkip;
-    int pcaThreshold;
-    DTU::DtuArray2D<double>* toPcaValues;
-    DTU::DtuArray2D<double>* pcaReturnValues;
+    Sbs2Asr* sbs2Asr;
+    int asrSamplesSkipped;
+    int asrBlockSize;
+    int asrBlockSkip;
+    int asrThreshold;
+    DTU::DtuArray2D<double>* toAsrValues;
+    DTU::DtuArray2D<double>* asrReturnValues;
 
     //filtering
     int filterOn;
@@ -147,12 +148,10 @@ signals:
     void setWindowTypeSignal(Sbs2Spectrogram::WindowType windowType);
     void udpMessageReceived(QString data, QString sender, int port);
 
-    // MRA
-    void pcaUpdated();
-
 public slots:
     void setThisPacket(Sbs2Packet* thisPacket_);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // Temporal filtering
     void turnFilterOn(int fbandLow_, int fbandHigh_);
@@ -160,6 +159,11 @@ public slots:
     // MRA PCA
     void turnPcaOn();
     void turnPcaOff();
+=======
+    // Artifact subspace reconstruction
+    void turnAsrOn();
+    void turnAsrOff();
+>>>>>>> Renamed pca/dummypca to asr.
 
     //filtering
     void turnFilterOn(int fbandLow_, int fbandHigh_, int filterOrder_);
