@@ -51,16 +51,6 @@ void Sbs2Callback::turnAsrOff()
     sbs2DataHandler->turnAsrOff();
 }
 
-void Sbs2Callback::turnAsrOn()
-{
-    sbs2DataHandler->turnAsrOn();
-}
-
-void Sbs2Callback::turnAsrOff()
-{
-    sbs2DataHandler->turnAsrOff();
-}
-
 QString Sbs2Callback::getRawFilename()
 {
     return sbs2DataHandler->getRawFilename();
