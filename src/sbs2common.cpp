@@ -1410,6 +1410,8 @@ QString Sbs2Common::setDefaultCatalogPath()
 #else
     Sbs2Common::setCatalogPath(QDir::toNativeSeparators(QDir::homePath())+"/smartphonebrainscanner2_readings/");
 #endif
+    QDir dir;
+    dir.mkpath(Sbs2Common::getCatalogPath());
 
     return Sbs2Common::getCatalogPath();
 }
