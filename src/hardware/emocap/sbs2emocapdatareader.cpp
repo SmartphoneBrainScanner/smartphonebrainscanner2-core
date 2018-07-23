@@ -41,9 +41,11 @@ Sbs2EmocapDataReader::~Sbs2EmocapDataReader()
 void Sbs2EmocapDataReader::execute()
 {
     int counter = 0;
+#ifdef Q_OS_MAC
     int cc = 0;
     int uu = 0;
     int res = 0;
+#endif
     while(1)
     {
         if(!running)

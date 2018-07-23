@@ -201,6 +201,7 @@ QString tempSerialNumber = QString();
     tempSerialNumber = QString(tmpSerial);
     return tempSerialNumber;
 #endif
+    return tempSerialNumber;
 }
 
 
