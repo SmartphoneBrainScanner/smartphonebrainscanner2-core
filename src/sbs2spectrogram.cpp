@@ -56,6 +56,7 @@ double Sbs2Spectrogram::window(int n)
     {
         return 0.54 - 0.46*std::cos((2*PI*n)/(length));
     }
+    return 0;
 }
 
 void Sbs2Spectrogram::setWindowType(Sbs2Spectrogram::WindowType windowType_)
