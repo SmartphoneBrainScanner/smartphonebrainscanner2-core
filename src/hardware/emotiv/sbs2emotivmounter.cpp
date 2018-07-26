@@ -242,13 +242,12 @@ void Sbs2EmotivMounter::readHardwareParameters()
     path = QString("/dev/null");
     qDebug() << "[OSX] hidraw device found:  " << serialNumber;
 #endif
-    if (!(serialNumber[0] == 'S' && serialNumber[1] == 'N'))
+    if (serialNumber.isEmpty() || !serialNumber.startsWith("SN"))
     {
-	invalidate();
-	emit deviceLost();
-	return;
+		invalidate();
+		emit deviceLost();
+		return;
     }
-
     identifier = serialNumber;
     QMap<QString, QVariant> params = QMap<QString, QVariant>();
     params["serialNumber"] = serialNumber;
