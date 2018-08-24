@@ -2,7 +2,7 @@
 
 Sbs2Common* Sbs2Common::m_pInstance = NULL;
 int Sbs2Common::hardwareSet = 0;
-QString Sbs2Common::hardware = "emotiv";
+QString Sbs2Common::hardware = "emocap";
 
 int Sbs2Common::normalize(int value)
 {
@@ -1291,7 +1291,7 @@ Sbs2Common::Sbs2Common()
 {
     //Default hardware
     if (!hardwareSet)
-	setHardware("emotiv",this);
+	setHardware("emocap",this);
 
 }
 
