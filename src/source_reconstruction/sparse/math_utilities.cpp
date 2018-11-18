@@ -18,7 +18,7 @@ void getMean(DTU::DtuArray2D<double> *matrix, DTU::DtuArray2D<double> *matrixMea
     int num_columns = matrix->dim2();
     int num_rows = matrix->dim1();
 
-    vector<double> columnMean(num_columns);
+    std::vector<double> columnMean(num_columns);
 
     double column_mean;
 
@@ -39,7 +39,7 @@ void getMean(DTU::DtuArray2D<double> *matrix, DTU::DtuArray2D<double> *matrixMea
 
     }
 
-    vector<double> ones_vector(num_rows,1);
+    std::vector<double> ones_vector(num_rows,1);
 
     vectorOuterProduct(ones_vector,columnMean,matrixMean);
 
@@ -150,7 +150,7 @@ void matrixMultiplicationComponentWise(DTU::DtuArray2D<double> *matrix_A, DTU::D
 
 }
 
-void vectorOuterProduct(vector<double> &vector1 , vector<double> &vector2, DTU::DtuArray2D<double> *out)
+void vectorOuterProduct(std::vector<double> &vector1 , std::vector<double> &vector2, DTU::DtuArray2D<double> *out)
 {
     for(int i=0 ; i<vector1.size() ; i++)
     {
@@ -163,7 +163,7 @@ void vectorOuterProduct(vector<double> &vector1 , vector<double> &vector2, DTU::
 
 }
 
-void thresholding_insitu(vector<double> & x_vector)
+void thresholding_insitu(std::vector<double> & x_vector)
 {
     for(int i=0 ; i<x_vector.size() ; i++)
     {
@@ -175,7 +175,7 @@ void thresholding_insitu(vector<double> & x_vector)
 
 }
 
-void scalarMinusVector_insitu(double *scalar,vector<double> &x_vector)
+void scalarMinusVector_insitu(double *scalar, std::vector<double> &x_vector)
 {
     for(int i=0 ; i<x_vector.size() ; i++)
     {
@@ -184,7 +184,7 @@ void scalarMinusVector_insitu(double *scalar,vector<double> &x_vector)
 
 }
 
-void scalarDividedbyVectorComponentWise_insitu(double *scalar,vector<double> &x_vector)
+void scalarDividedbyVectorComponentWise_insitu(double *scalar, std::vector<double> &x_vector)
 {
 
     for(int i=0 ; i<x_vector.size() ; i++)
@@ -195,12 +195,12 @@ void scalarDividedbyVectorComponentWise_insitu(double *scalar,vector<double> &x_
 
 }
 
-void printVector(vector <double> &out)
+void printVector(std::vector <double> &out)
 {
 
     for(int i=0 ; i<out.size() ; i++)
     {
-	std::cout<<out[i]<<std::endl;
+	std::cout<<out[i]<< '\n';
 
     }
 
@@ -209,7 +209,7 @@ void printVector(vector <double> &out)
 }
 
 
-void matrixL21NormEachRow(DTU::DtuArray2D<double> *matrix, vector<double> &out)
+void matrixL21NormEachRow(DTU::DtuArray2D<double> *matrix, std::vector<double> &out)
 {
     double row_sum;
     for(int i=0 ; i < matrix->dim1() ; i++)

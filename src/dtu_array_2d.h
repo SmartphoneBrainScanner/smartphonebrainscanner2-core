@@ -432,8 +432,8 @@ template <class T>
 void DtuArray2D<T>::pinv(DtuArray2D<T>* out)
 {	
 
-    int min_dim = min(dim1(), dim2());
-    int max_dim = max(dim1(), dim2());
+    int min_dim = std::min(dim1(), dim2());
+    int max_dim = std::max(dim1(), dim2());
 
     bool transpose = false;
 

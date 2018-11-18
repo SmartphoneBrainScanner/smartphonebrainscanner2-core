@@ -188,7 +188,7 @@ void Sbs2SourceReconstructionSparse::cross_validation_k_channel(DTU::DtuArray2D<
 {
     double lambda = 0.0;
     double rmse_temp = 0.0;
-    vector<double> rmse(lambdas.size());
+    std::vector<double> rmse(lambdas.size());
     int pos_best_lambda = 0;
 
     for(int i=0 ; i<lambdas.size() ; ++i)
