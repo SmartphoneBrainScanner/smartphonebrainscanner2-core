@@ -150,7 +150,6 @@ void Sbs2Emocap28DataReader::amp2(int number)
 
 void Sbs2Emocap28DataReader::execute1()
 {
-    int counter = 0;
     while(1)
     {
 	if(!running)
@@ -198,7 +197,6 @@ bool lessThan(const QVector<double>& s1, const QVector<double>& s2)
 
 void Sbs2Emocap28DataReader::execute2()
 {
-    int counter = 0;
     while(1)
     {
 
@@ -545,6 +543,7 @@ void Sbs2Emocap28DataReader::aboutToQuit()
 
 void Sbs2Emocap28DataReader::udpDataReceived(QVector<char *> *data, int counter)
 {
+    Q_UNUSED(counter);
     for (int i=0; i<data->size(); ++i)
     {
 	++framesRead;
