@@ -132,3 +132,6 @@ HEADERS += \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.h \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.h \
     $$PWD/source_reconstruction/sbs2sourcereconstruction.h
+
+RESOURCES += $$PWD/../sbs2_data/datafiles.qrc
+CONFIG += resources_big

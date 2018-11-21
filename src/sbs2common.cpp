@@ -1356,7 +1356,7 @@ QString Sbs2Common::setRootAppPath(QString rootAppPath_)
 
 QString Sbs2Common::getRootAppPath()
 {
-    return Sbs2Common::New()->rootAppPath;
+    return ":/";
 }
 
 QString Sbs2Common::setCatalogPath(QString catalogPath_)
