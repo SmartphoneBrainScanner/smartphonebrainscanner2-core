@@ -7,7 +7,7 @@ Sbs2Emocap28Packet::Sbs2Emocap28Packet(QObject *parent):Sbs2Packet(parent)
     counter2 = 0;
 }
 
-void Sbs2Emocap28Packet::update(char *data)
+void Sbs2Emocap28Packet::update(const char *data)
 {
     for (int i=0; i<Sbs2Common::rawDataSize(); ++i)
     {

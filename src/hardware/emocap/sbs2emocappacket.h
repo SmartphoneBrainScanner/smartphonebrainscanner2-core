@@ -28,7 +28,7 @@ class Sbs2EmocapPacket: public Sbs2Packet
 
 public:
     Sbs2EmocapPacket(QObject *parent);
-    void update(char *data);
+    void update(const char *data) override;
 
 
 };
