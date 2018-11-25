@@ -86,7 +86,6 @@ HEADERS += \
     $$PWD/sbs2region.h \
     $$PWD/sbs2spectrogram.h \
     $$PWD/utils/sbs2timer.h \
-    $$PWD/utils/waiter.h \
     $$PWD/dtu_array_2d.h \
     $$PWD/sbs2callback.h \
     $$PWD/sbs2datahandler.h \
