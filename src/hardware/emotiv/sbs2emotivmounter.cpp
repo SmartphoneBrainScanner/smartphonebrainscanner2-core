@@ -15,7 +15,7 @@ Sbs2EmotivMounter* Sbs2EmotivMounter::New(QObject *parent)
     return m_pInstance;
 }
 
-Sbs2EmotivMounter::Sbs2EmotivMounter(QObject *parent)
+Sbs2EmotivMounter::Sbs2EmotivMounter(QObject *parent) : Sbs2HardwareMounter(parent)
 {
     init();
 }

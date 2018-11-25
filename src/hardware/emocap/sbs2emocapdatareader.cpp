@@ -130,6 +130,7 @@ void Sbs2EmocapDataReader::aboutToQuit()
 
 void Sbs2EmocapDataReader::udpDataReceived(QVector<char *> *data, int counter)
 {
+    Q_UNUSED(counter);
     for (int i=0; i<data->size(); ++i)
     {
         ++framesRead;
