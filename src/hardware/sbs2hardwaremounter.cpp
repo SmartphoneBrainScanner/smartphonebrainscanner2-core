@@ -19,16 +19,6 @@ void Sbs2HardwareMounter::start()
     readHardwareParameters();
 }
 
-void Sbs2HardwareMounter::mySleep()
-{
-#ifdef Q_WS_MAEMO_5
-    usleep(500000);
-#else
-    Waiter w(5000);
-    w.run();
-#endif
-}
-
 void Sbs2HardwareMounter::init() {}
 void Sbs2HardwareMounter::mount() {}
 void Sbs2HardwareMounter::umount() {}

@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>filtercoef_fband8-13_norder32.txt</file>
+        <file>filtercoef_fband8-30_norder32.txt</file>
+        <file>hardware/emocap/forwardmodel_spheres_reduced.txt</file>
+        <file>hardware/emocap/spatialCoherenceSmooth0-2_reduced.txt</file>
+        <file>hardware/emocap/spatialCoherenceSmooth0-2_reduced_inverse.txt</file>
+        <file>hardware/emotiv/forwardmodel_spheres_reduced.txt</file>
+        <file>hardware/emotiv/spatialCoherenceSmooth0-2_reduced.txt</file>
+        <file>hardware/emotiv/spatialCoherenceSmooth0-2_reduced_inverse.txt</file>
+        <file>List_NamesOfRegions.txt</file>
+        <file>List_regions.txt</file>
+        <file>List_vertices.txt</file>
+        <file>mesh_ctx_5124_normals.obj</file>
+        <file>mobi_weights_reduced.txt</file>
+        <file>mobi_weights_spheres_reduced.txt</file>
+        <file>README.md</file>
+        <file>spatialCoherenceSmooth0-2_reduced</file>
+        <file>spatialCoherenceSmooth0-2_reduced_inverse</file>
+        <file>vertface_brain_reduced.obj</file>
+    </qresource>
+</RCC>

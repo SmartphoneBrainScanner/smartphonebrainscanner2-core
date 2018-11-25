@@ -89,8 +89,8 @@ private:
     DTU::DtuArray2D<double> *A_transpose;//A_transpose = A'
 
     /*Variables used in the function proximal_operator_standard_group_lasso*/
-    vector<double> norm_2_each_row;
-    vector<double> ones_vector;
+    std::vector<double> norm_2_each_row;
+    std::vector<double> ones_vector;
     DTU::DtuArray2D<double> * thresholdingMatrix;
 
     /**Variables used in the function fista_method_group_lasso_v2**/

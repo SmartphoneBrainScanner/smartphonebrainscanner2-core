@@ -2,7 +2,7 @@
 
 Sbs2Common* Sbs2Common::m_pInstance = NULL;
 int Sbs2Common::hardwareSet = 0;
-QString Sbs2Common::hardware = "emotiv";
+QString Sbs2Common::hardware = "emocap";
 
 int Sbs2Common::normalize(int value)
 {
@@ -1291,7 +1291,7 @@ Sbs2Common::Sbs2Common()
 {
     //Default hardware
     if (!hardwareSet)
-	setHardware("emotiv",this);
+	setHardware("emocap",this);
 
 }
 
@@ -1356,7 +1356,7 @@ QString Sbs2Common::setRootAppPath(QString rootAppPath_)
 
 QString Sbs2Common::getRootAppPath()
 {
-    return Sbs2Common::New()->rootAppPath;
+    return ":/";
 }
 
 QString Sbs2Common::setCatalogPath(QString catalogPath_)
@@ -1410,6 +1410,8 @@ QString Sbs2Common::setDefaultCatalogPath()
 #else
     Sbs2Common::setCatalogPath(QDir::toNativeSeparators(QDir::homePath())+"/smartphonebrainscanner2_readings/");
 #endif
+    QDir dir;
+    dir.mkpath(Sbs2Common::getCatalogPath());
 
     return Sbs2Common::getCatalogPath();
 }

@@ -3,6 +3,9 @@
 *
 * Copyright (c) 2012 Arkadiusz Stopczynski, Jakob Eg Larsen, Carsten Stahlhut, Michael Kai Petersen, Lars Kai Hansen.
 * Technical University of Denmark, DTU Informatics, Cognitive Systems Section. http://code.google.com/p/smartphonebrainscanner2
+* 
+* Copyright (c) 2018 Technical University of Denmark.
+* Author: Sune Vuorela <sune@vuorela.dk>
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
 * files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
@@ -17,24 +20,32 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef WAITER_H
-#define WAITER_H
+#ifndef SBS2FILEDATAREADER_H
+#define SBS2FILEDATAREADER_H
 
-#include <QThread>
+#include <hardware/sbs2datareader.h>
+#include "sbs2filepacket.h"
 
-class Waiter : public QThread
+class Sbs2FileDataReader: public Sbs2DataReader
 {
-private:
-    long _msecs;
+    Q_OBJECT
 
 public:
-    Waiter(long msecs) {
-	_msecs = msecs;
-    }
+    Sbs2FileDataReader(Sbs2Callback* sbs2Callback_, const QString& filename, QObject *parent = nullptr);
+    ~Sbs2FileDataReader();
 
-    void run() {
-	usleep(_msecs);
-    }
+private:
+    void execute();
+
+private:
+    QFile rawFile;
+    QVector<Sbs2FilePacket*> sbs2Packets;
+
+public slots:
+    void deviceFound(QMap<QString, QVariant> params);
+    void deviceLost();
+    void aboutToQuit();
+
 };
 
-#endif // WAITER_H
+#endif // SBS2EMOTIVDATAREADER_H

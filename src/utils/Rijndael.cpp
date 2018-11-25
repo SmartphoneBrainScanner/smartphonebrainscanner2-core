@@ -2,9 +2,10 @@
 
 //Rijndael.cpp
 
+#include "Rijndael.h"
 #include <cstring>
 #include <exception>
-#include "Rijndael.h"
+using std::exception;
 
 const int CRijndael::sm_alog[256] =
 {

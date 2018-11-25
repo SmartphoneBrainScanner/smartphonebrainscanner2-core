@@ -42,8 +42,8 @@ class DtuArray2D : public TNT::Array2D<T>
         DtuArray2D() : TNT::Array2D<T>(){}
         DtuArray2D(int m, int n) : TNT::Array2D<T>(m,n) {}
         DtuArray2D(int m, int n,  T *a) : TNT::Array2D<T>(m, n, a) {}
-        DtuArray2D(int m, int n, const T &a) : Array2D<T>( m,  n,   a) {}
-        inline DtuArray2D(const TNT::Array2D<T> &A) : Array2D<T>(A) {}
+        DtuArray2D(int m, int n, const T &a) : TNT::Array2D<T>( m,  n,   a) {}
+        inline DtuArray2D(const TNT::Array2D<T> &A) : TNT::Array2D<T>(A) {}
         inline DtuArray2D & operator=(const T &a);
 		
 		
@@ -59,7 +59,6 @@ class DtuArray2D : public TNT::Array2D<T>
         void transpose(DtuArray2D<T>* A); // write to given variable
         void transpose(DtuArray2D<T>& A); // write to given variable
         int transpose_insitu(); // transpose self, in place
-        int getSVD(JAMA::SVD<T> &A); // write to given variable
         void pinv(DtuArray2D<T>* A); // write to given variable
         inline T trace();
         void toIdentityMatrix();
@@ -430,17 +429,11 @@ int DtuArray2D<T>::subtract(const DtuArray2D<T>* B, DtuArray2D<T>* out)
 }
 
 template <class T>
-int DtuArray2D<T>::getSVD(JAMA::SVD<T> &out)
-{
-    out = JAMA::SVD<T>(this->toTntArray2D());
-}
-
-template <class T>
 void DtuArray2D<T>::pinv(DtuArray2D<T>* out)
 {	
 
-    int min_dim = min(dim1(), dim2());
-    int max_dim = max(dim1(), dim2());
+    int min_dim = std::min(dim1(), dim2());
+    int max_dim = std::max(dim1(), dim2());
 
     bool transpose = false;
 
@@ -456,7 +449,7 @@ void DtuArray2D<T>::pinv(DtuArray2D<T>* out)
     // and its pseudo inverse is transposed before returning
     if (this->m_ < this->n_)
     {
-        DtuArray2D temp = Array2D<T>(this->n_, this->m_);
+        DtuArray2D temp = TNT::Array2D<T>(this->n_, this->m_);
         this->transpose(temp);
         JAMA::SVD<T>svd = JAMA::SVD<T>(temp);
         transpose = true;

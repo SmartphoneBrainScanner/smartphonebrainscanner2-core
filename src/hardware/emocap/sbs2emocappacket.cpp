@@ -5,7 +5,7 @@ Sbs2EmocapPacket::Sbs2EmocapPacket(QObject *parent):Sbs2Packet(parent)
 
 }
 
-void Sbs2EmocapPacket::update(char *data)
+void Sbs2EmocapPacket::update(const char *data)
 {
     for (int i=0; i<Sbs2Common::rawDataSize(); ++i)
     {

@@ -11,7 +11,7 @@
 * Tab = 3                                                                    *
 *****************************************************************************/
 
-
+#include <sys/types.h>
 
 #if defined (FFTReal_CURRENT_HEADER)
 	#error Recursive inclusion of FFTReal header file.
@@ -75,7 +75,7 @@ private:
 							~TrigoLUT ();
 		const flt_t	*	get_ptr (const int level) const
 		{
-			return (_ptr + (1L << (level - 1)) - 4);
+			return (_ptr + (size_t(1) << (level - 1)) - 4);
 		};
 	private:
 		flt_t	*			_ptr;

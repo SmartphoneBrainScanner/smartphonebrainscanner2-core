@@ -15,4 +15,4 @@ Sbs2Packet::Sbs2Packet(QObject *parent) :
     }
 }
 
-void Sbs2Packet::update(char* data) {}
+void Sbs2Packet::update(const char* data) {Q_UNUSED(data);}

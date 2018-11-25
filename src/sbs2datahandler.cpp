@@ -581,6 +581,7 @@ void Sbs2DataHandler::turnOffSourceReconstruction()
 
 void Sbs2DataHandler::setSourceReconstructionVerticesToExtract(QVector<int> *verticesToExtract)
 {
+    Q_UNUSED(verticesToExtract);
     //sbs2SourceReconstruction->setVerticesToExtract(verticesToExtract);
 }
 
@@ -591,6 +592,7 @@ Sbs2DataHandler::~Sbs2DataHandler()
 
 void Sbs2DataHandler::setVerticesToExtract(QVector<int> *verticesToExtract)
 {
+    Q_UNUSED(verticesToExtract);
     //TODO
     //sbs2SourceReconstruction->setVerticesToExtract(verticesToExtract);
 }

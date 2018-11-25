@@ -54,7 +54,7 @@ public:
 	    @param data Pointer to raw data.
 	    */
 
-    void virtual update(char* data);
+    void virtual update(const char* data);
 
 private:
 

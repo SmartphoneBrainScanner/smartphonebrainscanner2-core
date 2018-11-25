@@ -1,11 +1,11 @@
-#include <hardware/emotiv/sbs2emotivpacket.h>
+#include "sbs2filepacket.h"
 
-Sbs2EmotivPacket::Sbs2EmotivPacket(QObject *parent):Sbs2Packet(parent)
+Sbs2FilePacket::Sbs2FilePacket(QObject *parent):Sbs2Packet(parent)
 {
 
 }
 
-void Sbs2EmotivPacket::update(const char *data)
+void Sbs2FilePacket::update(const char *data)
 {
     for (int i=0; i<Sbs2Common::rawDataSize(); ++i)
     {

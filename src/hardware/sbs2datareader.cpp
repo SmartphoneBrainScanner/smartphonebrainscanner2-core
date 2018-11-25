@@ -29,16 +29,18 @@ Sbs2DataReader::Sbs2DataReader(Sbs2Callback *sbs2Callback_, int readOnlyFromNetw
     QObject::connect(this,SIGNAL(deviceFoundSignal(QMap<QString,QVariant>)),sbs2Callback, SLOT(deviceFound(QMap<QString,QVariant>)));
 }
 
-void Sbs2DataReader::turnReceiveUdpDataOn(QString address, int port) {}
+void Sbs2DataReader::turnReceiveUdpDataOn(QString address, int port) { Q_UNUSED(address); Q_UNUSED(port);}
 
 void Sbs2DataReader::turnReceiveUdpDataOff() {}
 
 void Sbs2DataReader::udpDataReceived(QVector<char *> *data, int counter)
 {
+    Q_UNUSED(data);
+    Q_UNUSED(counter);
     lastReceiveRawDataCounter = 0;
 }
 
-void Sbs2DataReader::udpDataReceived(QUdpSocket *rawDataUdpInputSocket) {}
+void Sbs2DataReader::udpDataReceived(QUdpSocket *rawDataUdpInputSocket) {Q_UNUSED(rawDataUdpInputSocket);}
 
 void Sbs2DataReader::execute() {}
 

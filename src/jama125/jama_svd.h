@@ -13,11 +13,10 @@
 #include <cmath>
 // for abs() below
 
-using namespace TNT;
-using namespace std;
 
 namespace JAMA
 {
+using namespace TNT;
    /** Singular Value Decomposition.
    <P>
    For an m-by-n matrix A with m >= n, the singular value decomposition is
@@ -52,8 +51,8 @@ class SVD
 
       m = Arg.dim1();
       n = Arg.dim2();
-      int nu = min(m,n);
-      s = Array1D<Real>(min(m+1,n)); 
+      int nu = std::min(m,n);
+      s = Array1D<Real>(std::min(m+1,n)); 
 	  //s = Array1D<Real>(m,n); 
       U = Array2D<Real>(m, nu, Real(0));
       V = Array2D<Real>(n,n);
@@ -67,9 +66,9 @@ class SVD
       // Reduce A to bidiagonal form, storing the diagonal elements
       // in s and the super-diagonal elements in e.
 
-      int nct = min(m-1,n);
-      int nrt = max(0,min(n-2,m));
-      for (k = 0; k < max(nct,nrt); k++) {
+      int nct = std::min(m-1,n);
+      int nrt = std::max(0,std::min(n-2,m));
+      for (k = 0; k < std::max(nct,nrt); k++) {
          if (k < nct) {
 
             // Compute the transformation for the k-th column and
@@ -171,7 +170,7 @@ class SVD
 
       // Set up the final bidiagonal matrix or order p.
 
-      int p = min(n,m+1);
+      int p = std::min(n,m+1);
       //int p = m;
 	  if (nct < n) {
          s[nct] = A[nct][nct];
@@ -358,7 +357,7 @@ class SVD
 
                // Calculate the shift.
    
-               Real scale = max(max(max(max(
+               Real scale = std::max(std::max(std::max(std::max(
                        abs(s[p-1]),abs(s[p-2])),abs(e[p-2])), 
                        abs(s[k])),abs(e[k]));
                Real sp = s[p-1]/scale;
@@ -514,7 +513,7 @@ class SVD
    /** Two norm of condition number (max(S)/min(S)) */
 
    Real cond () {
-      return s[0]/s[min(m,n)-1];
+      return s[0]/s[std::min(m,n)-1];
    }
 
    /** Effective numerical matrix rank
@@ -524,7 +523,7 @@ class SVD
    int rank () 
    {
       Real eps = pow(2.0,-52.0);
-      Real tol = max(m,n)*s[0]*eps;
+      Real tol = std::max(m,n)*s[0]*eps;
       int r = 0;
       for (int i = 0; i < s.dim(); i++) {
          if (s[i] > tol) {

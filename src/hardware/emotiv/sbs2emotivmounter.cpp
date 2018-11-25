@@ -15,7 +15,7 @@ Sbs2EmotivMounter* Sbs2EmotivMounter::New(QObject *parent)
     return m_pInstance;
 }
 
-Sbs2EmotivMounter::Sbs2EmotivMounter(QObject *parent)
+Sbs2EmotivMounter::Sbs2EmotivMounter(QObject *parent) : Sbs2HardwareMounter(parent)
 {
     init();
 }
@@ -59,25 +59,13 @@ void Sbs2EmotivMounter::mount()
     /* For OSX use hid_open to access the device. */
 #if defined(Q_OS_MAC) || defined(Q_OS_WIN)
     struct hid_device_info *devs, *cur_dev;
-    int found = 0;
-    wchar_t* _serial_number = 0;
-    found = 0;
     devs = hid_enumerate(0x1234, 0xed02);
     cur_dev = devs;
     while (cur_dev) {
-        if (found == 0) {
-            _serial_number = (wchar_t*)malloc(60*sizeof(wchar_t));
-            wcscpy(_serial_number,cur_dev->serial_number);
-            found++;
-        } else {
-            if (wcscmp(cur_dev->serial_number,_serial_number) == 0) {
-                if (cur_dev->interface_number == 1) {
-                    handle = hid_open_path(cur_dev->path);
-                    //handle = hid_open(0x1234,0xed02,cur_dev->serial_number);
-                    found++;
-                    break;
-                }
-            }
+        if (cur_dev->usage == 2) {
+             handle = hid_open_path(cur_dev->path);
+             //handle = hid_open(0x1234,0xed02,cur_dev->serial_number);
+             break;
         }
         cur_dev = cur_dev->next;
     }
@@ -150,6 +138,7 @@ QString Sbs2EmotivMounter::readSerialNumber()
 	    }
 	}
     }
+    return QString{};
 #elif defined (Q_OS_LINUX)
     struct hid_device_info *devs, *cur_dev;
 
@@ -242,13 +231,12 @@ void Sbs2EmotivMounter::readHardwareParameters()
     path = QString("/dev/null");
     qDebug() << "[OSX] hidraw device found:  " << serialNumber;
 #endif
-    if (!(serialNumber[0] == 'S' && serialNumber[1] == 'N'))
+    if (serialNumber.isEmpty() || !serialNumber.startsWith("SN"))
     {
-	invalidate();
-	emit deviceLost();
-	return;
+		invalidate();
+		emit deviceLost();
+		return;
     }
-
     identifier = serialNumber;
     QMap<QString, QVariant> params = QMap<QString, QVariant>();
     params["serialNumber"] = serialNumber;

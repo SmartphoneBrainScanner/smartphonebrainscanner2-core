@@ -44,7 +44,7 @@ public:
      *
      * @param packet Pointer to a packet containing new data to be processed.
      */
-    virtual void getData(Sbs2Packet* packet) {};
+    virtual void getData(Sbs2Packet* packet) {Q_UNUSED(packet);};
     static int getCurrentPacketCounter();
     static int getCurrentPacket();
     QString getRawFilename();

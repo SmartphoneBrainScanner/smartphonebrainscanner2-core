@@ -272,10 +272,10 @@ void Sbs2SourceReconstrucionLoreta::preprocessData()
     if (!paramMeanExtractionOn)
         return;
 
-    double ymean[samples];
+    std::vector<double> ymean;
+    ymean.resize(samples, 0);
     for (int column=0; column<samples; ++column)
     {
-        ymean[column] = 0;
         for (int row=0; row<channels; ++row)
         {
             ymean[column] += (*input)[row][column];

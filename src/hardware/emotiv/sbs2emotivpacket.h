@@ -28,7 +28,7 @@ class Sbs2EmotivPacket: public Sbs2Packet
 
 public:
     Sbs2EmotivPacket(QObject* parent);
-    void update(char *data);
+    void update(const char *data) override;
 };
 
 #endif // SBS2EMOTIVPACKET_H

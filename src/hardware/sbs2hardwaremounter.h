@@ -25,7 +25,6 @@
 #include <QTimer>
 #include <QtCore>
 #include <sbs2common.h>
-#include <utils/waiter.h>
 #include <QString>
 
 class Sbs2HardwareMounter: public QObject
@@ -38,7 +37,6 @@ public:
 
 protected:
     Sbs2HardwareMounter(QObject* parent = 0);
-    void mySleep();
 
     virtual void init();
     virtual void mount();

@@ -36,6 +36,10 @@ macx:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-macx.a) {
 } else:win32:exists($$PWD/../../binary_decryptor/libsbs2emotivdecryptor-windows.a) {
     message("Binary decryptor for Windows found!")
     LIBS += -L$$PWD/../../binary_decryptor/ -lsbs2emotivdecryptor-windows
+} else:exists($$PWD/../../sbs2emotivdecryptor/) {
+    message("Found decryptor sources. Be careful what you distribute.")
+    SOURCES += $$PWD/../../sbs2emotivdecryptor/sbs2emotivdecryptor.cpp
+    INCLUDEPATH += $$PWD/hardware/emotiv
 } else {
     message("No suitable binary decryptor was found, using dummy decryptor instead. Expect random noise")
     SOURCES += $$PWD/hardware/emotiv/sbs2emotivdecryptor_dummy.cpp
@@ -66,6 +70,8 @@ SOURCES += $$PWD/FFTReal.cpp \
     $$PWD/hardware/emotiv/sbs2emotivmounter.cpp \
     $$PWD/hardware/emotiv/sbs2emotivdatareader.cpp \
     $$PWD/hardware/emotiv/sbs2emotivpacket.cpp \
+    $$PWD/hardware/filereader/sbs2filedatareader.cpp \
+    $$PWD/hardware/filereader/sbs2filepacket.cpp \
     $$PWD/source_reconstruction/sparse/math_utilities.cpp \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.cpp \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.cpp \
@@ -82,7 +88,6 @@ HEADERS += \
     $$PWD/sbs2region.h \
     $$PWD/sbs2spectrogram.h \
     $$PWD/utils/sbs2timer.h \
-    $$PWD/utils/waiter.h \
     $$PWD/dtu_array_2d.h \
     $$PWD/sbs2callback.h \
     $$PWD/sbs2datahandler.h \
@@ -124,7 +129,12 @@ HEADERS += \
     $$PWD/hardware/emotiv/sbs2emotivdatareader.h \
     $$PWD/hardware/emotiv/sbs2emotivpacket.h \
     $$PWD/hardware/emotiv/sbs2emotivdecryptor.h \
+    $$PWD/hardware/filereader/sbs2filedatareader.h \
+    $$PWD/hardware/filereader/sbs2filepacket.h \
     $$PWD/source_reconstruction/sparse/math_utilities.h \
     $$PWD/source_reconstruction/loreta/sbs2sourcereconstruction_loreta.h \
     $$PWD/source_reconstruction/sparse/sbs2sourcereconstruction_sparse.h \
     $$PWD/source_reconstruction/sbs2sourcereconstruction.h
+
+RESOURCES += $$PWD/../sbs2_data/datafiles.qrc
+CONFIG += resources_big

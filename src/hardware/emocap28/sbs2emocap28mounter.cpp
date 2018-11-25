@@ -14,7 +14,7 @@ Sbs2Emocap28Mounter* Sbs2Emocap28Mounter::New(QObject *parent)
     return m_pInstance;
 }
 
-Sbs2Emocap28Mounter::Sbs2Emocap28Mounter(QObject *parent)
+Sbs2Emocap28Mounter::Sbs2Emocap28Mounter(QObject *parent) : Sbs2HardwareMounter(parent)
 {
     init();
 }
@@ -119,9 +119,6 @@ QString Sbs2Emocap28Mounter::readSerialNumber()
 
 void Sbs2Emocap28Mounter::readHardwareParameters()
 {
-    /* Temporary serial number. */
-    char serialNumberNew[17];
-
 #if defined(Q_OS_ANDROID)
     QFileInfoList list = QDir("/sys/class/hidraw/").entryInfoList();
     QRegExp typeReg(".{4}:.{4}:.{4}\\..{4}");

@@ -67,6 +67,7 @@ void Sbs2Callback::setWindowType(int windowType)
 
 void Sbs2Callback::turnOnSourceReconstructionLoreta(int sourceReconstructionSamples_, int sourceReconstructionDelta_, int sourceReconstructionModelUpdateLength_, int sourceReconstructionModelUpdateDelta_, QString hardware_)
 {
+    Q_UNUSED(sourceReconstructionDelta_);
     qDebug() << Q_FUNC_INFO;
     sbs2DataHandler->turnOnSourceReconstructionLoreta(sourceReconstructionSamples_,sourceReconstructionModelUpdateDelta_, sourceReconstructionModelUpdateLength_, sourceReconstructionModelUpdateDelta_, hardware_);
 }
