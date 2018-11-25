@@ -152,9 +152,9 @@ void matrixMultiplicationComponentWise(DTU::DtuArray2D<double> *matrix_A, DTU::D
 
 void vectorOuterProduct(std::vector<double> &vector1 , std::vector<double> &vector2, DTU::DtuArray2D<double> *out)
 {
-    for(int i=0 ; i<vector1.size() ; i++)
+    for(int i=0 ; i<int(vector1.size()) ; i++)
     {
-	for(int j=0 ; j<vector2.size() ; j++)
+	for(int j=0 ; j<int(vector2.size()) ; j++)
 	{
 	    (*out)[i][j] = vector1[i]*vector2[j];
 	}
@@ -165,7 +165,7 @@ void vectorOuterProduct(std::vector<double> &vector1 , std::vector<double> &vect
 
 void thresholding_insitu(std::vector<double> & x_vector)
 {
-    for(int i=0 ; i<x_vector.size() ; i++)
+    for(std::vector<double>::size_type i=0 ; i<x_vector.size() ; i++)
     {
 	if(x_vector[i]<0)
 	{
@@ -177,7 +177,7 @@ void thresholding_insitu(std::vector<double> & x_vector)
 
 void scalarMinusVector_insitu(double *scalar, std::vector<double> &x_vector)
 {
-    for(int i=0 ; i<x_vector.size() ; i++)
+    for(std::vector<double>::size_type i=0 ; i<x_vector.size() ; i++)
     {
 	x_vector[i] = (*scalar) - x_vector[i];
     }
@@ -187,7 +187,7 @@ void scalarMinusVector_insitu(double *scalar, std::vector<double> &x_vector)
 void scalarDividedbyVectorComponentWise_insitu(double *scalar, std::vector<double> &x_vector)
 {
 
-    for(int i=0 ; i<x_vector.size() ; i++)
+    for(std::vector<double>::size_type i=0 ; i<x_vector.size() ; i++)
     {
 	x_vector[i] = (*scalar)/x_vector[i];
 
@@ -198,7 +198,7 @@ void scalarDividedbyVectorComponentWise_insitu(double *scalar, std::vector<doubl
 void printVector(std::vector <double> &out)
 {
 
-    for(int i=0 ; i<out.size() ; i++)
+    for(std::vector<double>::size_type i=0 ; i<out.size() ; i++)
     {
 	std::cout<<out[i]<< '\n';
 

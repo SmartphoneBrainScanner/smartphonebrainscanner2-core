@@ -132,7 +132,7 @@ void Sbs2NetworkHandler::sendRawData(char *data)
         finalRawData[finalRawDataSize-1] = char(rawDataSize);
 
 
-        for (int i=0; i<sizeof(int); ++i)
+        for (unsigned int i=0; i<sizeof(int); ++i)
         {
             finalRawData[rawDataQueueLength*rawDataSize+i] = ((rawDataCounter >> i*8 ) & 0x0FF );
         }

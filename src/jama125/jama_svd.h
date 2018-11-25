@@ -513,7 +513,7 @@ class SVD
    /** Two norm of condition number (max(S)/min(S)) */
 
    Real cond () {
-      return s[0]/s[min(m,n)-1];
+      return s[0]/s[std::min(m,n)-1];
    }
 
    /** Effective numerical matrix rank
@@ -523,7 +523,7 @@ class SVD
    int rank () 
    {
       Real eps = pow(2.0,-52.0);
-      Real tol = max(m,n)*s[0]*eps;
+      Real tol = std::max(m,n)*s[0]*eps;
       int r = 0;
       for (int i = 0; i < s.dim(); i++) {
          if (s[i] > tol) {

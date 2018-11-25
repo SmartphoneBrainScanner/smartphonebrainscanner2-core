@@ -138,6 +138,7 @@ QString Sbs2EmotivMounter::readSerialNumber()
 	    }
 	}
     }
+    return QString{};
 #elif defined (Q_OS_LINUX)
     struct hid_device_info *devs, *cur_dev;
 
