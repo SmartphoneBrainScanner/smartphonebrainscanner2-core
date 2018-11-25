@@ -42,16 +42,16 @@ void Sbs2FileHandler::createMetaFile(QString user_, QString description_)
     user = user_;
     description = description_;
 
-    currentTime = new QDateTime(QDateTime::currentDateTime ());
-    qint64 timestamp = currentTime->toMSecsSinceEpoch(); //in msec and UTC (-2 hours)
+    QDateTime currentTime = QDateTime::currentDateTime ();
+    qint64 timestamp = currentTime.toMSecsSinceEpoch(); //in msec and UTC (-2 hours)
 
 
-    int year = currentTime->date().year();
-    int month = currentTime->date().month();
-    int day = currentTime->date().day();
-    int hour = currentTime->time().hour();
-    int minute = currentTime->time().minute();
-    int sec = currentTime->time().second();
+    int year = currentTime.date().year();
+    int month = currentTime.date().month();
+    int day = currentTime.date().day();
+    int hour = currentTime.time().hour();
+    int minute = currentTime.time().minute();
+    int sec = currentTime.time().second();
 
     rawFilename = QString(Sbs2Common::getCatalogPath());
     rawFilename.append("sbs2data_");
@@ -68,8 +68,6 @@ void Sbs2FileHandler::createMetaFile(QString user_, QString description_)
     rawFilename.append(normalizeInt(sec));
     rawFilename.append("_");
     rawFilename.append(user);
-
-    delete currentTime;
 
     qDebug() << rawFilename << " " <<timestamp;
 

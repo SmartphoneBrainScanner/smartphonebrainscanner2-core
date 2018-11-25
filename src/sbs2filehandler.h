@@ -49,7 +49,6 @@ private:
     QString rawFilename;
     QString metaFilename;
     std::ofstream rawFile;
-    QDateTime* currentTime;
     QFile* metaFile;
     int packetZero; /**< Packet number of the first data packet in the current recording */
 
