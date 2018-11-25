@@ -8,7 +8,10 @@ Sbs2FileHandler::Sbs2FileHandler(QObject *parent) :
 {
 
     if (!QFile::exists(Sbs2Common::getCatalogPath()))
-	system(QString("mkdir ").append(Sbs2Common::getCatalogPath()).toStdString().c_str());
+    {
+        QDir d;
+        d.mkpath(Sbs2Common::getCatalogPath());
+    }
 
     packetZero = -1;
     metaFile = 0;
