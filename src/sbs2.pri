@@ -1,5 +1,11 @@
 QT += network
 
+android {
+    demodata.files += $$PWD/../demodata/sbs2data_2018_12_01_21_07_22_Test.raw
+    demodata.path = "/assets"
+    INSTALLS += demodata
+}
+
 macx {
     message("OSX")
 
